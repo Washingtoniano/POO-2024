@@ -1,7 +1,7 @@
 from CajaDeAhorro import CajaDeAhorro
 
 def test():
-    N=input("Numerp de Cuenta ")
+    N=input("Numero de Cuenta ")
     C=input("cuil ")
     A=input("Apellido ")
     No=input("Nombre ")
