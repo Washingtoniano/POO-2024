@@ -22,7 +22,9 @@ def test():
     # else:
     #     float(monto)
     # ext=caja.extraer(monto)
-    ext=caja.extraer(float(monto))
+    ext=caja.extraer(
+        
+        float(monto))
     if ext != -1:
         print("El monto actualizado es {}".format(ext))
     else:

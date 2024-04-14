@@ -6,9 +6,15 @@ class CajaDeAhorro():
     __saldo=float
     def __init__(self,ncuenta=None,cuil=None,apellido=None,nombre=None,saldo=0.0):
         self.__ncuenta=ncuenta
-        self.__cuil=cuil
+        b=0
         self.__apellido=apellido
         self.__nombre=nombre
+        while (b==0):
+            if (self.comprobar(self.__cuil)==True):
+                b=1
+            else:
+                cui=input("Cuil Invalido\n ingrese de nuevo\n")
+                self.__cuil=cui
         #self.__saldo=saldo
         # if ncuenta=='':
         #     self.__ncuenta=None
@@ -65,34 +71,38 @@ class CajaDeAhorro():
     #def darSal(self):
     #    return self.__saldo
     def comprobar(self, cuil):
+        #print("{}".format(cuil))
         partes=cuil.split('-')
         band=False
-        if ((int (partes[0])==27) or (int (partes[0])==30) or (int (partes[0])==20)):
+        if ((int (partes[0])==27) or (int (partes[0])==30) or (int (partes[0])==20) or (int(partes[0]==23))):
             if (int(len(partes[1]))==8):
                 if (int(len(partes[2]))==1):
                     acum=0
-                    
                     numeros=[5,4,3,2,7,6,5,4,3,2]
                     cant=partes[0]+partes[1]
-                    cant
+                    #cant
                     for i in range (len(cant)):
                         acum=acum+(int(cant[i])*numeros[i])
-                        print("{}".format(acum))
+                        #print("{}*{}={}".format(cant[i],numeros[i],acum))
                     val=acum/11
                     rest=acum-(int(val)*11)
-                    print("Val {}".format(val))
-                    print("Rest {}".format(rest))
+                    int(rest)
+                    #print("Val {}".format(val))
+                    #print("Rest {}".format(rest))
                     if rest==0:
                         if int(partes[2])==0:
                             band=True
                     elif rest==1:
+                        
                         if int(partes[0])==20:
                             if int(partes[2])==9:
+                                partes[0]=23
                                 band=True
                         elif int(partes[0])==27:
                             if int(partes[2])==4:
+                                partes[0]==3
                                 band=True
-                        else:
-                            if int(partes[2])==11-rest:
-                                band=True
+                    else:
+                        if int(partes[2])==(11-rest):
+                            band=True
         return band

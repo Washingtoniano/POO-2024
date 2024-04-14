@@ -1,8 +1,10 @@
 from CajaDeAhorro import CajaDeAhorro
 class contenedor():
     __lista=[]
+    __com=()
     def __init__(self):
         self.__lista=[]
+        
     #def inicializar(self):
     #    print("Selecciona la opcion que desea\n 1-Agregar Caja De Ahorro\n 2-Mostrar lista\n 3-Buscar Cuil\n")
 
@@ -15,8 +17,9 @@ class contenedor():
     def buscarC(self,cuil):
         i=0
         b="No se encontro el archivo"
+        
         while self.__lista[i].darCuil()!=cuil:
             i+=1
         if i<=len(self.__lista):
-            b= self.__lista[i].mostrar()
+            b= self.__lista[i]
         return b

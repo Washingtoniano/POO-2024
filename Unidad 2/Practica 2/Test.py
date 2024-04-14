@@ -14,8 +14,8 @@ def test(uncontenedor):
             uncontenedor.mostrar()
         elif(op==3):
             cu=input("Ingrese Cuil a buscar\n")
-            b=uncontenedor.buscar(cu)
-            print("{}".fromat(b))
+            b=uncontenedor.buscarC(cu)
+            print("{}".format(b))
         else:
             print("Opcion no valida\n")
         op=int(input("Selecciona la opcion que desea\n 1-Agregar Caja De Ahorro\n 2-Mostrar lista\n 3-Buscar Cuil\n"))
