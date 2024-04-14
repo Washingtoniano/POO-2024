@@ -1,8 +1,8 @@
 #from Contenedor import contenedor
 def test(uncontenedor):
     
-    op=int(input("Selecciona la opcion que desea\n 1-Agregar Caja De Ahorro\n 2-Mostrar lista\n 3-Buscar Cuil\n 0-Finalizar\n"))
-    while(int(op)>=0 and int(op)<4):
+    op=int(input("Selecciona la opcion que desea\n 1-Agregar Caja De Ahorro\n 2-Mostrar lista\n 3-Buscar Cuil\n Otro valor para finalizar\n"))
+    while(int(op)>0 and int(op)<4):
         if (op==1):
             N=input("Numero de Cuenta ")
             C=input("cuil ")
@@ -17,10 +17,6 @@ def test(uncontenedor):
             b=uncontenedor.buscarC(cu)
             print("{}".format(b))
         else:
-            if(op==0):
-                print("Adios")
-                op=5
-            else:
-                print("Opcion no valida\n")
-                op=int(input("Selecciona la opcion que desea\n 1-Agregar Caja De Ahorro\n 2-Mostrar lista\n 3-Buscar Cuil\n 0-Finalizar"))
-
+            print("Opcion no valida\n")
+        op=int(input("Selecciona la opcion que desea\n 1-Agregar Caja De Ahorro\n 2-Mostrar lista\n 3-Buscar Cuil\n Otro valor para finalizar"))
+    print("Adios")
