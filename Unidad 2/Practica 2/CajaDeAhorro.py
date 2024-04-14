@@ -84,24 +84,24 @@ class CajaDeAhorro():
                     #cant
                     for i in range (len(cant)):
                         acum=acum+(int(cant[i])*numeros[i])
-                        #print("{}*{}={}".format(cant[i],numeros[i],acum))
+                        print("{}*{}={}".format(cant[i],numeros[i],acum))
                     val=acum/11
                     rest=acum-(int(val)*11)
                     int(rest)
-                    #print("Val {}".format(val))
-                    #print("Rest {}".format(rest))
+                    print("Val {}".format(val))
+                    print("Rest {}".format(rest))
                     if rest==0:
                         if int(partes[2])==0:
                             band=True
                     elif rest==1:
                         
-                        if int(partes[0])==20:
+                        if int(partes[0])==23:
                             if int(partes[2])==9:
-                                partes[0]=23
+
                                 band=True
-                        elif int(partes[0])==27:
+                        elif int(partes[0])==23:
                             if int(partes[2])==4:
-                                partes[0]=23
+
                                 band=True
                     else:
                         if int(partes[2])==(11-rest):

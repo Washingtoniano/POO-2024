@@ -94,13 +94,11 @@ class CajaDeAhorro():
                             band=True
                     elif rest==1:
                         
-                        if int(partes[0])==20:
+                        if int(partes[0])==23:
                             if int(partes[2])==9:
-                                partes[0]=23
                                 band=True
-                        elif int(partes[0])==27:
+                        elif int(partes[0])==23:
                             if int(partes[2])==4:
-                                partes[0]==3
                                 band=True
                     else:
                         if int(partes[2])==(11-rest):
