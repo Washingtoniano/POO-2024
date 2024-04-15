@@ -13,7 +13,7 @@ class contenedor():
         self.__lista.append(unacaja)
     def mostrar(self):
         for i in range(len(self.__lista)):
-            print("{}".format(self.__lista[i].mostrar()))
+            self.__lista[i].mostrar()
     def buscarC(self,cuil):
         i=0
         b="No se encontro el archivo"

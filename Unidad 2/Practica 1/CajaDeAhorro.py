@@ -9,6 +9,7 @@ class CajaDeAhorro():
         b=0
         self.__apellido=apellido
         self.__nombre=nombre
+        self.__cuil=cuil
         while (b==0):
             if (self.comprobar(self.__cuil)==True):
                 b=1
@@ -84,7 +85,7 @@ class CajaDeAhorro():
                         #cant
                         for i in range (len(cant)):
                             acum=acum+(int(cant[i])*numeros[i])
-                            #print("{}*{}={}".format(cant[i],numeros[i],acum))
+                           #print("{}*{}={}".format(cant[i],numeros[i],acum))
                         val=acum/11
                         rest=acum-(int(val)*11)
                         int(rest)
