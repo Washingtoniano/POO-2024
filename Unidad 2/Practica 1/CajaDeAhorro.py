@@ -1,9 +1,9 @@
 class CajaDeAhorro():
-    __ncuenta=str
-    __cuil=str
-    __apellido=str
-    __nombre=str
-    __saldo=float
+    __ncuenta:str
+    __cuil:str
+    __apellido:str
+    __nombre:str
+    __saldo:float
     def __init__(self,ncuenta=None,cuil=None,apellido=None,nombre=None,saldo=0.0):
         self.__ncuenta=ncuenta
         b=0
