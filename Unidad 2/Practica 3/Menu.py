@@ -7,9 +7,8 @@ class menu():
     def mostrar(self):
         self.__gestor.mostrar()
     def manejador(self):
-        cod=input("Seleccione la opcion deseada\n a-Cargar Monto\n b-Calcular el total de facturación\n c-\n d-\n e-\n Otro valor para finalizar\n")
+        cod=input("Seleccione la opcion deseada\n a-Cargar Monto\n b-Calcular el total de facturación\n c-Buscar sucursal con mayor facturacíon por dia\n d-Sucursal con menor facturacion durante toda la semana\n e-Total facturado por todas las sucursales en la semana\n Otro valor para finalizar\n")
         while(cod<='e' and cod>='a'):
-
             if cod=='a':
                 print("Ingrese los suiguientes datos\n")
                 s=int(input("N° de sucursal\n"))
@@ -29,10 +28,12 @@ class menu():
             elif(cod=="d"):
                 b=self.__gestor.minimo()
                 if(b>0):
-                    print("La sucursal que mas vendio es la numero {}\n".format(b))
+                    print("La sucursal que menos facturo es la numero {}\n".format(b))
                 else:
                     print("Error\n")
-            cod=input("Seleccione la opcion deseada\n a-Cargar Monto\n b-Calcular el total de facturación\n c-\n d-\n e-\n Otro valor para finalizar\n")
+            elif(cod=="e"):
+                self.__gestor.total()
+            cod=input("Seleccione la opcion deseada\n a-Cargar Monto\n b-Calcular el total de facturación\n c-Buscar sucursal con mayor facturacíon por dia\n d-Sucursal con menor facturacion durante toda la semana\n e-Total facturado por todas las sucursales en la semana\n Otro valor para finalizar\n")
 
     def test(self):
         ungestor=self.__gestor

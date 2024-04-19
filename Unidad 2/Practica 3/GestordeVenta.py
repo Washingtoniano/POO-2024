@@ -34,3 +34,7 @@ class GestorVentas ():
                 min=val
                 sucu=i+1
         return sucu
+    def total(self):
+        for i in range (self.__farmacia):
+            val=self.calcular(i+1)
+            print("Sucursal {} Total facturado:{}\n".format(i+1,val))
