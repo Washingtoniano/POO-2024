@@ -21,7 +21,7 @@ class GestorM():
         Band=False
         if len(self.__lista)!=0:
         
-            while (i<len(self.__lista)) and (pa.upper()!=self.__lista[i].getpatente()):
+            while (i<len(self.__lista)) and (pa!=self.__lista[i].getpatente()):
                 i+=1
             Band=False
             if (i<len(self.__lista)):
@@ -38,5 +38,7 @@ class GestorM():
             print(self.__lista[i])
     def mostrarCon(self,pa):
         i=self.Buscar(pa,1)
-        if i== 1:
-            return("El conductor {}{}\n".format(self.__lista[i].getNombre(),self.__lista[i].getApellido()))
+        if type(i)== int:
+            print("El conductor {}{}\n".format(self.__lista[i].getNombre(),self.__lista[i].getapellido()))
+            i=self.__lista[i].getpatente()
+        return (i)

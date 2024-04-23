@@ -39,11 +39,11 @@ class menu():
             elif v==5:
                 pa=input("Ingrese patente de moto\n")
                 dato=(self.__Gm.mostrarCon(pa))
-                if dato==False:
+                if type(dato)!=int and type(dato)!=str:
                     print("No se encontro la patente\n")
                 else:
-                    print("{}".format(dato))
-                    print("Posee un promedio de {} en tiempo real\n".format(self.__Gp.promedio))
+                    #print("{}".format(dato))
+                    print("Posee un promedio de {} en tiempo real\n".format(self.__Gp.promedio(dato)))
             elif v==6:
                 pass
             elif v==7:
