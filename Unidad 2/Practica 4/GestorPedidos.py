@@ -6,7 +6,7 @@ class GestorP():
     def __init__(self):
         self.__lista=[]
     def inicializar(self):
-        archivo=open("/home/lia-t-04/Escritorio/Practica/Practica 4/datos_Pedidos.csv",'r')
+        archivo=open("Pedidos.csv",'r')
         reader=csv.reader(archivo,delimiter=',')
         band=False
         for fila in reader:

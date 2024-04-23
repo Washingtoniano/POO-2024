@@ -6,7 +6,7 @@ class GestorM():
         self.__lista=[]
     
     def inicializar(self):
-        archivo=open("/home/lia-t-04/Escritorio/Practica/Practica 4/datos_Motos.csv",'r')
+        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 4\\datos_Motos.csv",'r')
         reader=csv.reader(archivo,delimiter=',')
         band=False
         for fila in reader:
