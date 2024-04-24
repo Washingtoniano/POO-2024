@@ -1,4 +1,4 @@
-#import numpy as np
+import numpy as np
 import csv
 from Pedido import pedido
 class GestorP():
@@ -33,12 +33,13 @@ class GestorP():
     def modificar(self,pa,id,tr):
         i=0
         while i<len(self.__lista):
-            print("Este es el len de la lista{}\n".format(len(self.__lista)))
-            print("{}{}".format(pa,id))
+            #Los comentarios eran metodos de control 
+            #print("Este es el len de la lista{}\n".format(len(self.__lista)))
+            #print("{}{}".format(pa,id))
             print("Patente{} ida{}\n".format(self.__lista[i].getpatente(),self.__lista[i].getId()))
 
             if((self.__lista[i]).getpatente()==pa) and ((self.__lista[i]).getId()==id):
-                print("Este es el pedido{}\n".format(self.__lista[i]))
+                #print("Este es el pedido{}\n".format(self.__lista[i]))
                 self.__lista[i].ModTr(tr)
             i+=1
     def promedio(self,pa):
@@ -50,3 +51,6 @@ class GestorP():
                 prom+=self.__lista[i].getTr()
                 con+=1
         return float(prom//con)
+    def Ordenar(self):
+        c=np.sort(self.__lista)
+        self.__lista=c

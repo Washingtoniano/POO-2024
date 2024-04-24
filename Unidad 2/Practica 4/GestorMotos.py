@@ -16,7 +16,7 @@ class GestorM():
                 #print("Fila{}".format(fila))
                 unamoto=moto(fila[0],fila[1],fila[2],fila[3],fila[4])
                 self.__lista.append(unamoto)
-    def Buscar(self,pa,o=0):
+    def Buscar(self,pa,o=0): #El paramentro o servira como bandera para reutilziar el codigo en otro metodo
         i=0
         Band=False
         if len(self.__lista)!=0:
@@ -37,8 +37,8 @@ class GestorM():
         for i in range (len(self.__lista)):
             print(self.__lista[i])
     def mostrarCon(self,pa):
-        i=self.Buscar(pa,1)
+        i=self.Buscar(pa,1) #envia 1 para activar o devuelve la posicion de la moto
         if type(i)== int:
             print("El conductor {}{}\n".format(self.__lista[i].getNombre(),self.__lista[i].getapellido()))
             i=self.__lista[i].getpatente()
-        return (i)
+        return (i) #Regresa la patente
