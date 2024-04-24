@@ -25,3 +25,7 @@ class pedido():
         return(self.__id)
     def getTr(self):
         return self.__Tr
+    def getTe(self):
+        return self.__Te
+    def getprecio(self):
+        return self.__precio

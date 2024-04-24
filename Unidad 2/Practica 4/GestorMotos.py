@@ -42,3 +42,10 @@ class GestorM():
             print("El conductor {}{}\n".format(self.__lista[i].getNombre(),self.__lista[i].getapellido()))
             i=self.__lista[i].getpatente()
         return (i) #Regresa la patente
+    def regresapatente(self,i):
+        return self.__lista[i].getpatente()
+    def regresaconductor(self,i):
+        return self.__lista[i].conductor()
+    def regresa_lista(self):
+        return self.__lista
+    

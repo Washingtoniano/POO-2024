@@ -54,3 +54,15 @@ class GestorP():
     def Ordenar(self):
         c=np.sort(self.__lista)
         self.__lista=c
+    def regresa_lista(self):
+        return self.__lista
+    def getID(self,i):
+        return (self.__lista[i].getId())
+    def getTr(self,i):
+        return (self.__lista[i].getTr())
+    def getTe(self,i):
+        return(self.__lista[i].getTe())
+    def getprecio(self,i):
+        return(self.__lista[i].getprecio())
+    def getpatente(self,i):
+        return self.__lista[i].getpatente()

@@ -19,3 +19,5 @@ class moto():
         return self.__nombre
     def getapellido(self):
         return self.__apellido
+    def conductor(self):
+        return self.__apellido+self.__nombre

@@ -46,7 +46,25 @@ class menu():
                     #Compara la patente encontrada en el gestor de motos y devuelve datos
                     print("Posee un promedio de {} en tiempo real\n".format(self.__Gp.promedio(dato)))
             elif v==6:
-                pass
+                self.__Gp.Ordenar()
+                p=self.__Gp.regresa_lista()
+                m=self.__Gm.regresa_lista()
+                for i in range (len(m)):
+                    print("\nPatente de Moto:{}\nConductor:{}".format(self.__Gm.regresapatente(i),self.__Gm.regresaconductor(i)))
+                    print("Indentificador de Pedido   Tiempo Estimado   Tiempo real   Precio")
+                    for l in range (len(p)):
+                        cant=0
+                        acum=0.0
+                        band=False
+                        if (self.__Gm.regresapatente(i)==self.__Gp.getpatente(l)):
+                            band=True
+                            print("     {}                        {}                {}        {}".format(self.__Gp.getID(l),self.__Gp.getTe(l),self.__Gp.getTr(l),self.__Gp.getprecio(l)))
+                            #5,24,16,8 espacio
+                            cant+=1
+                            acum+=self.__Gp.getprecio(l)
+                        if band==True:
+                            print("\nComision:${}(20 del total)\n".format(acum*20/100))
+                
             elif v==7:
                 print("Datos de Pedidos\n")
                 self.__Gp.mostrar()
