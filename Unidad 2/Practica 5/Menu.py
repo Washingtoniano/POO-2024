@@ -11,7 +11,7 @@ class menu():
         self.__GF.inicializar()
     def manejadror(self):
         #self.inicializar()
-        v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n"))
+        v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n7-Mostrar Listas guardadas\n0-Cerrar\n"))
         band=False
         while band!=True and v>=0:
             if v==1:
@@ -46,8 +46,8 @@ class menu():
                         m=0
                         if res== self.__GF.getIDL(i):
                             d=self.calcular(golL,golV)
-                            #print("{} {} {} {} {}".format(F,GF,GC,DG,P))
-                            F=n-len(fecha)
+                            print("{} {} {} {} {}".format(F,GF,GC,DG,P))
+                         
 
                             #Por algun motivo le sobran dos espacios
 
@@ -58,17 +58,20 @@ class menu():
             #que calcule los espacio, basicamente a n se le restan los lugares de correspondientes a la cadena o elemento que quiere representar. Esto lo hice asi,
             #porque al aplicar n no quedaba parejo ni coincidian las filas con las columnas. Es mas si se alter n (n=20) la lista se desordenara
             #por lo visto los espacios asignados al primero elemento se suman con el segundo, es decir del primer al segundo elmento hay una diferencia de n*2 y del segundo en adelante de n.
+                            F=n-len(fecha)
                             GF=n-self.verificar(golL)
                             GC=n-self.verificar(golV)
-                            DG=n-self.verificar(golL-golV)
-                            P=n-2-self.verificar(m) 
-                            
+                            DG=n-self.verificar(golL- golV)
+                            P=n-self.verificar(d)
+                            #k=int(n/2)
                             
                             #print("{} {} {} {} {}".format(F,GF,GC,DG,P))
+                            print("if")
                             print(f"{fecha:{F}}{golL:{GF}}{golV:{GC}}{golL-golV:{DG}}{d:{P}}")
-                            #print(f"{fecha:{n}}{golL:{n}}{golV:{n}}{golL-golV:{n}}{d:{n}}")
+                            #print(f"{fecha:{k}}{golL:{k}}{golV:{k}}{golL-golV:{k}}{d:{k}}")
                             #print("Espacio{}".format(len(f"{fecha:{F}}")))
                             #print(f"{fecha:10}{golL:GF}{golV:GC}{golL-golV:DG}{d:P}")
+                            #print("{:10}{:10}{:10}{:10}{:10}".format(fecha,golL,golV,golL-golV,d))
                             acumDIF+=golL-golV
                             acumFavor+=golL
                             acumcontra+=golV
@@ -77,22 +80,27 @@ class menu():
                         elif res ==self.__GF.getIDV(i):
                             #se pueden hacer columnas colocando un unmero entr las llaves {x}
                             m=self.calcular(golV,golL)
+                           
                             F=n-len(fecha)
                             GF=n-self.verificar(golV)
                             GC=n-self.verificar(golL)
-                            DG=n-self.verificar(golV-golL)
-                            P=n-self.verificar(m)-1
+                            DG=n-self.verificar(golV- golL)
+                            P=n-self.verificar(m)
                             
-                            print(f"{fecha}{golV}{golL}{golV-golL}{d:}")
+                            print("else")
+                            print(f"{fecha}{golV:{GF}}{golL:{GC}}{golV-golL:{DG}}{m:{P}}")
+
+                            #print(f"{fecha}{golV}{golL}{golV-golL}{d}")
                             acumDIF+=golV-golL
                             acumFavor+=golV
                             acumcontra+=golL
                         puntos=puntos+d+m
                     
                     #Por algun motivo le faltan dos espacios
-                    print(f"Totales:{acumFavor:{GF+2}}{acumcontra:{GC}}{acumDIF:{DG}}{puntos:{P}}")
+                    #print("Totales{:10}{:10}{:10}".format(acumFavor,acumcontra,acumDIF,puntos))
+                    print(f"{"Totales":{F}}{acumFavor:{GF}}{acumcontra:{GC}}{acumDIF:{DG}}{puntos:{P}}")
                     
-                    #print(f"Totales:{acumFavor:{n}}{acumcontra:{n}}{acumDIF:{n}}{puntos:{n}}")
+                    #print(f"{"Totales":{F}}{acumFavor:{n}}{acumcontra:{n}}{acumDIF:{n}}{puntos:{n}}")
 
                 else: 
                     print("No se encontro el equipo")
@@ -115,7 +123,7 @@ class menu():
                 band=True
             else:
                 print("Datos erroneos\n")
-            v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n"))
+            v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n7-Mostrar Listas guardadas\n0-Cerrar\n"))
         
         
     def mostrarLista(self):

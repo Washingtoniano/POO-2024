@@ -25,7 +25,7 @@ class gestorEquipos():
             else:
                 i+=1
         if band==True:
-            band=self.__lista[i].getnombre()
+            band=self.__lista[i].getID()
         return band 
     def mostrar(self):
         for i in range (len(self.__lista)):

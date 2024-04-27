@@ -15,7 +15,7 @@ class fecha():
     def getIDLocal(self):
         return self.__idLocal
     def __str__(self) :
-        return("fecha{}  IdLocal:{}  IdVisitante:{}  cant goles Local {}   Cant goles Vis{}  ".format(self.__fPartido,self.__idLocal,self.__idVisitante,self.__cantGolesL,self.__cantGolesV))
+        return("Fecha{:10} IdLocal:{:10} IdVisitante:{:10} cant goles Local {:10} Cant goles Vis{:10}  ".format(self.__fPartido,self.__idLocal,self.__idVisitante,self.__cantGolesL,self.__cantGolesV))
     def getIDVisitante(self):
         return self.__idVisitante
     def getGolesLocal(self):

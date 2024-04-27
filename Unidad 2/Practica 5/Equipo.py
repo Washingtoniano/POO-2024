@@ -17,7 +17,7 @@ class equipo():
     def getID(self):
         return self.__Id
     def __str__(self):
-        return ("Equipo:{}  ID:{}   goles a favor{}  goles en contra{}    diferencia de goles{}    puntos{}".format(self.__nombre,self.__Id,self.__golesF,self.__golesC,self.__golesDif,self.__puntos))
+        return ("Equipo:{:10} ID:{:10} goles a favor{:10} goles en contra{:10} Diferencia de goles{:10} Puntos{:10}".format(self.__nombre,self.__Id,self.__golesF,self.__golesC,self.__golesDif,self.__puntos))
         #2 espacios, 2 espacio, 3 espacios, 2 espacio
     def getpuntos(self):
         return self.__puntos
