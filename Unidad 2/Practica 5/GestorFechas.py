@@ -5,7 +5,7 @@ class gestorFechas():
     def __init__(self):
         self.__lista=[]
     def inicializar(self):
-        archivo =open("/home/lia-t-04/Escritorio/Practica 5/fechasFutbol.csv",'r')
+        archivo =open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 5\\fechasFutbol.csv",'r')
         reader= csv.reader(archivo,delimiter=',')
         band=False
         for fila in reader:

@@ -23,32 +23,77 @@ class menu():
                 E=input("Ingrese el nombre del equipo\n")
                 res=self.__GE.buscarequipo(E.upper())
                 if res != False:
-                    print("Equipo:{}\nFecha   Goles a favor   Goles en contra   Diferencia de Goles, Puntos".format(E))
+                    n=20
+                    print(f"Equipo:{E}\n")
+                    print(f"{"Fecha":{n}}{"Goles a Favor":{n}}{"Goles en contra":{n}}{"Diferencia de goles":{n}}{"Puntos":{n}}")
                     #self.__GF.buscarfecha(res)
                     puntos=0
+                    acumDIF=0
+                    acumFavor=0
+                    acumcontra=0
+                    F=int(len("Fecha"))
+                    #print("Espacio: {}".format(len(f"{"Fecha":{n}}")))
+                    GF=int((len("Goles a Favor")))
+                    GC=int((len("Goles en contra")))
+                    DG=int((len("Diferencia de goles")))
+                    P=int((len("Puntos")))
+                    #print("Espacio {}".format(F+GF+GC+DG+P))
                     for i in range (self.__GF.len()):
                         golV=self.__GF.getGolV(i)
                         golL=self.__GF.getGolV(i)
+                        fecha=self.__GF.getfecha(i)
                         d=0
                         m=0
-                        acumDIF=0
-                        acumFavor=0
-                        acumcontra=0
                         if res== self.__GF.getIDL(i):
-                            d=self.calcular(golV,golL)
-                            print("{}  {}  {}  {}  {}".format(self.__GF.getfecha(i),golL,golV,golL-golV,d))
+                            d=self.calcular(golL,golV)
+                            #print("{} {} {} {} {}".format(F,GF,GC,DG,P))
+                            F=n-len(fecha)
+
+                            #Por algun motivo le sobran dos espacios
+
+            #Aclaración y recordatorio para consulta, durante la elaboración de esta lista se presentaron muchos problemas que
+            #tuve que solucionar como pude dentro de mis posibilidades. La lista resultante cumple con la consigna y el formato, sin embargo
+            #tiene muchos parches y arreglos que le hice mientras probaba, si fue un proceso de prueba y error, de los cuales pude darme cuenta que
+            #en muchos casos a al alista le sobraban o le faltaban espacios, espcialmente cuando usaba la constante {n}, para ello decidi hacer una formula
+            #que calcule los espacio, basicamente a n se le restan los lugares de correspondientes a la cadena o elemento que quiere representar. Esto lo hice asi,
+            #porque al aplicar n no quedaba parejo ni coincidian las filas con las columnas. Es mas si se alter n (n=20) la lista se desordenara
+            #por lo visto los espacios asignados al primero elemento se suman con el segundo, es decir del primer al segundo elmento hay una diferencia de n*2 y del segundo en adelante de n.
+                            GF=n-self.verificar(golL)
+                            GC=n-self.verificar(golV)
+                            DG=n-self.verificar(golL-golV)
+                            P=n-2-self.verificar(m) 
+                            
+                            
+                            #print("{} {} {} {} {}".format(F,GF,GC,DG,P))
+                            print(f"{fecha:{F}}{golL:{GF}}{golV:{GC}}{golL-golV:{DG}}{d:{P}}")
+                            #print(f"{fecha:{n}}{golL:{n}}{golV:{n}}{golL-golV:{n}}{d:{n}}")
+                            #print("Espacio{}".format(len(f"{fecha:{F}}")))
+                            #print(f"{fecha:10}{golL:GF}{golV:GC}{golL-golV:DG}{d:P}")
                             acumDIF+=golL-golV
                             acumFavor+=golL
                             acumcontra+=golV
+                        
+                        
                         elif res ==self.__GF.getIDV(i):
-                            #se pueden hacer columnas colocansd un unmero entr las llaves {x}
+                            #se pueden hacer columnas colocando un unmero entr las llaves {x}
                             m=self.calcular(golV,golL)
-                            print("{}  {}  {}  {}  {}".format(self.__GF.getfecha(i),golV,golL,golV-golL,m))
+                            F=n-len(fecha)
+                            GF=n-self.verificar(golV)
+                            GC=n-self.verificar(golL)
+                            DG=n-self.verificar(golV-golL)
+                            P=n-self.verificar(m)-1
+                            
+                            print(f"{fecha}{golV}{golL}{golV-golL}{d:}")
                             acumDIF+=golV-golL
                             acumFavor+=golV
                             acumcontra+=golL
                         puntos=puntos+d+m
-                    print("Totales: {} {} {} {}".format(acumFavor,acumcontra,acumDIF,puntos))
+                    
+                    #Por algun motivo le faltan dos espacios
+                    print(f"Totales:{acumFavor:{GF+2}}{acumcontra:{GC}}{acumDIF:{DG}}{puntos:{P}}")
+                    
+                    #print(f"Totales:{acumFavor:{n}}{acumcontra:{n}}{acumDIF:{n}}{puntos:{n}}")
+
                 else: 
                     print("No se encontro el equipo")
 
@@ -96,3 +141,10 @@ class menu():
         else:
             puntos=-3
         return puntos
+    def verificar(self,v):
+        d=0
+        if v>=10:
+            d=2
+        else:
+            d=1
+        return d
