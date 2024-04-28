@@ -20,7 +20,7 @@ class menu():
             elif v==2:
                 self.__GF.inicializar()
             elif v==3:
-                #Los goles se deben sacar del archivo de fechas si es local goles a favor cant de local y goles en contra cant de goles del visitante. Si es visitante se invierte. Si la diferencia puede ser negativa, aplicar valor absoluto. Si gana 3 puntos si empata 0 y si pierde -3
+                #Los goles se deben sacar del archivo de fechas si es local goles a favor cant de local y goles en contra cant de goles del visitante. Si es visitante se invierte. Si la diferencia puede ser negativa, aplicar valor absoluto. 
                 E=input("Ingrese el nombre del equipo\n")
                 res=self.__GE.buscarequipo(E.upper())
                 if res != False:
@@ -150,6 +150,7 @@ class menu():
         self.__GF.mostrar()
     
     def actualizar(self,fe):
+        #Utiliza la fecha para buscar los ID
         i=0
         IDV=self.__GF.buscarIDV(fe)
         IDL=self.__GF.buscarIDL(fe)
@@ -158,21 +159,26 @@ class menu():
             print("dato erroneo\n")
         elif type(fe) ==list:
             for i in range (len(fe)):
+                #Iter buscando la fecha si concide:
                 if fe ==self.__GF.getfecha(i):
                     if (self.__GE.getID(i)==IDL):
-                        self.calcular(i)
+
+                        self.calcular(i,IDL)
                     elif (self.__GE.getID(i)==IDV):
-                        self.calcular(i)
+                        self.calcular(i,IDV)
         else:
             while i< self.__GF.len() and band!=True:
+                #Iter hasta encontrar la fecha, si coincide envia el indice a calcula:
                 if fe ==self.__GF.getfecha(i):
-                    L=self.__GE.getID(i)
-                    if (L==IDL):
-                        self.calcular(i)
-                        band=True
-                    elif (L==IDV):
-                        self.calcular(i)
-                        band=True
+                    j=0
+                    while j<self.__GE.len():
+                        if self.__GE.getID(j)==IDL:
+                            self.calcular(i,IDL)
+                        elif(self.__GE.getID(j)==IDV):
+                            self.calcular(i,IDV)
+                        j+=1
+                    
+                    band=True
                 #else:
                 i+=1
     def puntos(self,v,l):
@@ -184,10 +190,11 @@ class menu():
         else:
             puntos=0
         return puntos 
-    def calcular(self,i):
+    def calcular(self,i,IDF):
+        #REVISAR Utiliza el indice REVISAR  es posible que olo lo encontrase por que ambos
         P:int
         band=False
-        IDE=self.__GE.getID(i)
+        IDE=self.__GE.buscarID(IDF)
         IDFL=self.__GF.getIDL(i)
         IDFV=self.__GF.getGolV(i)
         if IDE==IDFL:

@@ -42,3 +42,15 @@ class gestorEquipos():
                 i+=1
     def getID(self,i):
         return self.__lista[i].getID()
+    def buscarID (self,GF):
+        i=0
+        flag=False
+        while i <len(self.__lista) and flag==False:
+            if self.__lista[i].getID()==GF:
+                flag=self.__lista[i].getID()
+            else:
+                i+=1
+        return flag
+    def len(self):
+        return len(self.__lista)
+
