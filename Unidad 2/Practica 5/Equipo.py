@@ -25,9 +25,11 @@ class equipo():
         return self.__golesDif
     def getGolF(self):
         return self.__golesF
+    def getGolC(self):
+        return self.__golesC
     def __gt__(self,other):
         #Se colocaron los signos de la siguiente forma, debido a que no devolvia el dato correcto
-
+        b=None
         if(self.getpuntos()!=other.getpuntos()):
             b= self.getpuntos()<other.getpuntos()
             

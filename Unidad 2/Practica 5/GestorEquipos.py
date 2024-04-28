@@ -55,9 +55,39 @@ class gestorEquipos():
         return flag
     def len(self):
         return len(self.__lista)
+    def getnombre(self,i):
+        return (self.__lista[i].getnombre())
+    def getGolgesF(self,i):
+        return self.__lista[i].getGolF()
+    def getGolgesC(self,i):
+        return self.__lista[i].getGolC()
+    def getGolgesDIF(self,i):
+        return self.__lista[i].getdif()
+    def getPuntos(self,i):
+        return self.__lista[i].getpuntos()
 
     def ordenar(self):
         hj=np.sort(self.__lista)
         self.__lista=hj
         #for i in range (len(hj)):
         #    print(hj[i])
+    def escribir(self):
+        archivo =open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 5\\ListaOrdenada.csv","w")
+        #escribir =csv.writer(archivo,delimiter=',')
+        escribir =csv.writer(archivo,delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        band=False
+        #idequipo,nomequipo,golesfavor,golescontra,difgoles,puntos
+        escribir.writerow(['ideequipo','nomequipo','golesfavor','golescontra','difgoles','puntos'])
+        for i in range(len(self.__lista)):
+            ID=(self.getID(i))
+            nombre=(self.getnombre(i))
+            GOLF=self.getGolgesF(i)
+            GOLC=self.getGolgesC(i)
+            GOLDIF=self.getGolgesDIF(i)
+            Puntos=self.getPuntos(i)
+
+            escribir.writerow([f'{ID}',f'{nombre}',f'{GOLF}',f'{GOLC}',f'{GOLDIF}',f'{Puntos}'])
+            #escribir.writerow(["{}".format(ID)]["{}".format(nombre)]["{}".format(GOLF)]["{}".format(GOLC)]["{}".format(GOLDIF)]["{}".format(Puntos)])
+            #escribir.writerow(f"[{ID}][{self.getnombre(i)}][{self.getnombre(i)}][{self.getGolgesF(i)}][{self.getGolgesC(i)}][{self.getGolgesDIF(i)}][{self.getPuntos(i)}]")
+
+        archivo.close()

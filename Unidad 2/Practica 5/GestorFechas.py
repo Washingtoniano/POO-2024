@@ -50,4 +50,22 @@ class gestorFechas():
             else:
                 i+=1
         return band
+    def buscarGV(self,V):
+        i=0
+        band=False
+        while i < len(self.__lista) and band== False:
+            if self.__lista[i].getfecha() ==V:
+                band=self.__lista[i].getGolesVisitante()
+            else:
+                i+=1
+        return band
+    def buscarGL(self,V):
+        i=0
+        band=False
+        while i < len(self.__lista) and band== False:
+            if self.__lista[i].getfecha() ==V:
+                band=self.__lista[i].getGolesLocal()
+            else:
+                i+=1
+        return band
             

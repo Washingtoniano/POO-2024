@@ -47,7 +47,7 @@ class menu():
                         m=0
                         if res== self.__GF.getIDL(i):
                             d=self.puntos(golL,golV)
-                            print("{} {} {} {} {}".format(F,GF,GC,DG,P))
+                            #print("{} {} {} {} {}".format(F,GF,GC,DG,P))
                          
 
                             #Por algun motivo le sobran dos espacios
@@ -119,18 +119,21 @@ class menu():
                 k=int(input("Se disputaron mas de una fecha\n 1-Si  2-No"))
                 if k==1:
                     fecha=[]
+                    i=0
                     a=input("Ingrese las fechas de los partidos 0 para finalizar")
                     while a!=0 and flag==False:                 
                         fecha.append(a)
+                        self.actualizar(fecha[i])
+                        i+=1
                         a=input("")
-                        if a==0:
+                        if a=="0":
                             flag=True
-                        self.actualizar(fecha)
-                    print("Se actualizaron las listas\n")
+                    # if flag==True:
+                    #     for i in range (len(fecha)):
+                    #         self.actualizar(fecha,fecha[i])
+                    # print("Se actualizaron las listas\n")
                 elif k==2:
                     fecha=input("Ingrese la fecha del partido")
-                    flag=True
-                if flag==True:
                     self.actualizar(fecha)
                     print("Se actualizaron las listas\n")
                 else:
@@ -138,6 +141,8 @@ class menu():
             elif v==5:
                 self.__GE.ordenar()
                 print("Se ordeno la lista")
+            elif v==6:
+                self.__GE.escribir()
             elif v==7:
                 self.mostrarLista()
             elif v==0:
@@ -156,22 +161,28 @@ class menu():
     
     def actualizar(self,fe):
         #Utiliza la fecha para buscar los ID
-        i=0
+        #i=0
+
         IDV=self.__GF.buscarIDV(fe)
         IDL=self.__GF.buscarIDL(fe)
         band=False
-        if fe==None:
+        if type(fe)!=str:
             print("dato erroneo\n")
-        elif type(fe) ==list:
-            for i in range (len(fe)):
-                #Iter buscando la fecha si concide calcula:
-                if fe[i] ==self.__GF.getfecha(i):
-                    if (self.__GE.getID(i)==IDL):
+        # elif type(fe) ==list:
+        #     for i in range (len(fe)):
+               
+        #         for  j in range (self.__GF.len()):
+        #         #Iter buscando la fecha si concide calcula:
+        #             if fe[i] ==self.__GF.getfecha(j):
+        #                 for d in range (self.__GE.len()):
+        #                     if (self.__GE.getID(d)==IDL):
 
-                        self.calcular(i,IDL)
-                    elif (self.__GE.getID(i)==IDV):
-                        self.calcular(i,IDV)
+        #                         self.calcular(j,IDL,fe[i])
+        #                     if (self.__GE.getID(d)==IDV):
+
+        #                         self.calcular(j,IDV,fe[i])
         else:
+            i=0
             while i< self.__GF.len() and band!=True:
                 #Iter hasta encontrar la fecha, si coincide envia el indice a calcula:
                 if fe ==self.__GF.getfecha(i):
@@ -202,6 +213,8 @@ class menu():
         IDE=self.__GE.buscarID(IDF)
         IDFL=self.__GF.getIDL(i)
         IDFV=self.__GF.getIDV(i)
+        
+
         if IDE==IDFL:
             P=self.puntos(self.__GF.getGolL(i),self.__GF.getGolV(i))
             #la funcion self.__GE.actualizar() recibe el id del equipo y los goles
