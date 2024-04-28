@@ -26,12 +26,17 @@ class equipo():
     def getGolF(self):
         return self.__golesF
     def __gt__(self,other):
-        b= self.__puntos>other.getpuntos()
-        if(self.__puntos==other.getpunts()):
-            b=self.__golesDif > other.getdif()
-        else:
-            b=self.__golesF > other.getGolf()
+        #Se colocaron los signos de la siguiente forma, debido a que no devolvia el dato correcto
+
+        if(self.getpuntos()!=other.getpuntos()):
+            b= self.getpuntos()<other.getpuntos()
+            
+        elif self.getpuntos==other.getpuntos():
+            b= self.getdif<other.getdif()
+        elif(self.getdif==other.getdif()):
+            b= self.getGolF <other.getGolF()
         return b
+    
     def actualizar(self,puntos,GF,GC):
         self.__puntos+=puntos
         self.__golesC+=GC

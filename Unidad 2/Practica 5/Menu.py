@@ -14,7 +14,7 @@ class menu():
         #self.inicializar()
         v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n7-Mostrar Listas guardadas\n0-Cerrar\n"))
         band=False
-        while band!=True and v>=0:
+        while band!=True and v>0:
             if v==1:
                 self.__GE.inicizalizar()
             elif v==2:
@@ -113,7 +113,7 @@ class menu():
                     print("No se encontro el equipo")
 
             elif v==4:
-                #print("Se actualizaron las listas\n")
+                
                 fecha=None
                 flag=False
                 k=int(input("Se disputaron mas de una fecha\n 1-Si  2-No"))
@@ -125,21 +125,26 @@ class menu():
                         a=input("")
                         if a==0:
                             flag=True
-                        #self.actualizar(fecha)
-
+                        self.actualizar(fecha)
+                    print("Se actualizaron las listas\n")
                 elif k==2:
                     fecha=input("Ingrese la fecha del partido")
                     flag=True
                 if flag==True:
                     self.actualizar(fecha)
+                    print("Se actualizaron las listas\n")
                 else:
                     print("Dato erroneo")
+            elif v==5:
+                self.__GE.ordenar()
+                print("Se ordeno la lista")
             elif v==7:
                 self.mostrarLista()
             elif v==0:
                 band=True
             else:
                 print("Datos erroneos\n")
+            
             v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n7-Mostrar Listas guardadas\n0-Cerrar\n"))
         
         
@@ -159,7 +164,7 @@ class menu():
             print("dato erroneo\n")
         elif type(fe) ==list:
             for i in range (len(fe)):
-                #Iter buscando la fecha si concide:
+                #Iter buscando la fecha si concide calcula:
                 if fe ==self.__GF.getfecha(i):
                     if (self.__GE.getID(i)==IDL):
 
@@ -191,7 +196,7 @@ class menu():
             puntos=0
         return puntos 
     def calcular(self,i,IDF):
-        #REVISAR Utiliza el indice REVISAR  es posible que olo lo encontrase por que ambos
+        #i refiere al indice de fecha e IDF al ie a buscar
         P:int
         band=False
         IDE=self.__GE.buscarID(IDF)
@@ -199,6 +204,7 @@ class menu():
         IDFV=self.__GF.getGolV(i)
         if IDE==IDFL:
             P=self.puntos(self.__GF.getGolL(i),self.__GF.getGolV(i))
+            #la funcion self.__GE.actualizar() recibe el id del equipo y los goles
             self.__GE.actualizar(IDE,P,self.__GF.getGolL(i),self.__GF.getGolV(i))
             #self.__GE.actualizarGOLES(IDE,self.__GF.getGolV(i),self.__GF.getGolL(i))
             band=True

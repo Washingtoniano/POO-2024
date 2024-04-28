@@ -1,5 +1,6 @@
 import csv
 from Equipo import equipo
+import numpy as np
 class gestorEquipos():
     __lista=[]
     def __init__(self):
@@ -32,6 +33,7 @@ class gestorEquipos():
             print(self.__lista[i])
                 
     def actualizar(self,id,puntos,GF,GC):
+        #Busca el ID en la lista y actualiza los datos
         i=0
         band=False
         while i < len(self.__lista) and band ==False:
@@ -54,3 +56,8 @@ class gestorEquipos():
     def len(self):
         return len(self.__lista)
 
+    def ordenar(self):
+        hj=np.sort(self.__lista)
+        self.__lista=hj
+        #for i in range (len(hj)):
+        #    print(hj[i])
