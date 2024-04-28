@@ -165,7 +165,7 @@ class menu():
         elif type(fe) ==list:
             for i in range (len(fe)):
                 #Iter buscando la fecha si concide calcula:
-                if fe ==self.__GF.getfecha(i):
+                if fe[i] ==self.__GF.getfecha(i):
                     if (self.__GE.getID(i)==IDL):
 
                         self.calcular(i,IDL)
@@ -179,7 +179,7 @@ class menu():
                     while j<self.__GE.len():
                         if self.__GE.getID(j)==IDL:
                             self.calcular(i,IDL)
-                        elif(self.__GE.getID(j)==IDV):
+                        if(self.__GE.getID(j)==IDV):
                             self.calcular(i,IDV)
                         j+=1
                     
@@ -201,7 +201,7 @@ class menu():
         band=False
         IDE=self.__GE.buscarID(IDF)
         IDFL=self.__GF.getIDL(i)
-        IDFV=self.__GF.getGolV(i)
+        IDFV=self.__GF.getIDV(i)
         if IDE==IDFL:
             P=self.puntos(self.__GF.getGolL(i),self.__GF.getGolV(i))
             #la funcion self.__GE.actualizar() recibe el id del equipo y los goles
