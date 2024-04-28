@@ -31,3 +31,14 @@ class gestorEquipos():
         for i in range (len(self.__lista)):
             print(self.__lista[i])
                 
+    def actualizar(self,id,puntos,GF,GC):
+        i=0
+        band=False
+        while i < len(self.__lista) and band ==False:
+            if id ==self.__lista[i].getID():
+                self.__lista[i].actualizar(puntos,GF,GC)
+                band=True
+            else:
+                i+=1
+    def getID(self,i):
+        return self.__lista[i].getID()

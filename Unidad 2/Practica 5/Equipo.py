@@ -17,7 +17,7 @@ class equipo():
     def getID(self):
         return self.__Id
     def __str__(self):
-        return ("Equipo:{:10} ID:{:10} goles a favor{:10} goles en contra{:10} Diferencia de goles{:10} Puntos{:10}".format(self.__nombre,self.__Id,self.__golesF,self.__golesC,self.__golesDif,self.__puntos))
+        return ("Equipo:{:10} ID:{:5} goles a favor{:5} goles en contra{:5} Diferencia de goles{:5} Puntos{:5}".format(self.__nombre,self.__Id,self.__golesF,self.__golesC,self.__golesDif,self.__puntos))
         #2 espacios, 2 espacio, 3 espacios, 2 espacio
     def getpuntos(self):
         return self.__puntos
@@ -32,3 +32,8 @@ class equipo():
         else:
             b=self.__golesF > other.getGolf()
         return b
+    def actualizar(self,puntos,GF,GC):
+        self.__puntos+=puntos
+        self.__golesC+=GC
+        self.__golesF+=GF
+        self.__golesDif=self.__golesF-self.__golesC

@@ -15,8 +15,8 @@ class gestorFechas():
                 unafecha=fecha(fila[0],(fila[1]),(fila[2]),(fila[3]),(fila[4]))
                 self.__lista.append(unafecha)
         archivo.close
-    def buscarfecha(self,i):
-        return self.__lista[i].getfecha()
+    #def buscarfecha(self,i):
+    #    return self.__lista[i].getfecha()
     def getIDL(self,i):
         return self.__lista[i].getIDLocal()
     def getIDV(self,i):
@@ -32,3 +32,22 @@ class gestorFechas():
     def mostrar(self):
         for i in range (len(self.__lista)):
             print(self.__lista[i])
+    def buscarIDV(self,V):
+        i=0
+        band=False
+        while i < len(self.__lista) and band== False:
+            if self.__lista[i].getfecha() ==V:
+                band=self.__lista[i].getIDVisitante()
+            else:
+                i+=1
+        return band
+    def buscarIDL(self,V):
+        i=0
+        band=False
+        while i < len(self.__lista) and band== False:
+            if self.__lista[i].getfecha() ==V:
+                band=self.__lista[i].getIDLocal()
+            else:
+                i+=1
+        return band
+            
