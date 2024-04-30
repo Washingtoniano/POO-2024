@@ -4,3 +4,11 @@ git push -u origin main
 
 pip install numpy
 py pip install o py -m pip install
+
+
+
+archivo = 'SaldosActualizados.csv'
+
+with open(archivo,mode='w',newline='') as f:
+escritor = csv.writer(f)
+escritor.writerows(self.__Cuentas)

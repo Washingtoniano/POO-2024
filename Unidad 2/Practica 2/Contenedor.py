@@ -1,7 +1,6 @@
 from CajaDeAhorro import CajaDeAhorro
 class contenedor():
     __lista=[]
-    __com=()
     def __init__(self):
         self.__lista=[]
         
@@ -20,6 +19,6 @@ class contenedor():
         
         while self.__lista[i].darCuil()!=cuil:
             i+=1
-        if i<=len(self.__lista):
+        if i<len(self.__lista):
             b= self.__lista[i]
         return b

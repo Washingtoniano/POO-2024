@@ -1,10 +1,10 @@
 from GestorCuentas import GestorCuentas
 from GestorTransacciones import GestorTransacciones
 class menu():
-    __GC=GestorCuentas()
+    __GC=GestorCuentas(30)
     __GT=GestorTransacciones()
     def __init__(self):
-        self.__GC=GestorCuentas()
+        self.__GC=GestorCuentas(30)
         self.__GT=GestorTransacciones()
     def manejador(self):
         self.__GC.inicializar()
