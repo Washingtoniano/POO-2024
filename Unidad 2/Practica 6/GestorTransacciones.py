@@ -19,3 +19,11 @@ class GestorTransacciones():
     def mostrar(self):
         for i in range (len(self.__lista)):
             print(self.__lista[i])
+    def calcular(self,CVU,saldo):
+        for i in range (len(self.__lista)):
+            if self.__lista[i].getCVU()==CVU:
+                if self.__lista[i].getTipo() =='D':
+                    saldo=saldo-self.__lista[i].getImporte()
+                elif self.__lista[i].getTipo()== 'C':
+                    saldo=saldo+self.__lista[i].getImporte()
+        return saldo

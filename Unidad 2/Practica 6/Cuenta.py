@@ -7,21 +7,39 @@ class cuenta():
     __telefono:int
     __saldo:float
     __CVU:str
-    __Porcentaje:float
-    def __init__(self,apellido,nombre,DNI,telefono,saldo,CVU,porcentaje=0.18):
+    Porcentaje=0.18
+    def __init__(self,apellido,nombre,DNI,telefono,saldo,CVU):
         self.__apellido=apellido
         self.__nombre=nombre
-        self.__DNI=DNI
-        self.__telefono=telefono
-        self.__saldo=saldo
+        self.__DNI=int(DNI)
+        self.__telefono=int(telefono)
+        self.__saldo=float(saldo)
         self.__CVU=CVU
-        self.__Porcentaje=porcentaje
     def __str__(self) :
-        return("apellido:{}  Nombre:{}  DNI:{}  Telefono:{}  Saldo:{}  CVU:{}  Porcentaje:{}%".format(self.__apellido,self.__nombre,self.__DNI,self.__telefono,self.__saldo,self.__Portcentaje))
+        return("apellido:{}  Nombre:{}  DNI:{}  Telefono:{}  Saldo:{}  CVU:{}".format(self.__apellido,self.__nombre,self.__DNI,self.__telefono,self.__saldo,self.__CVU))
 
+    # def getPorcentaje(self):
+    #     return self.__Porcentaje
+    def getSaldo(self):
+        return self.__saldo
+    def getCVU(self):
+        return self.__CVU
+    def getApellido(self):
+        return self.__apellido
+    def getNombre(self):
+        return self.__nombre
+    def getDNI(self):
+        return self.__DNI
+    def setSaldo(self,S):
+        self.__saldo=S
+    def getTelefono(self):
+        return self.__telefono
+    # @classmethod
+    # def setporcentaje(cls):
+    #     return cls.Porcentaje
     @classmethod
-    def setporcentaje(self,P):
-        self.__Porcentaje=P
+    def getporcentaje(cls):
+        return cls.Porcentaje
     @classmethod
-    def getporcentaje(self):
-        return self.__Porcentaje
+    def verPorcentaje(cls):
+        print("Porcentaje{}%".format (cls.getporcentaje()))
