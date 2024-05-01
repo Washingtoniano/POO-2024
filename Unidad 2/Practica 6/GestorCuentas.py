@@ -30,7 +30,7 @@ class GestorCuentas():
                 self.agregar(unacuenta)
         archivo.close()
     def NPorcentaje(self,p):
-        cuenta.getporcentaje=p/365
+        cuenta.Porcentaje=(p/365)
     def mostrar(self):
         for i in range (len(self.__cuentas)):
             if self.__cuentas[i]!=None:
@@ -72,7 +72,7 @@ class GestorCuentas():
         writer=csv.writer(archivo)
         writer.writerow(['apellido','nombre','DNI','Telefono','saldo','CVU'])
         for i in range(len(self.__cuentas)):
-            if self.__cuentas[i]!=None:
+            if self.__cuentas[i]!=None and self.__cuentas[i]!=0:
                 writer.writerow([f'{self.__cuentas[i].getApellido()}',f'{self.__cuentas[i].getNombre()}',f'{self.__cuentas[i].getDNI()}',f'{self.__cuentas[i].getTelefono()}',f'{self.__cuentas[i].getSaldo()}',f'{self.__cuentas[i].getCVU()}'])
         writer.writerow([f'Porcentaje{cuenta.getporcentaje()}%'])
         

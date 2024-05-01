@@ -42,4 +42,7 @@ class cuenta():
         return cls.Porcentaje
     @classmethod
     def verPorcentaje(cls):
-        print("Porcentaje{}%".format (cls.getporcentaje()))
+        print("Porcentaje {}%".format (cls.getporcentaje()))
+    @classmethod
+    def setporcentaje(cls,p):
+        cls.Porcentaje=p
