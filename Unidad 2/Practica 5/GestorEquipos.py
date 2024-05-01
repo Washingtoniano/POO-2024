@@ -72,7 +72,7 @@ class gestorEquipos():
         #for i in range (len(hj)):
         #    print(hj[i])
     def escribir(self):
-        archivo =open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 5\\ListaOrdenada.csv","w")
+        archivo =open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 5\\ListaOrdenada.csv","w",newline='')
         escribir =csv.writer(archivo,delimiter=',')
         #escribir =csv.writer(archivo,delimiter=',',quotechar='|', quoting=csv.QUOTE_MINIMAL)
         #idequipo,nomequipo,golesfavor,golescontra,difgoles,puntos

@@ -68,7 +68,7 @@ class GestorCuentas():
             i+=1
         return band
     def escribir(self):
-        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 6\\cuentasACTBilletera.csv","w")
+        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 6\\cuentasACTBilletera.csv","w", newline='')
         writer=csv.writer(archivo)
         writer.writerow(['apellido','nombre','DNI','Telefono','saldo','CVU'])
         for i in range(len(self.__cuentas)):
@@ -79,6 +79,11 @@ class GestorCuentas():
         
         archivo.close()
 
+        # with open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 2\\Practica 6\\cuentasACTBilletera.csv",mode= 'w',newline='') as f:
+        #     writer=csv.writer(f)
+        # writer.writerow(['apellido','nombre','DNI','Telefono','saldo','CVU'])
+        # writer.writerows(self.__cuentas)
+        # writer.close()
         # with open(archivo,mode='w',newline='') as f:
         #     escritor = csv.writer(f)
         # escritor.writerows(self.__Cuentas)
