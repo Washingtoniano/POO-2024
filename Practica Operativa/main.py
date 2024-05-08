@@ -1,6 +1,7 @@
 
 from gestorclientes import gestorC
 from gestormovimiento import gestorM
+from menu import menu
 
 def manejador():
     GestorC=gestorC()
@@ -57,3 +58,14 @@ if __name__ =="__main__":
     print("Bienvenido")
     manejador()
     print("adios")
+
+    unmenu=menu()
+    GM=gestorM(10)
+    GC=gestorC()
+    unmenu.inicializar(GM,GC)
+    v=input("Seleccione la opcion que desea\n 1-Leer DNI y actualizar saldo de un cliente\n 2-Leer numero de tarjeta\n 3-Ordenar los movimientos\n 4-Mostrar datos\n 0-Salir\n")
+    while v!='0':
+        unmenu.opcion(v,GM,GC)
+        v=input("Seleccione la opcion que desea\n 1-Leer DNI y actualizar saldo de un cliente\n 2-Leer numero de tarjeta\n 3-Ordenar los movimientos\n 4-Mostrar datos\n 0-Salir\n")
+    print("Adios")
+
