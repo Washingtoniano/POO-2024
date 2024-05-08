@@ -44,7 +44,7 @@ class menu():
                 m=random.randrange(20,27000,6)
                 ungestor.acumular(d,s,m)
         self.mostrar()
-        self.manejador()
+        #self.manejador()
             #self.manejador()
             #self.manejador()
 

@@ -33,7 +33,7 @@ class equipo():
         if(self.getpuntos()!=other.getpuntos()):
             b= self.getpuntos()<other.getpuntos()
             
-        elif self.getpuntos==other.getpuntos():
+        elif self.getdif!=other.getdif():
             b= self.getdif<other.getdif()
         elif(self.getdif==other.getdif()):
             b= self.getGolF <other.getGolF()
