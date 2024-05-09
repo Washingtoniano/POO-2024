@@ -1,0 +1,43 @@
+from Edificio import edificio
+import csv
+class gestor():
+    __lista=[]
+    def __init__(self):
+        self.__lista=[]
+    def leer(self):
+        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\EdificioNorte.csv","r")
+        reader=csv.reader(archivo,delimiter=';')
+        j=0
+        aux=0
+        for fila in reader:
+            if aux!= fila[0]:
+                aux=fila[0]
+                unedificio=edificio(fila[0],fila[1],fila[2],fila[3],fila[4],fila[5])
+                self.__lista.append(unedificio)
+            else :
+                self.__lista[int(aux)-1].cargar(fila[1],fila[2],fila[3],fila[4],fila[5],fila[6],fila[7])
+
+        archivo.close()
+
+    def mostrar(self):
+        for i in range(len(self.__lista)):
+            print(self.__lista[i])
+            self.__lista[i].mostraredifios()
+    def buscarEdicioxNombre(self,nombre):
+        i=0
+        long=len(self.__lista)
+        while i<long and self.__lista[i].getNombre().upper()!=nombre.upper():
+            i+=1
+        
+        if i<long:
+            self.__lista[i].mostrarprop()
+        else:
+            print("No se encontro el edificio")
+
+    def SuperficieTotal(self):
+        long=len(self.__lista)
+        acum=0
+        for i in range (long):
+
+            print("cantidad total de superficie en {}:{}".format(self.__lista[i].getNombre(),self.__lista[i].suptotal()))
+    
