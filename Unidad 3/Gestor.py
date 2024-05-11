@@ -41,3 +41,22 @@ class gestor():
 
             print("cantidad total de superficie en {}:{}".format(self.__lista[i].getNombre(),self.__lista[i].suptotal()))
     
+    def buscarprop(self,pro):
+        band=None
+        i=0
+        while i<len(self.__lista) and band==None:
+            band=self.__lista[i].buscarprop(pro)
+            i+=1
+        if band!=None:
+            total=self.__lista[i].suptotal()
+            print("La superficie del propietario {} es de {}m2, la cual representa el {}'%' del total({}m2)".format(pro,band,round((band*100)/total,2),total))
+        else:
+            print("No se encontro el propietario")
+    def buscarpiso(self,numero):
+        for i in range(len(self.__lista)):
+            if self.__lista[i].getCantP()>=numero:
+                print("En {} el piso {} posee los siguientes deptartamentos:\n".format(self.__lista[i].getNombre(),numero))
+                total=self.__lista[i].buscarByD(numero)
+                print("En total {} posee {} departamentoss con 3 dormitorios y mas de 1 baño".format(self.__lista[i].getNombre(),total))
+            else:
+                print("El {} no posee piso {}".format(self.__lista[i].getNombre(),numero))

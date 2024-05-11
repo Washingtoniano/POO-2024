@@ -16,7 +16,7 @@ class departamento():
         self.__sup=float(sup)
         self.__CBaños=int(CB)
     def __str__(self) -> str:
-        return ("   ID:{} Propietario:{} Piso:{} Numero de departamento:{} Cantidad de Habitaciones:{} Cantiadad de baños:{} Superficie:{}m2\n".format(self.__id,self.__Propietario,self.__piso,self.__Ndep,self.__CDormitorios,self.__CBaños,self.__sup))
+        return ("--ID:{} Propietario:{} Piso:{} Numero de departamento:{} Cantidad de Habitaciones:{} Cantiadad de baños:{} Superficie:{}m2\n".format(self.__id,self.__Propietario,self.__piso,self.__Ndep,self.__CDormitorios,self.__CBaños,self.__sup))
 
 
     def getCB(self):

@@ -52,3 +52,21 @@ class edificio():
         for i in range(long):
             acum+=self.__dep[i].getsup()
         return acum
+    def buscarprop(self,pro):
+        i=0
+        band=None
+        while i<len(self.__dep) and self.__dep[i].getprop().upper()!=pro:
+            i+=1
+        if i<len(self.__dep):
+            band=self.__dep[i].getsup()
+        return band
+    def buscarByD(self,numero):
+        total=0
+        for i in range(len(self.__dep)):
+            if self.__dep[i].getpiso()==numero:
+                if self.__dep[i].getCD()==3 and self.__dep[i].getCB()>1:
+                    total+=1
+                    print(self.__dep[i])
+        return total
+
+
