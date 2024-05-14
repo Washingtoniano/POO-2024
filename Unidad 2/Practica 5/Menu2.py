@@ -1,44 +1,33 @@
-from GestorEquipos import gestorEquipos
 from GestorFechas import gestorFechas
+from GestorEquipos import gestorEquipos
+#puntaje:int=0
 class menu():
-    __switcher=None
-    def __init__(self) -> None:
-        self.__switcher={'1':self.opcion1,
-                        '2':self.opcion2,
-                        '3':self.opcion3,
-                        '4':self.opcion4,
-                        '5':self.opcion5,
-                        '6':self.opcion6,
-                        '7':self.opcion7,
-                        }
-    def opcion(self,op,GE,GF):
-        fun=self.__switcher.get(op,lambda:print("Dato erroneo"))
-        if op =='1' or  op =='2' or  op =='3' or  op =='4' or  op =='5' or  op =='6' or  op =='7':
-            fun(GE,GF)
-        else:
-            fun()
-    def opcion1(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
-            GE.inicizalizar()
-
-        else:
-            print("Parametro erroneo")
-    def opcion2(self,GE,GF):
-        if type(GE)==gestorEquipos and type(GF)==gestorFechas:
-            GF.inicializar()
-
-        else:
-            print("Parametro erroneo")
-    def opcion3(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
-#Los goles se deben sacar del archivo de fechas si es local goles a favor cant de local y goles en contra cant de goles del visitante. Si es visitante se invierte. Si la diferencia puede ser negativa, aplicar valor absoluto. 
+    __GF=gestorFechas()
+    __GE=gestorEquipos()
+    def __init__(self):
+        self.__GE=gestorEquipos()
+        self.__GF=gestorFechas()
+    def inicializar(self):
+        self.__GE.inicizalizar()
+        self.__GF.inicializar()
+    def manejadror(self):
+        #self.inicializar()
+        v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n7-Mostrar Listas guardadas\n0-Cerrar\n"))
+        band=False
+        while band!=True and v>0:
+            if v==1:
+                self.__GE.inicizalizar()
+            elif v==2:
+                self.__GF.inicializar()
+            elif v==3:
+                #Los goles se deben sacar del archivo de fechas si es local goles a favor cant de local y goles en contra cant de goles del visitante. Si es visitante se invierte. Si la diferencia puede ser negativa, aplicar valor absoluto. 
                 E=input("Ingrese el nombre del equipo\n")
-                res=GE.buscarequipo(E.upper())
+                res=self.__GE.buscarequipo(E.upper())
                 if res != False:
                     n=27
                     print(f"Equipo:{E}\n")
                     print(f"{"Fecha":{n}}{"Goles a Favor":{n}}{"Goles en contra":{n}}{"Diferencia de goles":{n}}{"Puntos":{n}}")
-                    #GF.buscarfecha(res)
+                    #self.__GF.buscarfecha(res)
                     puntos=0
                     acumDIF=0
                     acumFavor=0
@@ -50,13 +39,13 @@ class menu():
                     DG=int((len("Diferencia de goles")))
                     P=int((len("Puntos")))
                     #print("Espacio {}".format(F+GF+GC+DG+P))
-                    for i in range (GF.len()):
-                        golV=GF.getGolV(i)
-                        golL=GF.getGolL(i)
-                        fecha=GF.getfecha(i)
+                    for i in range (self.__GF.len()):
+                        golV=self.__GF.getGolV(i)
+                        golL=self.__GF.getGolL(i)
+                        fecha=self.__GF.getfecha(i)
                         d=0
                         m=0
-                        if res== GF.getIDL(i):
+                        if res== self.__GF.getIDL(i):
                             d=self.puntos(golL,golV)
                             #print("{} {} {} {} {}".format(F,GF,GC,DG,P))
                          
@@ -93,7 +82,7 @@ class menu():
                             #self.actualizar(res,d)
                         
                         
-                        elif res ==GF.getIDV(i):
+                        elif res ==self.__GF.getIDV(i):
                             #se pueden hacer columnas colocando un unmero entr las llaves {x}
                             m=self.puntos(golV,golL)
                            
@@ -122,10 +111,9 @@ class menu():
 
                 else: 
                     print("No se encontro el equipo")
-        else:
-            print("Parametro erroneo")
-    def opcion4(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
+
+            elif v==4:
+                
                 fecha=None
                 flag=False
                 k=int(input("Se disputaron mas de una fecha\n 1-Si  2-No"))
@@ -146,69 +134,63 @@ class menu():
                     # print("Se actualizaron las listas\n")
                 elif k==2:
                     fecha=input("Ingrese la fecha del partido")
-                    self.actualizar(fecha,GE,GF)
+                    self.actualizar(fecha)
                     print("Se actualizaron las listas\n")
                 else:
                     print("Dato erroneo")
-        else:
-            print("Parametro erroneo")
-    def opcion5(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
-            GE.ordenar()
-            print("Se ordeno la lista")
-        else:
-            print("Parametro erroneo")
-    def opcion6(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
-            GE.escribir()
-
-        else:
-            print("Parametro erroneo")
-    def opcion7(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
-            self.mostrarLista(GE,GF)
-        else:
-            print("Parametro erroneo")
-
-
-    def mostrarLista(self,GE,GF):
+            elif v==5:
+                self.__GE.ordenar()
+                print("Se ordeno la lista")
+            elif v==6:
+                self.__GE.escribir()
+            elif v==7:
+                self.mostrarLista()
+            elif v==0:
+                band=True
+            else:
+                print("Datos erroneos\n")
+            
+            v=int(input("Seleccione la opcion que desa\n1-Leer datos de los equipos del archivo\n2-Leer los datos de las fechas del archivo\n3-Obtener listado\n4-Actualizar la tabla con las fechas\n5-Ordenar la tabla con posiciones mayor a menor\n6-Almacenar la tabla en un archivo csv\n7-Mostrar Listas guardadas\n0-Cerrar\n"))
+        
+        
+    def mostrarLista(self):
         print("\nEquipos\n")
-        GE.mostrar()
+        self.__GE.mostrar()
         print("\nFechas\n")
-        GF.mostrar()
+        self.__GF.mostrar()
     
-    def actualizar(self,fe,GE,GF):
+    def actualizar(self,fe):
         #Utiliza la fecha para buscar los ID
         #i=0
 
-        IDV=GF.buscarIDV(fe)
-        IDL=GF.buscarIDL(fe)
+        IDV=self.__GF.buscarIDV(fe)
+        IDL=self.__GF.buscarIDL(fe)
         band=False
         if type(fe)!=str:
             print("dato erroneo\n")
         # elif type(fe) ==list:
         #     for i in range (len(fe)):
                
-        #         for  j in range (GF.len()):
+        #         for  j in range (self.__GF.len()):
         #         #Iter buscando la fecha si concide calcula:
-        #             if fe[i] ==GF.getfecha(j):
-        #                 for d in range (GE.len()):
-        #                     if (GE.getID(d)==IDL):
+        #             if fe[i] ==self.__GF.getfecha(j):
+        #                 for d in range (self.__GE.len()):
+        #                     if (self.__GE.getID(d)==IDL):
 
         #                         self.calcular(j,IDL,fe[i])
-        #                     if (GE.getID(d)==IDV):
+        #                     if (self.__GE.getID(d)==IDV):
 
         #                         self.calcular(j,IDV,fe[i])
         else:
             i=0
-            while i< GF.len() and band!=True:
+            while i< self.__GF.len() and band!=True:
                 #Iter hasta encontrar la fecha, si coincide envia el indice a calcula:
-                if fe ==GF.getfecha(i):
+                if fe ==self.__GF.getfecha(i):
                     j=0
-                    while j<GE.len():
-                        if GE.getID(j)==IDL:
+                    while j<self.__GE.len():
+                        if self.__GE.getID(j)==IDL:
                             self.calcular(i,IDL)
-                        if(GE.getID(j)==IDV):
+                        if(self.__GE.getID(j)==IDV):
                             self.calcular(i,IDV)
                         j+=1
                     
@@ -224,30 +206,30 @@ class menu():
         else:
             puntos=0
         return puntos 
-    def calcular(self,i,IDF,GE,GF):
+    def calcular(self,i,IDF):
         #i refiere al indice de fecha e IDF al ie a buscar
         P:int
         band=False
-        IDE=GE.buscarID(IDF)
-        IDFL=GF.getIDL(i)
-        IDFV=GF.getIDV(i)
+        IDE=self.__GE.buscarID(IDF)
+        IDFL=self.__GF.getIDL(i)
+        IDFV=self.__GF.getIDV(i)
         
 
         if IDE==IDFL:
-            P=self.puntos(GF.getGolL(i),GF.getGolV(i))
-            #la funcion GE.actualizar() recibe el id del equipo y los goles
-            GE.actualizar(IDE,P,GF.getGolL(i),GF.getGolV(i))
-            #GE.actualizarGOLES(IDE,GF.getGolV(i),GF.getGolL(i))
+            P=self.puntos(self.__GF.getGolL(i),self.__GF.getGolV(i))
+            #la funcion self.__GE.actualizar() recibe el id del equipo y los goles
+            self.__GE.actualizar(IDE,P,self.__GF.getGolL(i),self.__GF.getGolV(i))
+            #self.__GE.actualizarGOLES(IDE,self.__GF.getGolV(i),self.__GF.getGolL(i))
             band=True
         if IDE==IDFV:
-            P=self.puntos(GF.getGolV(i),GF.getGolL(i))
-            GE.actualizar(IDE,P,GF.getGolV(i),GF.getGolL(i))
-            #GE.actualizarGOLES(IDE,IDFV,IDFL)
+            P=self.puntos(self.__GF.getGolV(i),self.__GF.getGolL(i))
+            self.__GE.actualizar(IDE,P,self.__GF.getGolV(i),self.__GF.getGolL(i))
+            #self.__GE.actualizarGOLES(IDE,IDFV,IDFL)
             band=True
         if band==False:
             print("Error")
         #else:
-            #GE.actualizar(IDE,P)
+            #self.__GE.actualizar(IDE,P)
     def verificar(self,v):
         d=0
         if v>=10:

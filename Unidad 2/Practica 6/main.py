@@ -48,7 +48,13 @@ def manejador(GT,GC):
 if __name__=='__main__':
     print("Bienvenido")
     GT=GestorTransacciones()
+    GT.inicializar()
     GC=GestorCuentas(10)
+    GC.inicializar()
     unmenu=menu()
-    manejador(GT,GC)
+    op=input("Seleccione la opcion que desea\n1-Leer DNI del cliente\n2-Leer nuevo porcentaje\n3-Actualizar saldo\n4-Leer CVU\n5-Almacenar datos\n6-Mostrar\n0-Salir\n")
+    while op!='0':
+        unmenu.opcion(op,GC,GT)
+        op=input("Seleccione la opcion que desea\n1-Leer DNI del cliente\n2-Leer nuevo porcentaje\n3-Actualizar saldo\n4-Leer CVU\n5-Almacenar datos\n6-Mostrar\n0-Salir\n")
+    #manejador(GT,GC)
     print ("Adios")
