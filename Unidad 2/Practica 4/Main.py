@@ -81,8 +81,15 @@ if __name__ == '__main__':
     #Declaracion de una instancia de la clase menu
     unmenu=menu()
     print("Bienvenido\n")
+
     gm=GestorM()
     gp=GestorP()
+    v=(input("1-Leer datos de moto\n2-Leer datos de Pedidos\n3-Cargar un nuevo pedido\n4-Modificar tiempo real de entrega\n5-Mostrar Tiempo promedio de entrega\n6-Generar un listado para cada moto\n7-Mostrar datos\n8-Ordenar lista\n0-Finalizar\n"))
+
+    while v!='0':
+        unmenu.opcion(v,gm,gp)
+        v=(input("1-Leer datos de moto\n2-Leer datos de Pedidos\n3-Cargar un nuevo pedido\n4-Modificar tiempo real de entrega\n5-Mostrar Tiempo promedio de entrega\n6-Generar un listado para cada moto\n7-Mostrar datos\n8-Ordenar lista\n0-Finalizar\n"))
+
     #Activa el manejador
     manejadorar(gm,gp)
     print("Adios")

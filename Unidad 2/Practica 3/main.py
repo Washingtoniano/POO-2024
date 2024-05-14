@@ -59,7 +59,7 @@ if __name__== '__main__':
     band=False
     while b!=2 and band==False:
         if b==1:
-            test(gestor)
+            unmenu.test(gestor)
             print("Gracias por probar la función test\n")
             band=True
         else:
@@ -69,4 +69,9 @@ if __name__== '__main__':
     if b==2:
         #unmenu.mostrar()
         manejador(gestor)
+        cod=input("Seleccione la opcion deseada\n 1-Cargar Monto\n 2-Calcular el total de facturación\n 3-Buscar sucursal con mayor facturacíon por dia\n 4-Sucursal con menor facturacion durante toda la semana\n 5-Total facturado por todas las sucursales en la semana\n 6-Mostrar Datos\n 0-Otro valor para finalizar\n")
+        while cod !='0':
+            unmenu.opcion(cod,gestor)
+            cod=input("Seleccione la opcion deseada\n 1-Cargar Monto\n 2-Calcular el total de facturación\n 3-Buscar sucursal con mayor facturacíon por dia\n 4-Sucursal con menor facturacion durante toda la semana\n 5-Total facturado por todas las sucursales en la semana\n 6-Mostrar Datos\n 0-Otro valor para finalizar\n")
+
     print("Adios")

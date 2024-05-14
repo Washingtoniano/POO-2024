@@ -8,7 +8,7 @@ class ladrillo():
     __kgMPU:float
     __costo:float
     __reflactario=object
-    def __init__(self,cantidad,id,MP,costo,ref) -> None:
+    def __init__(self,cantidad,id,MP,costo,ref=None) -> None:
         self.__cantidad=cantidad
         self.__id=id
         self.__kgMPU=MP

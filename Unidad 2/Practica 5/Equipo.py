@@ -31,12 +31,23 @@ class equipo():
         #Se colocaron los signos de la siguiente forma, debido a que no devolvia el dato correcto
         b=None
         if(self.getpuntos()!=other.getpuntos()):
-            b= self.getpuntos()<other.getpuntos()
+            b= self.getpuntos()>other.getpuntos()
             
         elif self.getdif!=other.getdif():
-            b= self.getdif<other.getdif()
+            b= self.getdif>other.getdif()
         elif(self.getdif==other.getdif()):
-            b= self.getGolF <other.getGolF()
+            b= self.getGolF >other.getGolF()
+        return b
+    def __lt__(self,other):
+        #Se colocaron los signos de la siguiente forma, debido a que no devolvia el dato correcto
+        b=None
+        if(self.getpuntos()!=other.getpuntos()):
+            b= self.getpuntos()>other.getpuntos()
+            
+        elif self.getdif!=other.getdif():
+            b= self.getdif>other.getdif()
+        elif(self.getdif==other.getdif()):
+            b= self.getGolF >other.getGolF()
         return b
     
     def actualizar(self,puntos,GF,GC):
