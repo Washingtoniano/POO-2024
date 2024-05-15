@@ -26,12 +26,12 @@ class menu():
                 print("No se encontro el cliente\n")
             else:
                 indice=GC.indice(Dni)
-                print("Cliente:{:20}Numero de cuenta:{:20}\nSaldo anterior:{:20}".format(GC.getNombre(indice)+GC.getApellid(indice),GC.getNumero(indice),GC.getSaldo(indice)))
+                print("\nCliente:{:20}Numero de cuenta:{}\nSaldo anterior:${}".format(GC.getNombre(indice)+GC.getApellid(indice),GC.getNumero(indice),GC.getSaldo(indice)))
                 print("Movimientos")
-                print('Fecha      Descripcion      Importe     Tipo')
+                print(f'{"Fecha":20}{"Descripcion":20}{"Importe":20}{"Tipo":20}')
                 acum=GM.actualizar(numero)
                 GC.actualizar(acum,Dni)
-                print("Saldo Actualizado:{}".format(GC.getSaldo(indice)))
+                print("Saldo Actualizado:${}\n".format(GC.getSaldo(indice)))
 
         else:
             print("Parametro no valido")

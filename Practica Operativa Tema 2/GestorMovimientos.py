@@ -51,14 +51,15 @@ class GestorM():
     def actualizar(self,numero):
         acum=0
         for i in range(len(self.__Mov)):
-            if self.__Mov[i].getnumero()==numero:
-                print(self.formato(i))
-                if self.__Mov[i].gettipo()=='P':
-                    acum=acum-self.__Mov[i].getImp()
-                elif self.__Mov[i].gettipo()=='C':
-                    acum=acum+self.__Mov[i].getImp()
-            
+            if self.__Mov[i]!=None and self.__Mov[i]!=0:
+                if self.__Mov[i].getnumero()==numero:
+                    print(self.formato(i))
+                    if self.__Mov[i].gettipo()=='P':
+                        acum=acum-self.__Mov[i].getImp()
+                    elif self.__Mov[i].gettipo()=='C':
+                        acum=acum+self.__Mov[i].getImp()
+                
         return acum
     def formato(self,i):
-        return("{:20}{:20}{:20}{:20}".format(self.__Mov[i].getFecha(),self.__Mov[i].getdesc(),self.__Mov[i].getImp(),self.__Mov[i].gettipo()))
+        return("{:20}{:20}{:10}           {:20}".format(self.__Mov[i].getFecha(),self.__Mov[i].getdesc(),self.__Mov[i].getImp(),self.__Mov[i].gettipo()))
                 
