@@ -5,7 +5,7 @@ class gestorC():
     def __init__(self):
         self.__lista=[]
     def leer(self):
-        archivo=open("ClientesAbril2024.csv","r")
+        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Practica Operativa Corregida\\ClientesAbril2024.csv","r")
         reader=csv.reader(archivo,delimiter=';')
         band=False
         for fila in reader:
