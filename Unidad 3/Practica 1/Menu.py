@@ -22,7 +22,8 @@ class menu():
             print("los datos enviados no son validos")
     def opcion2(self,GE):
         if type(GE)== gestor:
-            GE.SuperficieTotal()
+            ind=(input("Ingrese el nombre del edificio"))
+            GE.SuperficieTotal(ind)
     def opcion3(self,GE):
         if type(GE)== gestor:
             prop=input("Ingrese el nombre del propietario\n")
@@ -32,7 +33,7 @@ class menu():
 
     def opcion4(self,GE):
         if type(GE)== gestor:
-            numero=int(input("Ingrese el numero de piso"))
+            numero=int(input("Ingrese el numero de piso\n"))
             GE.buscarpiso(numero)
         else:
             print("los datos enviados no son validos")

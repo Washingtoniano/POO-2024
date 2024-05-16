@@ -54,11 +54,23 @@ class edificio():
         return acum
     def buscarprop(self,pro):
         i=0
+        cont=0
         band=None
         while i<len(self.__dep) and self.__dep[i].getprop().upper()!=pro:
             i+=1
         if i<len(self.__dep):
             band=self.__dep[i].getsup()
+
+
+        for i in range(len(self.__dep)):
+            if self.__dep[i].getprop().upper()==pro:
+                cont+=1
+                acum=self.__dep[i].getsup()
+        if cont>0:
+            print("el propietario {} poseee {} depatemento/s".format(pro,cont))
+            band=acum
+
+
         return band
     def buscarByD(self,numero):
         total=0

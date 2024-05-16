@@ -5,9 +5,9 @@ class gestor():
     def __init__(self):
         self.__lista=[]
     def leer(self):
-        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\EdificioNorte.csv","r")
+        archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 1\\EdificioNorte.csv","r")
         reader=csv.reader(archivo,delimiter=';')
-        j=0
+        
         aux=0
         for fila in reader:
             if aux!= fila[0]:
@@ -15,7 +15,12 @@ class gestor():
                 unedificio=edificio(fila[0],fila[1],fila[2],fila[3],fila[4],fila[5])
                 self.__lista.append(unedificio)
             else :
+                #Composicion
                 self.__lista[int(aux)-1].cargar(fila[1],fila[2],fila[3],fila[4],fila[5],fila[6],fila[7])
+
+                #Agregacion
+                #undepa=departamento(fila[1],fila[2],fila[3],fila[4],fila[5],fila[6],fila[7])
+                #self.__lista[int(aux)-1].cargar(undepa)
 
         archivo.close()
 
@@ -34,13 +39,24 @@ class gestor():
         else:
             print("No se encontro el edificio")
 
-    def SuperficieTotal(self):
+    def SuperficieTotal(self,ind=None):
         long=len(self.__lista)
         acum=0
-        for i in range (long):
+        if ind==None:
+            for i in range (long):
 
-            print("cantidad total de superficie en {}:{}".format(self.__lista[i].getNombre(),self.__lista[i].suptotal()))
-    
+                print("cantidad total de superficie en {}:{}".format(self.__lista[i].getNombre(),self.__lista[i].suptotal()))
+        else:
+            self.BuscarID(ind)
+
+    def BuscarID(self,ind):
+        i=0
+        while i< len(self.__lista) and self.__lista[i].getNombre().upper()!=ind.upper():
+            i+=1
+        if i <len(self.__lista):
+            acum=self.__lista[i].suptotal()
+            print ("la superficie total del edifcio{} es {}".format(self.__lista[i].getNombre(),acum))
+        
     def buscarprop(self,pro):
         band=None
         i=0
@@ -57,6 +73,6 @@ class gestor():
             if self.__lista[i].getCantP()>=numero:
                 print("En {} el piso {} posee los siguientes deptartamentos:\n".format(self.__lista[i].getNombre(),numero))
                 total=self.__lista[i].buscarByD(numero)
-                print("En total {} posee {} departamentoss con 3 dormitorios y mas de 1 baño".format(self.__lista[i].getNombre(),total))
+                print("En total {} posee {} departamentoss con 3 dormitorios y mas de 1 baño\n".format(self.__lista[i].getNombre(),total))
             else:
                 print("El {} no posee piso {}".format(self.__lista[i].getNombre(),numero))
