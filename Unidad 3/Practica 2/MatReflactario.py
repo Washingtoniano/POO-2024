@@ -17,3 +17,6 @@ class Reflactario():
         return self.__CantUtilizada
     def Caracterisitcas(self):
         return self.__caracteristicas
+    
+    def __str__(self) -> str:
+        return("Material: {} Caracteristicas: {} CantTuilizada: {} Costo adicional: ${}".format(self.__material,self.__caracteristicas,self.__CantUtilizada,self.__CostAdicional))

@@ -17,22 +17,25 @@ class menu():
             else:
                 fun()
     def opcion1(self,GR,GL):
-        if GR==GestorReflactario and GL==GestorLadrillo:
-            pass
+        if type(GR)==GestorReflactario and type(GL)==GestorLadrillo:
+             ID=int(input("Ingrese el id del ladrillo a buscar"))
+             GL.mostrarmaterial(ID)
         else:
             print("Parametros invalidos")
     def opcion2(self,GR,GL):
-        if GR==GestorReflactario and GL==GestorLadrillo:
-            pass
+        if type(GR)==GestorReflactario and type(GL)==GestorLadrillo:
+             GL.CostoTotal()
         else:
             print("Parametros invalidos")
     def opcion3(self,GR,GL):
-        if GR==GestorReflactario and GL==GestorLadrillo:
-            pass
+        if type(GR)==GestorReflactario and type(GL)==GestorLadrillo:
+             GL.mostrarFormato()
         else:
             print("Parametros invalidos")
     def opcion4(self,GR,GL):
-        if GR==GestorReflactario and GL==GestorLadrillo:
-            pass
+        if type(GR)==GestorReflactario and type(GL)==GestorLadrillo:
+            GL.mostrar()
+            GR.mostrar()
+
         else:
             print("Parametros invalidos")
