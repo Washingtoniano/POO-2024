@@ -25,7 +25,7 @@ class menu():
      
             id=(input("Ingrese el id de una cancha"))
             bandera=GC.buscarID(id)
-            if bandera==True:
+            if bandera!=-1:
                 total=GA.totalCancha(id)
                 print("La cancha {} se alquilo un total de {} minutos".format(id,total))
             else:
