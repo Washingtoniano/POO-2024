@@ -5,7 +5,7 @@ class Pcapacitacion():
     def __init__(self,nombre,cod,dura) -> None:
         self.__nombre=nombre
         self.__cod=cod
-        self.__duracion=dura
+        self.__duracion=int(dura)
     
     def __str__(self) -> str:
         return ("Nombre:{} Codigo:{} Duracion:{}".format(self.__nombre,self.__cod,self.__duracion))
@@ -15,3 +15,4 @@ class Pcapacitacion():
         return self.__cod
     def getDura(self):
         return self.__duracion
+  

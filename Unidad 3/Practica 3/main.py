@@ -10,8 +10,8 @@ if __name__ =='__main__':
     GP.leer()
     GM.leer()
     unmenu=menu()
-    op=input("Ingrese la opcion que desea\n 1-\n 2-\n 3-\n 4-Mostrar\n 0-Salir\n")
+    op=input("Ingrese la opcion que desea\n 1-Buscar empleado\n 2-Buscar Programa\n 3-Informar\n 4-Mostrar\n 0-Salir\n")
     while op!='0':
         unmenu.opcion(op,GM,GP,GE)
-        op=input("\nIngrese la opcion que desea\n 1-\n 2-\n 3-\n 4-Mostrar\n 0-Salir\n")
+        op=input("Ingrese la opcion que desea\n 1-Buscar empleado\n 2-Buscar Programa\n 3-Informar\n 4-Mostrar\n 0-Salir\n")
     print("Adios")

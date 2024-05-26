@@ -27,3 +27,28 @@ class GMariculas():
     def mostrar(self):
         for i in range(len(self.__lista)):
             print(self.__lista[i])
+    def BuscarPrograma(self,Programa):
+        lista=[]
+        for i in range(len(self.__lista)):
+            if self.__lista[i].getPC().getNombre()==Programa:
+                lista.append(self.__lista[i].getEmp())
+        print("\nEstan matriculados en el programa: {} los siguienste empleados:\n".format(Programa))
+        for emp in lista:
+            print(emp)
+    def buscarempleado(self,empleado):
+        i=0
+        posicion=-1
+        while i< len(self.__lista) and self.__lista[i].getEmp()!=empleado:
+            i+=1
+        if i<len(self.__lista):
+            posicion=i
+        return posicion
+    def BuscarDuracion(self,empleado):
+        total=0
+        cant=0
+        for i in range (len(self.__lista)):
+            if self.__lista[i].getEmp()==empleado:
+                total+=self.__lista[i].getPC().getDura() 
+                cant+=1
+        print("El empleado: {} esta incripto a {} cursos y su duracion total es de : {}".format(empleado.getNombre(),cant,total))
+        

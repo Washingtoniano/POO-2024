@@ -16,3 +16,19 @@ class GEmpleado():
     def mostrar(self):
         for i in range(len(self.__lista)):
             print(self.__lista[i])
+    def BuscarEmpleado(self,id):
+        i=0
+        posicion=-1
+        while i< len(self.__lista) and self.__lista[i].getID()!=id:
+            i+=1
+        if i<len(self.__lista):
+            posicion=i
+        return posicion
+    def darEmpleado(self,i):
+        return self.__lista[i]
+    def Comprobar(self,GM):
+        for i in range(len(self.__lista)):
+           
+            if GM.buscarempleado(self.__lista[i])==-1:
+                print("{} no esta realizando un progrma de capacitacion (PC)".format(self.__lista[i]))
+    

@@ -7,11 +7,11 @@ class pedido():
     __precio:float
     def __init__(self,patente,id,comidas,Te,precio,Tr=0):
         self.__patente=patente
-        self.__id=id
+        self.__id=int(id)
         self.__comidas=comidas
         self.__Te=Te
         self.__Tr=Tr
-        self.__precio=precio
+        self.__precio=float(precio)
         
     def __str__(self):
         return("Pedido id:{}--Patente:{}--Comidas:{}--Tiempo estimado:{}--Tiempo real:{}--Precio:{}".format(self.__id,self.__patente,self.__comidas,self.__Te,self.__Tr,self.__precio))

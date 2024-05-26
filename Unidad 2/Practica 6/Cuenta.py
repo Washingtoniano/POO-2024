@@ -7,7 +7,7 @@ class cuenta():
     __telefono:int
     __saldo:float
     __CVU:str
-    Porcentaje=0.18
+    __Porcentaje=0.18
     def __init__(self,apellido,nombre,DNI,telefono,saldo,CVU):
         self.__apellido=apellido
         self.__nombre=nombre
@@ -16,7 +16,7 @@ class cuenta():
         self.__saldo=float(saldo)
         self.__CVU=CVU
     def __str__(self) :
-        return("apellido:{}  Nombre:{}  DNI:{}  Telefono:{}  Saldo:{}  CVU:{}".format(self.__apellido,self.__nombre,self.__DNI,self.__telefono,self.__saldo,self.__CVU))
+        return("apellido:{}  Nombre:{}  DNI:{}  Telefono:{}  Saldo:{}  CVU:{}".format(self.__apellido,self.__nombre,self.__DNI,self.__telefono,round(self.__saldo,2),self.__CVU))
 
     # def getPorcentaje(self):
     #     return self.__Porcentaje
@@ -39,10 +39,10 @@ class cuenta():
     #     return cls.Porcentaje
     @classmethod
     def getporcentaje(cls):
-        return cls.Porcentaje
+        return cls.__Porcentaje
     @classmethod
     def verPorcentaje(cls):
-        print("Porcentaje {}%".format (cls.getporcentaje()))
+        print("Porcentaje {0:5.2f}%".format (cls.getporcentaje()))
     @classmethod
     def setporcentaje(cls,p):
-        cls.Porcentaje=p
+        cls.__Porcentaje=p

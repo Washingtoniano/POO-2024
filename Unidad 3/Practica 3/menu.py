@@ -16,20 +16,30 @@ class menu():
             fun(GM,GP,GE)
         else:
             fun()
-    def opcion1(self,GM,GP,GE):
+    def opcion2(self,GM,GP,GE):
         if type(GM)==GMariculas and type(GP)==GProgramas and type(GE) ==GEmpleado:
-            pass
+            nombrePC=input("Ingrese el nombre del porgrama de capacitacion (PC)\n")
+            GM.BuscarPrograma(nombrePC)
         else:
             print("Parametro erroneo")
 
-    def opcion2(self,GM,GP,GE):
-        if type(GM)==GMariculas and type(GP)==GProgramas and type(GE) ==GEmpleado:
-            pass
-        else:
-            print("Parametro erroneo")
+    def opcion1(self,GM,GP,GE):
+        try:
+            if type(GM)==GMariculas and type(GP)==GProgramas and type(GE) ==GEmpleado:
+                id=int(input("Ingrese el id del empleado\n"))
+                I=GE.BuscarEmpleado(id)
+                if I!= -1:
+                    Empleado=GE.darEmpleado(I)
+                    GM.BuscarDuracion(Empleado)
+                else:
+                    print ("No se encontro el usuario")
+            else:
+                print("Parametro erroneo")
+        except ValueError:
+            print("Se esperaba un numero")
     def opcion3(self,GM,GP,GE):
         if type(GM)==GMariculas and type(GP)==GProgramas and type(GE) ==GEmpleado:
-            pass
+            GE.Comprobar(GM)
         else:
             print("Parametro erroneo")
     def opcion4(self,GM,GP,GE):

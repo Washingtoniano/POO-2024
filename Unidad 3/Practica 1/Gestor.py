@@ -39,15 +39,12 @@ class gestor():
         else:
             print("No se encontro el edificio")
 
-    def SuperficieTotal(self,ind=None):
+    def SuperficieTotal(self):
         long=len(self.__lista)
-        acum=0
-        if ind==None:
-            for i in range (long):
+        for i in range (long):
 
-                print("cantidad total de superficie en {}:{}".format(self.__lista[i].getNombre(),self.__lista[i].suptotal()))
-        else:
-            self.BuscarID(ind)
+            print("cantidad total de superficie en {}:{}".format(self.__lista[i].getNombre(),self.__lista[i].suptotal()))
+
 
     def BuscarID(self,ind):
         i=0
@@ -56,6 +53,8 @@ class gestor():
         if i <len(self.__lista):
             acum=self.__lista[i].suptotal()
             print ("la superficie total del edifcio{} es {}".format(self.__lista[i].getNombre(),acum))
+        else: 
+            print("No se encontro el edificio")
         
     def buscarprop(self,pro):
         band=None

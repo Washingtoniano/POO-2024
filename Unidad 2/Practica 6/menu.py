@@ -20,26 +20,33 @@ class menu():
             fun()
 
     def opcion1(self,GC,GT):
-        if type(GC)==GestorCuentas and type(GT)==GestorTransacciones:
-            DNI=int(input("Ingrese el numero de DNI"))
-            CVU=GC.buscarCVU(DNI)
-            if CVU==False:
-                print("No se encontro el CVU")
+        try:
+            if type(GC)==GestorCuentas and type(GT)==GestorTransacciones:
+                DNI=int(input("Ingrese el numero de DNI"))
+                CVU=GC.buscarCVU(DNI)
+                if CVU==False:
+                    print("No se encontro el CVU")
+                else:
+                    saldo=GT.calcular(CVU[1],CVU[2])
+                    GC.setsaldo(CVU[0],saldo)
+                    GC.mostrarI(CVU[0])
             else:
-                saldo=GT.calcular(CVU[1],CVU[2])
-                GC.setsaldo(CVU[0],saldo)
-                print(GC.mostrarI(CVU[0]))
-        else:
-            print("Parametro erroneo")
+                print("Parametro erroneo")
+        except ValueError:
+            print("Se esperaba un numero")
     def opcion2(self,GC,GT):
-        if type(GC)==GestorCuentas and type(GT)==GestorTransacciones:
-            por=float(input("Ingrese el nuevo porcentaje (%)\n"))
-            GC.NPorcentaje(por)
-        else:
-            print("Parametro erroneo")
+        try:
+            if type(GC)==GestorCuentas and type(GT)==GestorTransacciones:
+                por=float(input("Ingrese el nuevo porcentaje (%) anual\n"))
+                GC.NPorcentaje(por)
+            else:
+                print("Parametro erroneo")
+        except ValueError:
+            print("Se esparaba un numero")
     def opcion3(self,GC,GT):
         if type(GC)==GestorCuentas and type(GT)==GestorTransacciones:
-            pass
+            GC.actualizar()
+            GC.mostrar()
         else:
             print("Parametro erroneo")
     def opcion4(self,GC,GT):

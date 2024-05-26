@@ -1,5 +1,5 @@
 class CajaDeAhorro():
-    __ncuenta:str
+    __ncuenta:int
     __cuil:str
     __apellido:str
     __nombre:str

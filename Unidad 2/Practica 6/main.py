@@ -3,6 +3,7 @@ from GestorCuentas import GestorCuentas
 from GestorTransacciones import GestorTransacciones
 
 def manejador(GT,GC):
+    try:
         GC.inicializar()
         GT.inicializar()
         v=int(input("Seleccione la opcion que desea\n1-Leer DNI del cliente\n2-Leer nuevo porcentaje\n3-Actualizar saldo\n4-Leer CVU\n5-Almacenar datos\n6-Mostrar\n0-Salir\n"))
@@ -43,7 +44,9 @@ def manejador(GT,GC):
                 print("Dato erroneo")
             v=int(input("Seleccione la opcion que desea\n1-Leer DNI del cliente\n2-Leer nuevo porcentaje\n3-Actualizar saldo\n4-Leer CVU\n5-Almacenar datos\n6-Mostrar\n0-Salir\n"))
 
-
+    except ValueError:
+        print("\nSe esperaba un numero\n")
+        manejador(GT,GC)
 
 if __name__=='__main__':
     print("Bienvenido")

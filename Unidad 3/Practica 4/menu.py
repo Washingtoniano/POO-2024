@@ -37,7 +37,7 @@ class menu():
             if op=='2':
                 autor=input("Autor->")
                 fecha=input("Fecha->")
-                edicion=input("N° de Edicion->")
+                edicion=int(input("N° de Edicion->"))
                 libro=LibroImpreso(nombre,genero,preciobase,autor,fecha,edicion)
 
             else :

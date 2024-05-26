@@ -9,7 +9,7 @@ class moto():
         self.__marca=marca
         self.__nombre=nombre
         self.__apellido=apellido
-        self.__kilometraje=kilometraje
+        self.__kilometraje=float(kilometraje)
 
     def __str__(self) :
         return("Patente:{}--Marca:{}--Nombre:{}--Apellido:{}--Kilometraje:{}".format(self.__patente,self.__marca,self.__nombre,self.__apellido,self.__kilometraje))

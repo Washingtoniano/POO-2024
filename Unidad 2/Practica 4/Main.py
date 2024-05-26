@@ -3,6 +3,7 @@ from GestorMotos import GestorM
 from GestorPedidos import GestorP
 
 def manejadorar(Gm,Gp):
+    try:
         #Menu desplegable con las opciones
         v=int(input("1-Leer datos de moto\n2-Leer datos de Pedidos\n3-Cargar un nuevo pedido\n4-Modificar tiempo real de entrega\n5-Mostrar Tiempo promedio de entrega\n6-Generar un listado para cada moto\n7-Mostrar datos\n8-Ordenar lista\n0-Finalizar\n"))
         band=False
@@ -74,7 +75,9 @@ def manejadorar(Gm,Gp):
                 print("Datos Erroneos\n")
             v=int(input("1-Leer datos de moto\n2-Leer datos de Pedidos\n3-Cargar un nuevo pedido\n4-Modificar tiempo real de entrega\n5-Mostrar Tiempo promedio de entrega\n6-Generar un listado para cada moto\n7-Mostrar datos\n8-Ordenar lista\n0-Finalizar\n"))
 
-
+    except ValueError:
+        print("\nSe esperaba otro tipo de dato\n")
+        manejadorar(Gm,Gp)
 
 
 if __name__ == '__main__':

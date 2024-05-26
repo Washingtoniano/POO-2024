@@ -30,7 +30,7 @@ class GestorCuentas():
                 self.agregar(unacuenta)
         archivo.close()
     def NPorcentaje(self,p):
-        cuenta.Porcentaje=(p/365)
+        cuenta.setporcentaje(p/365)
     def mostrar(self):
         for i in range (len(self.__cuentas)):
             if self.__cuentas[i]!=None:
@@ -40,11 +40,12 @@ class GestorCuentas():
         i=0
         band=False
         while i<len(self.__cuentas) and band==False:
-            if self.__cuentas[i].getDNI()==DNI:
-                band=[]
-                band.append(i)
-                band.append(self.__cuentas[i].getCVU())
-                band.append(self.__cuentas[i].getSaldo())
+            if self.__cuentas[i]!=None and self.__cuentas[i]!=0:
+                if self.__cuentas[i].getDNI()==DNI:
+                    band=[]
+                    band.append(i)
+                    band.append(self.__cuentas[i].getCVU())
+                    band.append(self.__cuentas[i].getSaldo())
             i+=1
         return band
     def mostrarI(self,i):

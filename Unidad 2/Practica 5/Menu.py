@@ -125,33 +125,43 @@ class menu():
         else:
             print("Parametro erroneo")
     def opcion4(self,GE,GF):
-        if type(GE)==gestorEquipos and type (GF)==gestorFechas:
-                fecha=None
-                flag=False
-                k=int(input("Se disputaron mas de una fecha\n 1-Si  2-No"))
-                if k==1:
-                    fecha=[]
-                    i=0
-                    a=input("Ingrese las fechas de los partidos 0 para finalizar")
-                    while a!=0 and flag==False:                 
-                        fecha.append(a)
-                        self.actualizar(fecha[i])
-                        i+=1
-                        a=input("")
-                        if a=="0":
-                            flag=True
-                    # if flag==True:
-                    #     for i in range (len(fecha)):
-                    #         self.actualizar(fecha,fecha[i])
-                    # print("Se actualizaron las listas\n")
-                elif k==2:
-                    fecha=input("Ingrese la fecha del partido")
-                    self.actualizar(fecha,GE,GF)
-                    print("Se actualizaron las listas\n")
-                else:
-                    print("Dato erroneo")
-        else:
-            print("Parametro erroneo")
+        try:
+            if type(GE)==gestorEquipos and type (GF)==gestorFechas:
+                    fecha=None
+                    flag=False
+                    k=int(input("Se disputaron mas de una fecha\n 1-Si  2-No"))
+                    if k==1:
+                        fecha=[]
+                        i=0
+                        a=input("Ingrese las fechas de los partidos 0 para finalizar")
+                        while a!=0 and flag==False:                 
+                            fecha.append(a)
+                            bandera=self.actualizar(fecha,GE,GF)
+                            if bandera!=False:
+                                print("Fecha valida")
+                            else:
+                                print("Fecha no valida")
+                            i+=1
+                            a=input("")
+                            if a=="0":
+                                flag=True
+                        # if flag==True:
+                        #     for i in range (len(fecha)):
+                        #         self.actualizar(fecha,fecha[i])
+                        # print("Se actualizaron las listas\n")
+                    elif k==2:
+                        fecha=input("Ingrese la fecha del partido")
+                        bandera=self.actualizar(fecha,GE,GF)
+                        if bandera!=False:
+                            print("Se actualizaron las listas\n")
+                        else:
+                            print("Hubo un error con la fecha")
+                    else:
+                        print("Dato erroneo")
+            else:
+                print("Parametro erroneo")
+        except ValueError:
+            print("Dato ingresado no valido")
     def opcion5(self,GE,GF):
         if type(GE)==gestorEquipos and type (GF)==gestorFechas:
             GE.ordenar()
@@ -184,8 +194,8 @@ class menu():
         IDV=GF.buscarIDV(fe)
         IDL=GF.buscarIDL(fe)
         band=False
-        if type(fe)!=str:
-            print("dato erroneo\n")
+        if IDV==False or IDL==False:
+            bandera=False
         # elif type(fe) ==list:
         #     for i in range (len(fe)):
                
@@ -207,14 +217,17 @@ class menu():
                     j=0
                     while j<GE.len():
                         if GE.getID(j)==IDL:
-                            self.calcular(i,IDL)
+                            self.calcular(i,IDL,GE,GF)
                         if(GE.getID(j)==IDV):
-                            self.calcular(i,IDV)
+                            self.calcular(i,IDV,GE,GF)
                         j+=1
                     
                     band=True
                 #else:
                 i+=1
+        if band==True:
+            bandera=True
+        return bandera
     def puntos(self,v,l):
         puntos:int
         if v>l:
