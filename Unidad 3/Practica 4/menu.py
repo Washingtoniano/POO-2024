@@ -1,4 +1,6 @@
 from lista import lista
+from LibroImpreso import LibroImpreso
+from AudioLibro import AudioLibro
 class menu():
     __switcher=None
     def __init__(self) -> None:
@@ -17,13 +19,38 @@ class menu():
                 fun()
         else: 
             print("parametro erroneo")
-    def opcion1(self,lis):
-        long=lis.longitud()
-        posicion=int(input("la lista posee una longitud de {} ingrese un numero de 0 a {}".format(long,long-1)))
-        print(lis.obtener(posicion))
     def opcion2(self,lis):
-        pass
+        long=lis.longitud()
+        posicion=int(input("la lista posee una longitud de {} ingrese un numero de 0 a {}->".format(long,long-1)))
+        print(lis.obtener(posicion))
+    def opcion1(self,lis):
+        try:
+            op=input("Que tipo de libro desea cargar\n 1-Adio Libro   2-Libro Impreso\n")
+            while op!='2' and op !='1':
+                print("Dato no valido\n")
+                op=input("Que tipo de libro desea cargar\n 1-Adio Libro   2-Libro Impreso\n")
+            print("Ingrese los datos los siguienstes datos\n")
+            libro=None
+            nombre=input("Nombre->")
+            genero=input("Genero->")
+            preciobase=input("Precio Base->")
+            if op=='2':
+                autor=input("Autor->")
+                fecha=input("Fecha->")
+                edicion=input("N° de Edicion->")
+                libro=LibroImpreso(nombre,genero,preciobase,autor,fecha,edicion)
+
+            else :
+                duracion=input("Duracion->")
+                narrador=input("Narrador->")
+                libro=AudioLibro(nombre,genero,preciobase,duracion,narrador)
+            lis.agregar(libro)
+
+
+        except ValueError:
+            print("Se ingreseso un dato no valido")
+
     def opcion3(self,lis):
-        pass
+        lis.tipos()
     def opcion4(self,lis):
         lis.mostrar()
