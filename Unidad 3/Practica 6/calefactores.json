@@ -1,0 +1,38 @@
+{
+    "__class__":"lista",
+    "Calefactores":
+    [
+        {
+            "__class__": "CalefactorE",
+            "__atributos__":
+            {
+                "Marca": "....",
+                "Modelo":"----",
+                "Pais": ",,,,",
+                "Precio":540.31,
+                "FPago":"Contado",
+                "CCuotas":1,
+                "Promocion":"Si",
+                "PMAX":4000
+
+            }
+        },
+            {
+                "__class__": "CalefactorG",
+                "__atributos__":
+                {
+                    "Marca": "....",
+                    "Modelo":"----",
+                    "Pais": ",,,,",
+                    "Precio":540.31,
+                    "FPago":"Contado",
+                    "CCuotas":1,
+                    "Promocion":"No",
+                    "Matricula":"C1FA-FAF4",
+                    "Calorias": 50000
+                }
+
+            }
+          
+    ]
+}
