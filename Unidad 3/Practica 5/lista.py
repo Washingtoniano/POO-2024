@@ -2,9 +2,10 @@ from nodo import Nodo
 from LibroImpreso import LibroImpreso
 from AudioLibro import AudioLibro
 import csv
-from Interfaz import IInterfaz,implementer,interface
-@implementer(interface)
-@implementer (IInterfaz)
+from zope.interface import implementer
+from interfaz import Interfaz
+@implementer(Interfaz)
+
 class lista():
     __comienzo=Nodo
     __actual=Nodo
