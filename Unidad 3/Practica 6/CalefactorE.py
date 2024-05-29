@@ -25,10 +25,11 @@ class calefactorE(calefactor):
             __class__=self.__class__.__name__,
             __atributos__=dict(
                 marca=super().getMarca(),
-                modelo=super().getModelo,
-                pais=super().getPais,
+                modelo=super().getModelo(),
+                pais=super().getPais(),
                 FPago=super().getFPagos(),
                 CCuotas=super().getCCuotas(),
+                Promocion=super().getPromocion(),
                 PMAX=self.getPM(),
                 
             )

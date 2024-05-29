@@ -5,4 +5,26 @@
             "__class__": "calefactorG",
             "__atributos__": {
                 "marca": "....",
-                "modelo": 
+                "modelo": "----",
+                "pais": ",,,",
+                "FPago": "Contado",
+                "CCuotas": 1,
+                "Promocion": "No",
+                "Matricula": "C1FA-FAF4",
+                "calorias": "5000"
+            }
+        },
+        {
+            "__class__": "calefactorE",
+            "__atributos__": {
+                "marca": "...",
+                "modelo": "---",
+                "pais": ",,,,",
+                "FPago": "Contado",
+                "CCuotas": 1,
+                "Promocion": "Si",
+                "PMAX": "4000"
+            }
+        }
+    ]
+}

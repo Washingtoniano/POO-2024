@@ -7,15 +7,18 @@ class ObjectEncoder():
             return d
         else:
             from Lista import lista
+            from CalefactorE import calefactorE
+            from CalefactorG import calefactorG
+            from Calefactor import calefactor
             class_name=d['__class__']
             class_=eval(class_name)
             if class_name=='lista':
-                calefactores=d('Calefactores')
+                calefactores=d['Calefactores']
                 dcalefactores=calefactores[0]
                 lista=class_()
                 for i in range(len(calefactores)):
                     dcalefactores=calefactores[i]
-                    class__name=dcalefactores.pop('__class__')
+                    class_name=dcalefactores.pop('__class__')
                     class_=eval(class_name)
                     atributos=dcalefactores['__atributos__']
                     uncalefactor=class_(**atributos)

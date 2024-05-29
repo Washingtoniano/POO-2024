@@ -6,7 +6,7 @@ from CalefactorE import calefactorE
 from CalefactorG import calefactorG
 
 def test(lis,json):
-    archivo=open("calefactores.csv",'r')
+    archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\calefactores.csv",'r')
     reader=csv.reader(archivo,delimiter=';')
     band=False
     for fila in reader:
@@ -24,7 +24,7 @@ def test(lis,json):
     for dato in lis:
         listado.append(dato)
     d=lis.tojason()
-    json.guardarJSONArchivo(d,"calefactores.json")
+    json.guardarJSONArchivo(d,"C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\calefactores.json")
 
 
 if __name__ =='__main__':
