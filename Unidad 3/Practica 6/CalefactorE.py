@@ -8,7 +8,7 @@ class calefactorE(calefactor):
         return self.__potenciaMax
     
     def Calcular(self):
-        precio=super().getPrecio
+        precio=super().getPrecio()
         if self.__potenciaMax> 1000:
             precio+=precio*1/100
         if self.__CCuotas>1:
@@ -17,18 +17,19 @@ class calefactorE(calefactor):
         return precio
     
     def mostrar(self):
-        return (super().mostrar()("Potencia max".format(self.__potenciaMax)))
+        print((super().mostrar()))
+        print(("Potencia max{}".format(self.__potenciaMax)))
         
     def tojason (self):
         d=dict(
             __class__=self.__class__.__name__,
             __atributos__=dict(
-                marca=self.__marca,
-                modelo=self.__modelo,
-                pais=self.__pais,
-                FPago=self.__FPago,
-                CCuotas=self.__CCuotas,
-                PMAX=self.__potenciaMax,
+                marca=super().getMarca(),
+                modelo=super().getModelo,
+                pais=super().getPais,
+                FPago=super().getFPagos(),
+                CCuotas=super().getCCuotas(),
+                PMAX=self.getPM(),
                 
             )
         )

@@ -1,10 +1,10 @@
 from nodo import nodo
 from objectoencoder import ObjectEncoder
 class lista():
-    __comienzo=nodo
-    __indice=0
-    __tope=0
-    __actual=nodo
+    __comienzo:nodo
+    __indice:int
+    __tope:int
+    __actual:nodo
     def __init__(self) -> None:
         self.__comienzo=None
         self.__actual=None
@@ -26,17 +26,19 @@ class lista():
         Nodo=nodo(dato)
         Nodo.setSiguiente(self.__comienzo)
         self.__comienzo=Nodo
+        self.__actual=Nodo
+        self.__tope+=1
 
     def mostrar(self):
         aux=self.__comienzo
         while aux!=None:
             aux.mostrar()
-            aux=aux.setSiguiente()
+            aux=aux.getSiguiente()
    
     def tojason(self):
         listado=[]
         d=dict(
             __class__=self.__class__.__name__,
-            Calefactores=[calefactor.tojason()for calefactor in listado]
+            Calefactores=[calefactor.tojason()for calefactor in self]
         )
         return d

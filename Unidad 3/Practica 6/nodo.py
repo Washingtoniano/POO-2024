@@ -12,4 +12,4 @@ class nodo():
     def setSiguiente(self,sig):
         self.__siguiente=sig
     def mostrar(self):
-        print(self.__dato.mostrar())
+        self.__dato.mostrar()

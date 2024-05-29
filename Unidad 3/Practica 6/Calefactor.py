@@ -1,7 +1,8 @@
 import abc
 from pathlib import Path
 import json
-class calefactor():
+from abc import ABC
+class calefactor(ABC):
     __marca:str
     __modelo:str
     __pais:str
@@ -13,10 +14,10 @@ class calefactor():
         self.__marca=marca
         self.__modelo=modelo
         
-        self.__CCuotas=CCuotas
+        self.__CCuotas=int(CCuotas)
         self.__FPago=FPago
         self.__pais=pais
-        self.__precio=precio
+        self.__precio=float(precio)
         self.__promocion=promocion
     
     def getMarca(self):
@@ -46,4 +47,4 @@ class calefactor():
         return precio
 
     def mostrar(self):
-        return ("Marca:{} Modelo:{} Pais: {} Precio: {} Forma de Pago:{} Cant.Cuotas:{} Promocion:{}")
+        return ("Marca:{} Modelo:{} Pais: {} Precio: {} Forma de Pago:{} Cant.Cuotas:{} Promocion:{}".format(self.__marca,self.__modelo,self.__pais,self.__precio,self.__FPago,self.__CCuotas,self.__promocion))

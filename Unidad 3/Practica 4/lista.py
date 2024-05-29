@@ -47,7 +47,7 @@ class lista():
     def mostrar(self):
         aux=self.__comienzo
         while aux!=None:
-            print(aux.mostrar())
+            aux.mostrar()
             aux=aux.getSiguiente()
     def longitud(self):
         cant=0

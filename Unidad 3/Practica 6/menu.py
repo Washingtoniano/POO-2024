@@ -25,7 +25,7 @@ class menu():
             print("Error de parametross")
     def inicializar(self,lis,json):
         if type (lis)==lista and type (json)==ObjectEncoder:
-            diccionario=json.leerJSONArchivo("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\calefactores.json")
+            diccionario=json.leerJSONArchivo("calefactores.json")
             lis=json.decodificarDIccionario(diccionario)
             print(lis)
             self.opcion8(lis,json)

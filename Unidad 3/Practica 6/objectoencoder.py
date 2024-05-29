@@ -1,10 +1,12 @@
 import json
 from pathlib import Path
+
 class ObjectEncoder():
     def decodificarDIccionario(self,d):
         if '__class__' not in d:
             return d
         else:
+            from Lista import lista
             class_name=d['__class__']
             class_=eval(class_name)
             if class_name=='lista':

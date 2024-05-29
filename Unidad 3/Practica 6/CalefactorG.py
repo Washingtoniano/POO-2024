@@ -21,20 +21,20 @@ class calefactorG(calefactor):
         return precio
     
     def mostrar(self):
-    
-     return (super().mostrar()("Calorias: {} Matricula:{} ".format(self.__calorias,self.__matricula)))
+        print (super().mostrar())
+        print (("Calorias: {} Matricula:{} ".format(self.__calorias,self.__matricula)))
     
     def tojason (self):
         d=dict(
             __class__=self.__class__.__name__,
             __atributos__=dict(
-                marca=self.__marca,
-                modelo=self.__modelo,
-                pais=self.__pais,
-                FPago=self.__FPago,
-                CCuotas=self.__CCuotas,
-                Promocion=self.__matricula,
-                calorias=self.__calorias
+                marca=super().getMarca(),
+                modelo=super().getModelo,
+                pais=super().getPais,
+                FPago=super().getFPagos(),
+                CCuotas=super().getCCuotas(),
+                Promocion=self.getMatricula(),
+                calorias=self.getCalorias()
 
 
             )
