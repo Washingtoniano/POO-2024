@@ -7,8 +7,8 @@ from interfaz import Interfaz
 @implementer(Interfaz)
 
 class lista():
-    __comienzo=Nodo
-    __actual=Nodo
+    __comienzo:Nodo
+    __actual:Nodo
     __indice:int
     __tope:int
     def __init__(self) -> None:

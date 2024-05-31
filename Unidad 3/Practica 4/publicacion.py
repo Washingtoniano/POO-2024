@@ -18,3 +18,10 @@ class publicacion():
         return("Titulo: {} Categoria: {} Precio Base: {}".format(self.getTitulo(),self.getCategoria(),self.getPrecio()))
     def ImporteTotal():
         pass
+
+
+    def __gt__(self,other):
+        b=False
+        if self.__titulo>other.getTitulo():
+            b=True
+        return b

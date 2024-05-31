@@ -1,9 +1,9 @@
 from Calefactor import calefactor
 class calefactorE(calefactor):
     __potenciaMax:int
-    def __init__(self, marca, modelo, pais, precio, FPago, CCuotas, promocion,PMAX) -> None:
-        super().__init__(marca, modelo, pais, precio, FPago, CCuotas, promocion)
-        self.__potenciaMax=PMAX
+    def __init__(self, marca, modelo, pais, precio, FPago, CCuotas, Promocion,PMAX) -> None:
+        super().__init__(marca, modelo, pais, precio, FPago, CCuotas, Promocion)
+        self.__potenciaMax=int(PMAX)
     def getPM(self):
         return self.__potenciaMax
     

@@ -4,16 +4,16 @@ from AudioLibro import AudioLibro
 from publicacion import publicacion
 import csv
 class lista():
-    __comienzo=Nodo
-    __actual=Nodo
-    #__indice:int
-    #__tope:int
+    __comienzo:Nodo
+    __actual:Nodo
+    __indice:int
+    __tope:int
     def __init__(self) -> None:
         self.__comienzo=None
         self.__actual=None
-        #self.__indice=0
-        #self.__tope=0
-    """""
+        self.__indice=0
+        self.__tope=0
+    
     def __iter__(self):
         return self
     def __next__(self):
@@ -26,13 +26,13 @@ class lista():
             dato=self.__actual.getDato()
             self.__actual=self.__actual.getSiguiente()
             return dato
-        """""
+        
     def agregar(self,dato):
         nodo=Nodo(dato)
         nodo.setSiguiente(self.__comienzo)
         self.__comienzo=nodo
-        #self.__actual=nodo
-        #self.__tope+=1
+        self.__actual=nodo
+        self.__tope+=1
     def cargar(self):
         archivo=open("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 4\\Publicaciones.csv",'r')
         reader=csv.reader(archivo,delimiter=';')

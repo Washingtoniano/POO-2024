@@ -1,4 +1,6 @@
-class publicacion():
+import abc
+from abc import ABC
+class publicacion(ABC):
     __titulo:str
     __categoria:str
     __precio:float
@@ -16,5 +18,6 @@ class publicacion():
         return self.__precio
     def mostrar(self):
         return("Titulo: {} Categoria: {} Precio Base: {}".format(self.getTitulo(),self.getCategoria(),self.getPrecio()))
+    @abc.abstractmethod
     def ImporteTotal():
         pass

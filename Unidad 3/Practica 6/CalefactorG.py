@@ -2,10 +2,10 @@ from Calefactor import calefactor
 class calefactorG(calefactor):
     __matricula:str
     __calorias:int
-    def __init__(self, marca, modelo, pais, precio, FPago, CCuotas, promocion,matricula,calorias) -> None:
-        super().__init__(marca, modelo, pais, precio, FPago, CCuotas, promocion)
-        self.__calorias=calorias
-        self.__matricula=matricula
+    def __init__(self, marca, modelo, pais, precio, FPago, CCuotas, Promocion,Matricula,calorias) -> None:
+        super().__init__(marca, modelo, pais, precio, FPago, CCuotas, Promocion)
+        self.__calorias=int(calorias)
+        self.__matricula=Matricula
     def getMatricula(self):
         return self.__matricula
     def getCalorias(self):

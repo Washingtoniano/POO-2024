@@ -26,8 +26,10 @@ class menu():
     def inicializar(self,lis,json):
         if type (lis)==lista and type (json)==ObjectEncoder:
             diccionario=json.leerJSONArchivo("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\calefactores.json")
-            lis=json.decodificarDIccionario(diccionario)
+            listado=json.decodificarDIccionario(diccionario)
             print(lis)
+            for i in range (len(listado)):
+                lis.agregar(listado[i])
             self.opcion8(lis,json)
         else:
             print("Parametro erroneos")

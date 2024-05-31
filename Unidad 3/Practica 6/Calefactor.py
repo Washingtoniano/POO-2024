@@ -10,7 +10,7 @@ class calefactor(ABC):
     __FPago:str
     __CCuotas:int
     __promocion:str
-    def __init__(self,marca,modelo,pais,precio,FPago,CCuotas,promocion) -> None:
+    def __init__(self,marca,modelo,pais,precio,FPago,CCuotas,Promocion) -> None:
         self.__marca=marca
         self.__modelo=modelo
         
@@ -18,7 +18,7 @@ class calefactor(ABC):
         self.__FPago=FPago
         self.__pais=pais
         self.__precio=float(precio)
-        self.__promocion=promocion
+        self.__promocion=Promocion
     
     def getMarca(self):
         return self.__marca

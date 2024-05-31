@@ -11,7 +11,7 @@
                 "CCuotas": 1,
                 "Promocion": "No",
                 "Matricula": "C1FA-FAF4",
-                "calorias": "5000"
+                "calorias": 5000
             }
         },
         {
@@ -23,7 +23,7 @@
                 "FPago": "Contado",
                 "CCuotas": 1,
                 "Promocion": "Si",
-                "PMAX": "4000"
+                "PMAX": 4000
             }
         }
     ]
