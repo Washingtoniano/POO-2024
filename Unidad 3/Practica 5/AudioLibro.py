@@ -13,7 +13,7 @@ class AudioLibro(publicacion):
     def getNarrador(self):
         return self.__narrador
     def mostrar(self):
-        print(super().mostrar())
+        super().mostrar()
         print("Tiempo: {}minutos Narrador: {}".format(self.__tiempo,self.__narrador))
     def ImporteTotal(self):
         total=super().getPrecio()+(super().getPrecio()*10/100)

@@ -1,5 +1,10 @@
 from pathlib import Path
 import json
+from lista import lista
+from Docente import docente
+from Docente_Investigador import docente_investigador
+from Apoyo import apoyo
+from Investigador import investigador
 class ObjectEncoder():
     def GuardarArchivo(self,diccionario,archivo):
         with Path(archivo).open("w",encoding="UTF-8") as destino:
@@ -12,7 +17,7 @@ class ObjectEncoder():
             class_name=d['__class__']
             class_=eval(class_name)
             if class_name=='lista':
-                personal=d['personal']
+                personal=d['Personal']
                 dPersonal=personal[0]
                 lista=class_()
                 for i in range(len(personal)):
@@ -24,7 +29,7 @@ class ObjectEncoder():
                     lista.AgregarElemento(unpersonal)
                 return lista
     def LeerArchivo(self,archivo):
-        with Path(archivo).open("W",encoding="UTF-8")as fuente:
+        with Path(archivo).open(encoding="UTF-8")as fuente:
             diccionario=json.load(fuente)
             fuente.close
             return diccionario

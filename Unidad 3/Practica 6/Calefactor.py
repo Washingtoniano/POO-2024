@@ -53,4 +53,4 @@ class calefactor(ABC):
         return b
 
     def mostrarF(self):
-        return ("Marca:{} Modelo:{} Pais: {} Precio: {} Forma de Pago:{} Cant.Cuotas:{} Promocion:{}".format(self.__marca,self.__modelo,self.__pais,self.__precio,self.__FPago,self.__CCuotas,self.__promocion))
+        print ("Marca:{} Modelo:{} Pais: {} Precio: {} Forma de Pago:{} Cant.Cuotas:{} Promocion:{}".format(self.__marca,self.__modelo,self.__pais,self.__precio,self.__FPago,self.__CCuotas,self.__promocion))

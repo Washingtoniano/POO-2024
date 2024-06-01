@@ -17,7 +17,7 @@ class publicacion(ABC):
     def getPrecio(self):
         return self.__precio
     def mostrar(self):
-        return("Titulo: {} Categoria: {} Precio Base: {}".format(self.getTitulo(),self.getCategoria(),self.getPrecio()))
+        print("Titulo: {} Categoria: {} Precio Base: {}".format(self.getTitulo(),self.getCategoria(),self.getPrecio()))
     @abc.abstractmethod
     def ImporteTotal():
         pass

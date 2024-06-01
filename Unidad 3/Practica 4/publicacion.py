@@ -5,7 +5,7 @@ class publicacion():
 
     def __init__(self,titulo,categoria,precio) -> None:
         self.__categoria=categoria
-        self.__precio=precio
+        self.__precio=float(precio)
         self.__titulo=titulo
 
     def getTitulo(self):
@@ -15,7 +15,7 @@ class publicacion():
     def getPrecio(self):
         return self.__precio
     def mostrar(self):
-        return("Titulo: {} Categoria: {} Precio Base: {}".format(self.getTitulo(),self.getCategoria(),self.getPrecio()))
+        print("Titulo: {} Categoria: {} Precio Base: {}".format(self.getTitulo(),self.getCategoria(),self.ImporteTotal()))
     def ImporteTotal():
         pass
 

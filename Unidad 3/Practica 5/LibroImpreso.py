@@ -18,7 +18,7 @@ class LibroImpreso(publicacion):
         return self.__cPaginas
     
     def mostrar(self):
-        print(super().mostrar())
+        super().mostrar()
         print("Autor: {} Fecha: {} Cant. de paginas: {}".format(self.__nombre,self.__fecha,self.__cPaginas))
 
     def ImporteTotal(self):

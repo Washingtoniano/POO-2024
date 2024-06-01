@@ -18,14 +18,13 @@ class LibroImpreso(publicacion):
         return self.__cPaginas
     
     def mostrar(self):
-        print(super().mostrar())
+        super().mostrar()
         print("Autor: {} Fecha: {} Cant. de paginas: {}".format(self.__nombre,self.__fecha,self.__cPaginas))
 
     def ImporteTotal(self):
-        lista=self.__fecha()
-        lista.split('/')
-        today=date.today()
-        año=today.year()
+        lista=self.__fecha.split('/')
+        today=date.datetime.now()
+        año=today.year
         porcentaje=(super().getPrecio()*(año-int(lista[2])))/100
         total=super().getPrecio()-porcentaje
         return total

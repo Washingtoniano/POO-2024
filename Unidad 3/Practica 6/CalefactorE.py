@@ -19,7 +19,7 @@ class calefactorE(calefactor):
  
     
     def mostrar(self):
-        print((super().mostrarF()))
+        (super().mostrarF())
         print(("Potencia max{}".format(self.__potenciaMax)))
         
     def tojason (self):

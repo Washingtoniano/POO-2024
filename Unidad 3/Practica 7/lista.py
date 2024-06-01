@@ -41,3 +41,9 @@ class lista():
             Personal=[personal.tojson() for personal in self]
         )
         return d
+    
+    def mostrar(self):
+        aux=self.__comienzo
+        while aux!=None:
+            aux.getDato().mostrar()
+            aux=aux.getSiguiente()
