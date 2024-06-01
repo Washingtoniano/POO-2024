@@ -22,7 +22,7 @@ class ObjectEncoder():
                     class_=eval(class_name)
                     atributos=dcalefactores['__atributos__']
                     uncalefactor=class_(**atributos)
-                    lista.agregar(uncalefactor)
+                    lista.AgregarElemento(uncalefactor)
                 return lista
     def guardarJSONArchivo(self,diccionario,archivo):
         with Path(archivo).open('w',encoding='UTF-8') as destino:

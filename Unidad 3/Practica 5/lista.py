@@ -59,7 +59,7 @@ class lista():
             cant+=1
             aux=aux.getSiguiente()
         return cant
-    def obtener(self,posicion):
+    def MostrarElemento(self,posicion):
         try:
             aux=self.__comienzo
             cant=0

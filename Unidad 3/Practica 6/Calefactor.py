@@ -45,6 +45,12 @@ class calefactor(ABC):
         if self.__promocion.upper()=="SI":
             precio=((self.getPrecio()*15)/100)
         return precio
+    
+    def __lt__(self,other):
+        b=False
+        if self!=None and other !=None:
+            b= self.__precio<other.getPrecio()
+        return b
 
-    def mostrar(self):
+    def mostrarF(self):
         return ("Marca:{} Modelo:{} Pais: {} Precio: {} Forma de Pago:{} Cant.Cuotas:{} Promocion:{}".format(self.__marca,self.__modelo,self.__pais,self.__precio,self.__FPago,self.__CCuotas,self.__promocion))

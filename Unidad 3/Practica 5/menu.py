@@ -24,7 +24,7 @@ class menu():
     def opcion2(self,lis):
         long=lis.longitud()
         posicion=int(input("la lista posee una longitud de {} ingrese un numero de 0 a {}->".format(long,long-1)))
-        print(lis.obtener(posicion))
+        print(lis.MostrarElemento(posicion))
     def opcion1(self,lis):
         libro= lis.nbtenerDatos()
         lis.agregar(libro)

@@ -1,4 +1,5 @@
 from Calefactor import calefactor
+from CalefactorE import calefactorE
 class nodo():
     __dato:calefactor
     __siguiente:object
@@ -13,3 +14,7 @@ class nodo():
         self.__siguiente=sig
     def mostrar(self):
         self.__dato.mostrar()
+
+    def __lt__(self,other):
+        return self.__dato< other.getDato()
+    

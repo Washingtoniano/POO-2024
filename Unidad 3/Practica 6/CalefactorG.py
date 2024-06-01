@@ -21,7 +21,7 @@ class calefactorG(calefactor):
         return precio
     
     def mostrar(self):
-        print (super().mostrar())
+        print (super().mostrarF())
         print (("Calorias: {} Matricula:{} ".format(self.__calorias,self.__matricula)))
     
     def tojason (self):
@@ -31,6 +31,7 @@ class calefactorG(calefactor):
                 marca=super().getMarca(),
                 modelo=super().getModelo(),
                 pais=super().getPais(),
+                precio=super().getPrecio(),
                 FPago=super().getFPagos(),
                 CCuotas=super().getCCuotas(),
                 Promocion=super().getPromocion(),

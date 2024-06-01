@@ -16,8 +16,10 @@ class calefactorE(calefactor):
 
         return precio
     
+ 
+    
     def mostrar(self):
-        print((super().mostrar()))
+        print((super().mostrarF()))
         print(("Potencia max{}".format(self.__potenciaMax)))
         
     def tojason (self):
@@ -27,6 +29,7 @@ class calefactorE(calefactor):
                 marca=super().getMarca(),
                 modelo=super().getModelo(),
                 pais=super().getPais(),
+                precio=super().getPrecio(),
                 FPago=super().getFPagos(),
                 CCuotas=super().getCCuotas(),
                 Promocion=super().getPromocion(),

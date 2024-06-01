@@ -26,28 +26,43 @@ class menu():
     def inicializar(self,lis,json):
         if type (lis)==lista and type (json)==ObjectEncoder:
             diccionario=json.leerJSONArchivo("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\calefactores.json")
-            listado=json.decodificarDIccionario(diccionario)
+            lis=json.decodificarDIccionario(diccionario)
+            """""
             print(lis)
-            for i in range (len(listado)):
+            print(listado)
+            for i in range (listado.len()):
                 lis.agregar(listado[i])
             self.opcion8(lis,json)
         else:
             print("Parametro erroneos")
+            """""
 
     def opcion1(self,lis,json):
-        pass
+        try:
+            pos=int(input(lis.len()))
+            lis.InsertarElemento(pos)
+        except ValueError:
+            print("Se esperaba un numero entero")
     def opcion2(self,lis,json):
-        pass
+        lis.AgregarElemento(lis.solicitar())
     def opcion3(self,lis,json):
-        pass
+        try:
+            pos=int(input(lis.len()))
+            lis.MostrarElemento(pos)
+        except ValueError:
+            print("Se esperaba un numero")
+
+
     def opcion4(self,lis,json):
-        pass
+        lis.menor()
     def opcion5(self,lis,json):
-        pass
+        lis.buscarMarca()
     def opcion6(self,lis,json):
-        pass
+        lis.buscarPromocion()
     def opcion7(self,lis,json):
-        pass
+        direccion="C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\Nuevojason.json"
+        d=lis.tojason()
+        json.guardarJSONArchivo(d,direccion)
     def opcion8(self,lis,json):
         lis.mostrar()
 

@@ -17,7 +17,7 @@ def test(lis,json):
                 uncalecactor=calefactorE(fila[0],fila[1],fila[2],fila[3],fila[4],fila[5],fila[6],fila[7])
             else:
                 uncalecactor=calefactorG(fila[0],fila[1],fila[2],fila[3],fila[4],fila[5],fila[6],fila[7],fila[8])
-            lis.agregar(uncalecactor)
+            lis.AgregarElemento(uncalecactor)
 
     lis.mostrar()
     listado=[]
@@ -34,10 +34,10 @@ if __name__ =='__main__':
     test(lis,json)
     unmenu.inicializar(lis,json)
     print("Bienvenido")
-    op=input("Ingrese la opcion que desea\n 1-\n 2-\n 3-\n 4-\n 5-\n 6-\n 7-\n 8\n 0-Salir\n")
+    op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-Calefactor de menor precio\n 5-Buscar marca de calefactores electricos\n 6-Mostrar Calefactores en promocion\n 7-Guardar JSON\n 8-Mostrar\n 0-Salir\n")
     while op!='0':
         unmenu.opcion(op,lis,json)
-        op=input("Ingrese la opcion que desea\n 1-\n 2-\n 3-\n 4-\n 5-\n 6-\n 7-\n 8\n 0-Salir\n")
+        op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-Calefactor de menor precio\n 5-Buscar marca de calefactores electricos\n 6-Mostrar Calefactores en promocion\n 7-Guardar JSON\n 8-Mostrar\n 0-Salir\n")
 
     print("Adios")    
 
