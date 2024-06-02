@@ -8,7 +8,7 @@ class sucursal():
     __direccion:str
     __paquetes:list
     __repartidor:list
-    __transporte:transporte
+    __transporte:list
     def __init__(self,numero,provincia,localidad,direccion,trans=None) -> None:
         self.__numero=int(numero)
         self.__provincia=provincia
@@ -16,7 +16,7 @@ class sucursal():
         self.__direccion=direccion
         self.__paquetes=[]
         self.__paquetes=[]
-        self.__transporte=trans
+        self.__transporte=[]
     def agregarPaquete(self,paquete):
         self.__paquetes.append(paquete)
 
