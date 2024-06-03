@@ -25,7 +25,7 @@ class menu():
         else:
             print("dato no valido")
     def opcion1(self,lis,json):
-        pass
+        lis.solicitar()
 
     def opcion2(self,lis,json):
         pass
@@ -52,8 +52,8 @@ class menu():
             diccionario=json.LeerArchivo("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 7\\Personal.json")
             lis=json.DecodificarArchivo(diccionario)
     def opcion8(self,lis,json):
-        d=lis.tojsoN()
-        json.GuardarArchivo(lis,"C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 7\\NuevoPersonal.json")
+        d=lis.tojson()
+        json.GuardarArchivo(d,"C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 7\\NuevoPersonal.json")
 
     def opcion9(self,lis,json):
         lis.mostrar()
