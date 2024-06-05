@@ -10,12 +10,12 @@
                 "sueldo": 1242.1,
                 "antiguedad": 5,
                 "carrera": "Licenciatura",
-                "cargo": "Jefe",
+                "cargo": "Exclusivo",
                 "catedra": "Y",
                 "area": "Biologia",
                 "tipo": "Bacterias",
                 "categoria": "I",
-                "importeextra": "2000"
+                "importeextra": 2000.0
             }
         },
         {
@@ -39,7 +39,7 @@
                 "sueldo": 131.0,
                 "antiguedad": 5,
                 "carrera": "Licenciatura",
-                "cargo": "Profesor",
+                "cargo": "Simple",
                 "catedra": "X"
             }
         },
@@ -51,7 +51,7 @@
                 "nombre": "Ernesto",
                 "sueldo": 23.131,
                 "antiguedad": 3,
-                "categoria": "Aseo "
+                "categoria": "1 "
             }
         }
     ]

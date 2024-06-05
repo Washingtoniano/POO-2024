@@ -1,4 +1,4 @@
-from aplicacion import Ventana
+from juego import juego
 from inicio import inicio
 from objectoencoder import objectencoder
 from puntaje import puntaje
@@ -20,13 +20,15 @@ def testarchivo(obj):
     obj.guardarJSONArchivo(lista)
 
 def testapp():
-    mi_app=Ventana()
+    mi_app=inicio()
     mi_app.mainloop()
 def main():
     obj=objectencoder("pysimonpuntajes.json")
     unmanejador=manejador()
 
 if __name__ == '__main__':
+    #unmanejador=manejador()
+    #unmanejador.inicio()
 
     #un=objectencoder("pysimonpuntajes.json")
     #testarchivo(un)

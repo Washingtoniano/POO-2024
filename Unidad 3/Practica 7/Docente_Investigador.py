@@ -6,7 +6,11 @@ class docente_investigador(docente,investigador):
     def __init__(self, cuil, apellido, nombre, sueldo, antiguedad, **kwards) -> None:
         super().__init__(cuil, apellido, nombre, sueldo, antiguedad,**kwards)
         self.__categoria=kwards['categoria']
-        self.__importeextra=kwards['importeextra']
+        self.__importeextra=float(kwards['importeextra'])
+
+    def calcular(self):
+    #Sueld Docente + importe extra
+        pass
 
     def getCategoria(self):
         return self.__categoria
@@ -34,3 +38,7 @@ class docente_investigador(docente,investigador):
     def mostrar(self):
         super().mostrar()
         print("Categoria: {} ImporteExtra: {}".format(self.__categoria,self.__importeextra))
+    
+
+    def __lt__(self,other):
+        return self.__nombre<other.getNombre()

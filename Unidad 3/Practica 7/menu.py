@@ -24,28 +24,41 @@ class menu():
                 fun()
         else:
             print("dato no valido")
-    def opcion1(self,lis,json):
-        lis.solicitar()
-
     def opcion2(self,lis,json):
-        pass
-    def opcion3(self,lis,json):
-        pass
+        dato=lis.solicitar()
+        lis.AgregarElemento(dato)
 
+    def opcion1(self,lis,json):
+        try:
+            long=lis.len()
+            pos=int(input("La lista tiene {} elementos\nIngrese un valor de 0 a {}\n".format(long,long-1)))
+            lis.insertar(pos)
+        except ValueError:
+            print("Se esperaba un numero")
+    def opcion3(self,lis,json):
+        try:
+            long=lis.len()
+            pos=int(input("La lista tiene {} elementos\nIngrese un valor de 0 a {}\n".format(long,long-1)))
+            lis.MostrarElemento(pos)
+        except ValueError:
+            print("Se esperaba un numero")
 
     def opcion4(self,lis,json):
-        pass
+        p=input("Ingrese el nombre de una carrera\n")
+        lis.MostrarDI(p)
     def opcion5(self,lis,json):
-        pass
+        area=input("Ingrese un area de investigacion\n")
+        lis.MostrarArea(area)
 
     def opcion6(self,lis,json):
+        #lis.sort()
         pass
+        
     def opcion7(self,lis,json):
-        pass
+        categoria=input("Ingrese la categoria del investigador\n")
+        lis.MostrarCategoria(categoria)
+        
 
-
-    def opcion8(self,lis,json):
-        pass
 
     def inicializar(self,lis,json):
         if type(lis)==lista and type(json)==ObjectEncoder:

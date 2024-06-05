@@ -9,6 +9,10 @@ class docente(personal):
         self.__cargo=kwards['cargo']
         self.__catedra=kwards['catedra']
 
+    def calcular(self):
+   #Porcentaje por cargo: 10 % si el cargo es simple, 20% si el cargo es semiexclusivo, 50% si el  cargo es exclusivo
+        pass
+
     def getCatedra(self):
         return self.__catedra
     def getCarrera(self):

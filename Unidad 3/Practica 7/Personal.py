@@ -1,4 +1,6 @@
-class personal():
+import abc
+from abc import ABC
+class personal(ABC):
     __cuil:str
     __apellido:str
     __nombre:str
@@ -23,9 +25,14 @@ class personal():
         return self.__antiguedad
     def getSueldo(self):
         return self.__sueldo
-    def __del__(self):
-        print("Nos vamos a morir")
-        del self
     
+    def Total(self):
+        return self.__sueldo+self.calcular()
+    def __lt__(self,other):
+        return self.__apellido<other.getApellido()
+    @abc.abstractmethod
+    def calcular():
+        pass
+  
     def mostrar(self):
         print("Cuil: {} Apellido: {} Nombre: {} Sueldo: {} Antiguedad: {}".format(self.__cuil,self.__apellido,self.__nombre,self.__sueldo,self.__antiguedad))

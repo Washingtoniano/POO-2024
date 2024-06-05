@@ -1,13 +1,19 @@
 import random
 from inicio import inicio
-from aplicacion import Ventana
+from juego import juego
+from inicio import inicio
 class manejador():
-    __ventana=object
+   
+    __inicio=inicio()
     __lista=[]
 
     def __init__(self) -> None:
         self.__lista=[]
-        self.__ventana=inicio()
+        #self.__ventana=Ventana()
+        self.__inicio=inicio()
+
+    def inicio(self):
+        self.__inicio.mainloop()
     def agregar(self,dato):
         self.__lista.append(dato)
     def iniciar(self):

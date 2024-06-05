@@ -35,12 +35,12 @@ if __name__ == '__main__':
     unalista=lista()
     unobject=ObjectEncoder()
     unmenu=menu()
-    test(unalista,unobject)
+    #test(unalista,unobject)
     unmenu.inicializar(unalista,unobject)
     print("Bienvenido")
-    op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-\n 5-\n 6-\n 7-\n 8-Guardar Json\n 9-Mostrar Datos\n 0-Salir\n")
+    op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-Buscar por carrera\n 5-Mostrar cant. de un area\n 6-\n 7-Mostrar importe extra de una categoria\n 8-Guardar Json\n 9-Mostrar Datos\n 0-Salir\n")
     while op!='0':
         unmenu.opcion(op,unalista,unobject)
-        op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-\n 5-\n 6-\n 7-\n 8-Guardar Json\n 9-Mostrar Datos\n 0-Salir\n")
+        op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-Buscar por carrera\n 5-Mostrar cant. de un area\n 6-\n 7-Mostrar importe extra de una categoria\n 8-Guardar Json\n 9-Mostrar Datos\n 0-Salir\n")
 
     print("Adios")    

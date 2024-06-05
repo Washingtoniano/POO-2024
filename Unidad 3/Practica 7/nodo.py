@@ -13,3 +13,5 @@ class nodo():
         return self.__sig
     def setSiguiente(self,sig):
         self.__sig=sig
+    def __lt__(self,other):
+        return self.__dato< other.getDato()

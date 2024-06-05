@@ -1,6 +1,6 @@
 from tkinter import font,ttk
 from tkinter import *
-from aplicacion import Ventana
+from juego import juego
 class inicio():
     __ventana=object
     __usuario=str
@@ -28,6 +28,6 @@ class inicio():
         self.__ventana.mainloop()
     def aceptar(self):
         self.__ventana.destroy()
-        Ventana()
+        juego()
 
     

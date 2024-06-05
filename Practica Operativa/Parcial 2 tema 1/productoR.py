@@ -15,7 +15,7 @@ class productoR(producto):
 
 
 
-    def calcular(self):
+    def calcular(self): ##se puede hacer mas simple
         try:
             precio=super().getCosto()
             Env=super().getFV()

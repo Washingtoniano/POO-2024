@@ -6,6 +6,10 @@ class apoyo(personal):
         super().__init__(cuil, apellido, nombre, sueldo, antiguedad,**kwards)
         self.__categoria=kwards['categoria']
 
+    def calcular(self):
+        #Porcentaje por categoría: 10% si la categoría es de 1 a 10, 20 % si la categoría es de 11 a 20,  30% si la categoría es de 21 a 22.
+        pass
+
     def getCategoria(self):
         return self.__categoria
     def tojson(self):

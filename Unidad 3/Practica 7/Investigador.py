@@ -10,7 +10,8 @@ class investigador(personal):
         return self.__tipo
     def getArea(self):
         return self.__area
-    
+    def calcular(self):
+        pass
     def tojson(self):
         d=dict(
             __class__=self.__class__.__name__,
