@@ -16,7 +16,7 @@ class inicio():
         self.__usuario.set('')
         self.ctext1 = ttk.Entry(self.marco, textvariable=self.__usuario,width=30)
         self.separ1 = ttk.Separator(self.marco, orient=HORIZONTAL)
-        self.boton1 = ttk.Button(self.marco, text="Aceptar",padding=(5,5), command=self.aceptar)
+        self.boton1 = ttk.Button(self.marco, text="Iniciar Juego",padding=(5,5), command=self.aceptar)
         self.boton2 = ttk.Button(self.marco, text="Cancelar",padding=(5,5), command=quit)
         self.marco.grid(column=0, row=0)
         self.usuarioLbl.grid(column=0, row=0)

@@ -9,6 +9,7 @@
     <property name="width">200</property>
     <child>
       <object class="ttk.Frame" id="frame1">
+        <property name="cursor">arrow</property>
         <property name="height">200</property>
         <property name="width">200</property>
         <layout manager="pack">
@@ -16,10 +17,22 @@
         </layout>
         <child>
           <object class="tk.Canvas" id="canvas1">
-            <property name="background">#ff0000</property>
+            <property name="background">#009000</property>
             <property name="borderwidth">50</property>
             <property name="insertontime">300</property>
             <property name="relief">ridge</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="comenzar" named="True">
+            <property name="command" type="command" cbtype="simple">self</property>
+            <property name="compound">left</property>
+            <property name="cursor">based_arrow_down</property>
+            <property name="state">normal</property>
+            <property name="text" translatable="yes">button1</property>
             <layout manager="pack">
               <property name="side">top</property>
             </layout>

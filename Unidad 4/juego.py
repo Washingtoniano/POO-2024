@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk,messagebox
+import time
 #Utilizar Geometria grid
 #pip install pygubu-designer
 #pygubu-designer en la terminal para usar 
@@ -18,8 +19,8 @@ class juego(tk.Tk):
         super().__init__()
         self.__puntaje=IntVar()
         self.__puntos=0
+       
 
-      
         label=tk.Label(self,text="Puntaje")
         labelp=tk.Label(self,textvariable=self.__puntaje)
         #labelp=ttk.Label(mainframe,textvariable=)
@@ -48,6 +49,13 @@ class juego(tk.Tk):
 
         label_d.grid(column=1,row=2,**opts)
         boton_d.grid(column=1,row=2,**opts)
+
+
+        
+      
+
     def sumar(self,d):
         self.__puntos+=d
         self.__puntaje.set(self.__puntos)
+    
+   
