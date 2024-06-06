@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk,messagebox
+from gameover import gameover
 import time
 #Utilizar Geometria grid
 #pip install pygubu-designer
@@ -30,9 +31,12 @@ class juego(tk.Tk):
         label_d=tk.Canvas(self,bg='#0000ff')
 
         boton_a=tk.Button(self,bg="#009000",command=partial(self.sumar,10))
+        boton_a.after(100000,self.over)
         boton_b=tk.Button(self,bg="#ffff00",command=partial(self.sumar,10))
         boton_c=tk.Button(self,bg='#ff0000',command=partial(self.sumar,10))
         boton_d=tk.Button(self,bg='#0000ff',command=partial(self.sumar,10))
+        
+   
 
         opts={'ipadx':50,'ipady':50,'sticky':'nswe'}
     
@@ -52,10 +56,15 @@ class juego(tk.Tk):
 
 
         
-      
+    def over(self):
+        self.destroy()
 
+        gameover(self.__puntos)
     def sumar(self,d):
         self.__puntos+=d
         self.__puntaje.set(self.__puntos)
+    def change(self,b,opts):
+        b=tk.Canvas(self,bg="#ffffff")
+        b.grid(column=0,row=2,**opts)
     
    

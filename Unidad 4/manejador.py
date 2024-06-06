@@ -4,7 +4,7 @@ from juego import juego
 from inicio import inicio
 class manejador():
    
-    __inicio=inicio()
+    __inicio=inicio
     __lista=[]
 
     def __init__(self) -> None:
