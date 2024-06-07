@@ -1,7 +1,8 @@
 import json
 from pathlib import Path
 from manejador import manejador
-from puntaje import puntaje
+from jugador import Jugador
+#El json solo necesita la clase puntos
 class objectencoder:
     __pathArchivo=object
     def __init__(self,patharchivo) -> None:

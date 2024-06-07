@@ -1,9 +1,8 @@
 from tkinter import font,ttk
 from tkinter import *
-from juego import juego
 class inicio():
-    __ventana=object
-    __usuario=str
+    __ventana:object
+    __usuario:str
     def __init__(self) -> None:
     
         self.__ventana=Tk()
@@ -26,8 +25,10 @@ class inicio():
         self.boton2.grid(column=2, row=4)
         self.ctext1.focus_set()
         self.__ventana.mainloop()
+    def darNombre(self):
+        return self.__usuario
     def aceptar(self):
         self.__ventana.destroy()
-        juego()
+
 
     
