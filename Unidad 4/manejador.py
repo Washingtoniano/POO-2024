@@ -42,6 +42,8 @@ class manejador():
     def cargar(self):
         unjugador=Jugador(Jugador=self.__nombre,Puntaje=self.__puntos)
         self.__gesP.agregar(unjugador)
+    def setPuntos(self,p):
+        self.__puntos=p
     def getPuntos(self):
         return self.__puntos
     def getnombre(self):

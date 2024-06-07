@@ -31,6 +31,8 @@ def main():
     nom=uninicio.darNombre()
     unmanejador=manejador(nom)
     unmanejador.ejecutar()
+    ungameover=gameover(unmanejador.getPuntos())
+    ungameover.mainloop()
     
     print("P")
     
