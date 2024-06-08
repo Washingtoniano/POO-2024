@@ -203,7 +203,16 @@ class lista():
         print("El total de importe extra es de {}".format(total))
 
 
-
+    def getLista(self):
+        return self
         
 
 
+    def buscarDNI(self,DNI):
+        b=None
+        aux=self.__comienzo
+        while aux!=None and aux.getDato().getDNI()!=DNI:
+            aux=aux.getSiguiente()
+        if aux.getDato().getDNI()==DNI:
+                b=aux.getDato()
+        return b

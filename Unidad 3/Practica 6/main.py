@@ -31,8 +31,10 @@ if __name__ =='__main__':
     unmenu=menu()
     lis=lista()
     json=ObjectEncoder()
-    test(lis,json)
-    unmenu.inicializar(lis,json)
+    #test(lis,json)
+    d=json.leerJSONArchivo("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 3\\Practica 6\\calefactores.json")
+    lis=json.decodificarDIccionario(d)
+    #unmenu.inicializar(lis,json)
     print("Bienvenido")
     op=input("Ingrese la opcion que desea\n 1-Insertar en una posicion determinada\n 2-Agregar un elemento\n 3-Tipo de una posicion\n 4-Calefactor de menor precio\n 5-Buscar marca de calefactores electricos\n 6-Mostrar Calefactores en promocion\n 7-Guardar JSON\n 8-Mostrar\n 0-Salir\n")
     while op!='0':

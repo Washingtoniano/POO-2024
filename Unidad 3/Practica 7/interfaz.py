@@ -1,8 +1,8 @@
 from zope.interface import Interface
 class Interfaz(Interface):
-        def Insertarelemento(elemento,posicion):
+        def Insertarelemento(posicion):
             pass
-        def AgregarElemento(elemento,dato):
+        def AgregarElemento(dato):
             pass
-        def MostrarElemento(elemento,pos):
+        def MostrarElemento(pos):
             pass

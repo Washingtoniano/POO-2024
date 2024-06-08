@@ -1,0 +1,5 @@
+cuil;apellido;nombre;sueldo;antiguedad;carrera/categoria(1-10/11-20/21-22)/aredeinvestigacion;cargo(Simple/SemiExclusivo/Exclusivo)/tipo;catedra;;;Categoria incentivo(I/II/III/IV/V);importe extra
+23-414132-21;Gonzales;Ernesto;23.131;3;1 
+21-131313-21;Aguirrez;Martin;131;5;Licenciatura;Simple;X
+54-213341-12;Pereira;Santiago;1341.21;4;Biologia;Bacterias
+21-141231-21;Soli;Marco;1242.1;5;Licenciatura;Exclusivo;Y;Biologia;Bacterias;I;2000

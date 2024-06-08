@@ -1,0 +1,58 @@
+{
+    "__class__": "lista",
+    "Personal": [
+        {
+            "__class__": "docente_investigador",
+            "__atributos__": {
+                "cuil": "21-141231-21",
+                "apellido": "Soli",
+                "nombre": "Marco",
+                "sueldo": 1242.1,
+                "antiguedad": 5,
+                "carrera": "Licenciatura",
+                "cargo": "Exclusivo",
+                "catedra": "Y",
+                "area": "Biologia",
+                "tipo": "Bacterias",
+                "categoria": "I",
+                "importeextra": 2000.0
+            }
+        },
+        {
+            "__class__": "investigador",
+            "__atributos__": {
+                "cuil": "54-213341-12",
+                "apellido": "Pereira",
+                "nombre": "Santiago",
+                "sueldo": 1341.21,
+                "antiguedad": 4,
+                "area": "Biologia",
+                "tipo": "Bacterias"
+            }
+        },
+        {
+            "__class__": "docente",
+            "__atributos__": {
+                "cuil": "21-131313-21",
+                "apellido": "Aguirrez",
+                "nombre": "Martin",
+                "sueldo": 131.0,
+                "antiguedad": 5,
+                "carrera": "Licenciatura",
+                "cargo": "Simple",
+                "catedra": "X"
+            }
+        },
+        {
+            "__class__": "apoyo",
+            "__atributos__": {
+                "cuil": "23-414132-21",
+                "apellido": "Gonzales",
+                "nombre": "Ernesto",
+                "sueldo": 23.131,
+                "antiguedad": 3,
+                "categoria": "1 "
+            }
+        }
+    ]
+}

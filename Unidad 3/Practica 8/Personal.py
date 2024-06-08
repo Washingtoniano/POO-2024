@@ -29,7 +29,7 @@ class personal(ABC):
         self.__sueldo=importe
     
     def Total(self):
-        return self.__sueldo+self.calcular()+(self.__sueldo*self.__antiguedad)/100
+        return self.__sueldo+self.calcular()
     def __lt__(self,other):
         return self.__apellido<other.getApellido()
     @abc.abstractmethod

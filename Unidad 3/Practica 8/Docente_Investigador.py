@@ -9,11 +9,13 @@ class docente_investigador(docente,investigador):
         self.__importeextra=float(kwards['importeextra'])
 
     def calcular(self):
-    #Sueld Docente + importe extra
-            return docente.calcular()+self.__importeextra
+    
+        return docente.calcular()+self.__importeextra
 
     def getCategoria(self):
         return self.__categoria
+    def setImpExtra(self,impo):
+        self.__importeextra=impo
     def getImpExtra(self):
         return self.__importeextra
     def tojson(self):

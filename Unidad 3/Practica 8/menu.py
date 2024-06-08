@@ -1,8 +1,13 @@
 from lista import lista
 from ObjectENcoder import ObjectEncoder
+from ManejadorAutoridad import Manejador_autoridades
+from ManejadorAutoridad import *
 class menu():
     __switcher:None
+    __autoridades:Manejador_autoridades
+    
     def __init__(self) -> None:
+        self.__autoridades=Manejador_autoridades()
         self.__switcher={
                         '1':self.opcion1,
                         '2':self.opcion2,
@@ -13,12 +18,14 @@ class menu():
                         '7':self.opcion7,
                         '8':self.opcion8,
                         '9':self.opcion9,
+                        '10':self.opcion10,
+                        "11":self.opcion11
 
         }
     def opcion(self,op,lis,json):
         if type(lis)==lista and type(json)==ObjectEncoder: 
             fun =self.__switcher.get(op,lambda:print("Dato erroneo"))
-            if op=='1' or op=='2' or op=='3' or op=='4' or op=='5' or op=='6' or op=='7' or op=='8' or op=='9' :
+            if op=='1' or op=='2' or op=='3' or op=='4' or op=='5' or op=='6' or op=='7' or op=='8' or op=='9' or op =='10' or op=='11' :
                 fun(lis,json)
             else:
                 fun()
@@ -71,3 +78,28 @@ class menu():
 
     def opcion9(self,lis,json):
         lis.mostrar()
+    def opcion10(self,lis,json):
+        self.__autoridades.getLista(lis)
+
+        user=input("Ingrese el id del usuario\n")
+        if user=='uTesoreso':
+            contraseña=input("Ingrese la contraseña\n")
+            if contraseña=='ag@74ck':
+                Tesorero(self.__autoridades)
+            else:
+                print("Contraseña invalida")
+        else:
+            print("Usuario invalido")
+        
+    def opcion11(self,lis,json):
+        user=input("Ingrese el id del usuario\n")
+        if user=='uDirector':
+            contraseña=input("Ingrese la contraseña\n")
+            if contraseña=='ufC77#!1 ':
+                Director(self.__autoridades)
+            else:
+                print("Contraseña invalida")
+        else:
+            print("Usuario invalido")
+        
+
