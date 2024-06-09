@@ -26,13 +26,24 @@ def testarchivo(obj):
 def testapp():
     mi_app=inicio()
     mi_app.mainloop()
+
+
 def main():
+    unobjecto=objectencoder("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 4\\pysimonpuntajes.json")
     uninicio=inicio()
     nom=uninicio.darNombre()
+    
+    ungestorJ=gestorJugadores()
+    d=unobjecto.leerJSONArchivo()
+    ungestorJ=(unobjecto.decodificar(d))
     unmanejador=manejador(nom)
     unmanejador.ejecutar()
-    ungameover=gameover(unmanejador.getPuntos())
-    ungameover.mainloop()
+    #ungameover=gameover(unmanejador.getPuntos())
+    #ungameover.mainloop()
+    unpunto=Jugador(Jugador=unmanejador.getnombre(),Puntaje=unmanejador.getPuntos())
+    ungestorJ.agregar(unpunto)
+    d=ungestorJ.tojson()
+    unobjecto.guardarJSONArchivo(d)
     
     print("P")
     

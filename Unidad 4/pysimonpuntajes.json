@@ -5,8 +5,8 @@
             "__class__": "Jugador",
             "__atributos__": {
                 "Jugador": "Antonio",
-                "Fecha": "7/6/2024",
-                "Hora": "11:25:25",
+                "Fecha": "9/6/2024",
+                "Hora": "17:51:44",
                 "Puntaje": 1312.21
             }
         },
@@ -14,10 +14,11 @@
             "__class__": "Jugador",
             "__atributos__": {
                 "Jugador": "Juan",
-                "Fecha": "7/6/2024",
-                "Hora": "11:25:25",
+                "Fecha": "9/6/2024",
+                "Hora": "17:51:44",
                 "Puntaje": 1391.13
             }
         }
+      
     ]
 }

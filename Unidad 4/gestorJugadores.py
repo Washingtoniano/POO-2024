@@ -1,4 +1,5 @@
 from jugador import Jugador
+#Para guardar los jugadores en jston y almacenar uno nuevo
 class gestorJugadores():
     __lista=[]
 
@@ -13,3 +14,7 @@ class gestorJugadores():
             Jugador=[Jugador.tojason() for Jugador in self.__lista]
         )
         return d
+    def cargar(self,d):
+        self.__lista=d
+        
+  

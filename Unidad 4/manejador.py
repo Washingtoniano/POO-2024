@@ -8,23 +8,21 @@ from Gestor import gestor
 from jugador import Jugador
 from gestorJugadores import gestorJugadores
 
-
+#Manejador general
 class manejador():
     __nombre:str
     __puntos:int
     __gesto:gestor
     __jueg:object
-    __inicio=inicio
-    __gesP=gestorJugadores
+  
     
     def __init__(self,nom) -> None:
         from juego import juego  
         self.__nombre=''
         self.__puntos=0
         self.__gesto=gestor()
-        self.__gesP=gestorJugadores()
         
-        self.__nombre=nom
+        self.__nombre=str(nom)
         un=juego(self)
         self.__jueg=un
     def ejecutar(self):
@@ -37,19 +35,16 @@ class manejador():
     def getLista(self):
         return self.__gesto.getListad()
 
-    def juego(self):
-        self.__puntos=self.__jueg.Darpuntos()
-    def cargar(self):
-        unjugador=Jugador(Jugador=self.__nombre,Puntaje=self.__puntos)
-        self.__gesP.agregar(unjugador)
+
     def setPuntos(self,p):
-        self.__puntos=p
+        self.__puntos=int(p)
+
     def getPuntos(self):
         return self.__puntos
+    
     def getnombre(self):
-        self.__nombre=self.__inicio.darNombre()
-        print(self.__nombre)
- 
+            return self.__nombre
+    
     def cerrar(self):
         unpuntaje=unpuntaje(self.__nombre,self.__puntos)
         self.__jueg.destroy()
@@ -73,12 +68,8 @@ class manejador():
     """""
 
 
-    def ver(self,k):
-        self.__jueg=k
-        self.__jueg.brillar(self.__gesto.getListad())
 
-    def datP(self):
-        return self.__inicio.puntos()
+
 
 
 

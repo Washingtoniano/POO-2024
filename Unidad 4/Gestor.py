@@ -1,4 +1,5 @@
 import random
+#Para el cambio de color
 class gestor():
     __lista=[]
     def __init__(self) -> None:
