@@ -17,10 +17,13 @@
         </layout>
         <child>
           <object class="tk.Canvas" id="canvas1">
-            <property name="background">#009000</property>
+            <property name="background">#0000ff</property>
             <property name="borderwidth">50</property>
+            <property name="closeenough">0</property>
+            <property name="confine">true</property>
+            <property name="cursor">arrow</property>
             <property name="insertontime">300</property>
-            <property name="relief">ridge</property>
+            <property name="relief">groove</property>
             <layout manager="pack">
               <property name="side">top</property>
             </layout>
@@ -28,9 +31,10 @@
         </child>
         <child>
           <object class="ttk.Button" id="comenzar" named="True">
-            <property name="command" type="command" cbtype="simple">self</property>
-            <property name="compound">left</property>
-            <property name="cursor">based_arrow_down</property>
+            <property name="command" type="command" cbtype="with_wid">self</property>
+            <property name="compound">bottom</property>
+            <property name="cursor">boat</property>
+            <property name="default">disabled</property>
             <property name="state">normal</property>
             <property name="text" translatable="yes">button1</property>
             <layout manager="pack">

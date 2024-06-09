@@ -38,16 +38,14 @@ def main():
     ungestorJ=(unobjecto.decodificar(d))
     unmanejador=manejador(nom)
     unmanejador.ejecutar()
-    #ungameover=gameover(unmanejador.getPuntos())
-    #ungameover.mainloop()
-    unpunto=Jugador(Jugador=unmanejador.getnombre(),Puntaje=unmanejador.getPuntos())
-    ungestorJ.agregar(unpunto)
-    d=ungestorJ.tojson()
-    unobjecto.guardarJSONArchivo(d)
+    ungameover=gameover(unmanejador.getPuntos())
+    #unpunto=Jugador(Jugador=unmanejador.getnombre(),Puntaje=unmanejador.getPuntos())
+    #ungestorJ.agregar(unpunto)
+    #d=ungestorJ.tojson()
+    #unobjecto.guardarJSONArchivo(d)
     
     print("P")
     
-    #ungameover =gameover(unmanejador.getPuntos())
     print("a")
     
     

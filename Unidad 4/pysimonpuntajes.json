@@ -6,7 +6,7 @@
             "__atributos__": {
                 "Jugador": "Antonio",
                 "Fecha": "9/6/2024",
-                "Hora": "17:51:44",
+                "Hora": "17:56:24",
                 "Puntaje": 1312.21
             }
         },
@@ -15,10 +15,9 @@
             "__atributos__": {
                 "Jugador": "Juan",
                 "Fecha": "9/6/2024",
-                "Hora": "17:51:44",
+                "Hora": "17:56:24",
                 "Puntaje": 1391.13
             }
         }
-      
     ]
 }

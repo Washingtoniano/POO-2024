@@ -17,9 +17,10 @@ class gestor():
     
     def comprobar(self,otro):
         b=0
-        for i in range (len(self.__lista)):
-            if self.__lista[i]==otro:
-                b=1
+        if len(self.__lista)==len(otro):
+            for i in range (len(self.__lista)):
+                if self.__lista[i]==otro[i]:
+                    b=1
         return b
     """""
     def __eq__(self, other) -> bool:

@@ -33,7 +33,7 @@ class manejador():
         return b
 
     def getLista(self):
-        return self.__gesto.getListad()
+        return self.__gesto
 
 
     def setPuntos(self,p):
