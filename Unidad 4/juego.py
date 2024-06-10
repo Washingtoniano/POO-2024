@@ -13,20 +13,22 @@ from manejador import manejador
 #Modificar el tiempo e implementar la "animacion" de los canvas
 
 #Esta ejecutando todo al mismo tiempo
-
+import numpy as np
 class juego(tk.Tk):
     __gestor:manejador
     __puntos:int
     __lista=[]
+    __segundos:int
+    
 
     def __init__(self,man):
     
-
+        self.__segundos=500
         super().__init__()
         self.__puntaje=IntVar()
         self.__puntos=0
 
-      
+        
         self.__lista=[]
 
        
@@ -42,11 +44,7 @@ class juego(tk.Tk):
         
 
         labelc.grid(column=0,row=1,columnspan=1,ipadx=10,ipady=10,sticky=NSEW)
- 
 
-        
-
-        
 
         opts={'ipadx':50,'ipady':50,'sticky':'nswe'}
         #Convertir los botones con self
@@ -57,6 +55,7 @@ class juego(tk.Tk):
 
 
 
+        
         self.label_a.grid(column=0,row=2,**opts)
 
         self.label_b.grid(column=0,row=3,**opts)
@@ -67,7 +66,6 @@ class juego(tk.Tk):
         
         
         self.__gestor=man
-        self.__gestor.iniciar()
         
         
         botonC=tk.Button(self,text="Comenzar",command=partial(self.botones,opts))
@@ -77,7 +75,8 @@ class juego(tk.Tk):
         self.mainloop()
 
         
-
+    def setlista(self):
+        self.__lista=[]
     def botones(self,opts):        
         self.boton_a=tk.Button(self,bg="#009000",relief=RAISED,command=partial(self.sumar,10,1))
         self.boton_b=tk.Button(self,bg="#ffff00",relief=RAISED,command=partial(self.sumar,10,2))
@@ -88,6 +87,8 @@ class juego(tk.Tk):
         self.boton_b.grid(column=0,row=3,**opts)
         self.boton_c.grid(column=1,row=2,**opts)
         self.boton_d.grid(column=1,row=3,**opts)
+        #self.boton_a.bind(self.registrar,"<Button-1>")
+        
         #self.boton_a.after(2000,self.change(),self.changeback())
 
         self.after(100,lambda:self.brillar())
@@ -98,96 +99,53 @@ class juego(tk.Tk):
         self.__gestor.setPuntos(self.__puntos)
         self.__puntaje.set(self.__puntos)
         self.registrar(v)
- 
 
     def registrar(self,v):
         self.__lista.append(v)
-        self.after(200,lambda:self.comprobar())
-       
-    def Darpuntos(self):
-        return self.__puntos
-    
 
-    def changeback(self,d):
-        if d==1:
-            self.label_a.configure(relief=RAISED)
-            self.label_a.configure(bg="#009000")
-            self.boton_a.configure(relief=RAISED)
-            self.boton_a.configure(bg="#009000")
-        elif d==2:
-            self.label_b.configure(relief=RAISED,bg="#ffff00")
-            self.boton_b.configure(relief=RAISED,bg="#ffff00")
-        elif d==3:
-            self.label_c.configure(relief=RAISED,bg="#ff0000")
-            self.boton_c.configure(relief=RAISED,bg="#ff0000")
-        else: 
-            self.label_d.configure(relief=RAISED,bg="#0000ff")
-            self.boton_d.configure(relief=RAISED,bg="#0000ff")
-        self.after(2000,lambda:self.registrar(d))
-   
-      
-    
-    def change(self,d):
-
-        if d==1:
-            self.label_a.configure(relief=GROOVE,bg="#000000")
-            self.boton_a.configure(relief=GROOVE,bg="#000000")
-        
-
-        elif d==2:
-            self.label_b.configure(relief=GROOVE,bg="#000000")
-            self.boton_b.configure(relief=GROOVE,bg="#000000")
-          
-        elif d==3:
-            self.label_c.configure(relief=GROOVE,bg="#000000")
-            self.boton_c.configure(relief=GROOVE,bg="#000000")
-          
-        else: 
-            self.label_d.configure(relief=GROOVE,bg="#000000")
-            self.boton_d.configure(relief=GROOVE,bg="#000000")
-           
-        self.after(200,lambda:self.changeback(d))
-
-
-    def comprobar(self):
-        b=self.__gestor.comprobar(self.__lista)
-        if b==0:
-            
-            self.gameover()
-            print ("No igual")
+    def changeback(self,i):
+        if i==1:
+            self.boton_a.config(bg="#009000")
+        elif i==2:
+             self.boton_b.config(bg="#ffff00")
+        elif i==3:
+            self.boton_c.config(bg="#ff0000")
         else:
-            self.__lista=[]
-            print ("Si igual")
-            self.brillar()
+            self.boton_d.config(bg="#0000ff")
+    def change(self,i):
+        if i==1:
+            self.boton_a.config(bg="#000000")
+        elif i==2:
+            self.boton_b.config(bg="#000000")
+            
+        elif i==3:
+            self.boton_c.config(bg="#000000")
+        else:
+            self.boton_d.config(bg="#000000")
+        self.after(200,lambda:self.changeback(i))
+
+
+
 
     def brillar(self):
-        lista=[]
-        print(" estoy en comenzar")
-        lista=self.__gestor.getLista().getListad()
-        Ma=1
+        self.__lista=[]
+        self.__gestor.iniciar()
+        listaA=self.__gestor.getLista().getListad()
+        band=False
+        for el in listaA:
+            self.__segundos+=500
         i=0
-        while i<len(lista):
-            print("hOLA")
-            if lista[i]==1: 
-                self.label_a.after(200,lambda:self.change(1))
-                
-                
-                print("hOLAsdhs")
-            elif  lista[i]==2:
-                self.label_b.after(200,lambda:self.change(2))            
-                #self.boton_b.after(2000,self.__gestor.over())
-                
-            elif lista[i]==3:
-                self.label_c.after(200,lambda:self.change(3))
-                #self.boton_c.after(2000,self.__gestor.over())
-
-            else:
-                self.label_d.after(200,lambda:self.change(4))
-                #self.boton_d.after(2000,self.__gestor.over())
-                
+        while i<len(listaA):
+            #self.after(100,lambda:self.change(listaA[i]))
+            self.change(listaA[i])
+            #print(listaA[i])
             i+=1
-
-    def gameover(self):
-        self.destroy()
-
+            #self.after(150,lambda:self.aumentar(i))
+        self.after(self.__segundos,lambda:self.__gestor.comprobar(self.__lista,self))
+    def aumentar(self,i):
+        i+=1
+        return i
         
+        
+
+

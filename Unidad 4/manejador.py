@@ -28,9 +28,13 @@ class manejador():
     def ejecutar(self):
         self.__jueg.mainloop()
 
-    def comprobar(self,lista):
+    def comprobar(self,lista,ob):
         b=self.__gesto.comprobar(lista)
-        return b
+        if b==0:
+            ob.destroy()
+        else:
+            ob.setlista()
+            ob.brillar()
 
     def getLista(self):
         return self.__gesto

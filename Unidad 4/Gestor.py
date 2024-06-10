@@ -1,9 +1,12 @@
 import random
+
+
 #Para el cambio de color
 class gestor():
     __lista=[]
     def __init__(self) -> None:
         self.__lista=[]
+     
 
     def agregar(self,dato):
         self.__lista.append(dato)
@@ -22,6 +25,7 @@ class gestor():
                 if self.__lista[i]==otro[i]:
                     b=1
         return b
+ 
     """""
     def __eq__(self, other) -> bool:
         n=False
