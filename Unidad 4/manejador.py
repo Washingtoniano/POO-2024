@@ -38,7 +38,7 @@ class manejador():
         b=self.__gesto.comprobar(lista,ob)
         if b==0:
             ob.destroy()
-            #self.guardar()
+            self.guardar()
             ungameover=gameover(self.__puntos)
             ungameover
         else:
@@ -69,7 +69,7 @@ class manejador():
 
 
     def guardar(self):
-        unpunto=Jugador(Jugador=self.getnombre(),Puntaje=self.getPuntos())
+        unpunto=Jugador(Jugador=self.getnombre(),Fecha=None,Hora=None,Puntaje=self.getPuntos())
         self.__jugadores.agregar(unpunto)
         d=self.__jugadores.tojson()
         self.__encoder.guardarJSONArchivo(d)

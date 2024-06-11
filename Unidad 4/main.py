@@ -18,7 +18,7 @@ def testarchivo(obj):
         if band==False:
             band=True
         else:
-            unjugador=Jugador(Jugador=fila[0],Puntaje=fila[3])
+            unjugador=Jugador(Jugador=fila[0],Fecha=fila[1],Hora=fila[2],Puntaje=fila[3])
             ungestor.agregar(unjugador)
     d=ungestor.tojson()
     obj.guardarJSONArchivo(d)
@@ -37,9 +37,9 @@ def main():
 
     
 
-    print("P")
+    #print("P")
     
-    print("a")
+    #print("a")
     
     
 
@@ -49,6 +49,6 @@ if __name__ == '__main__':
 
     #Para inicializar el json se usa un archi csv, si hay problemas ejecute el siguiente codigo comentado. PD: seguramente se debera cambiar el pathing
 
-    #un=objectencoder("/media/lia-t-04/4C25-3BC4/Practica/Unidad 4/pysimonpuntajes.json")
+    #un=objectencoder("C:\\Users\\PC\\Desktop\\Uni\\2° año\\2024\\Poo\\Practica\\Unidad 4\\pysimonpuntajes.json")
     #testarchivo(un)
     main()

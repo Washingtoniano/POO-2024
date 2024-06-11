@@ -163,7 +163,7 @@ class juego(tk.Tk):
         puntajes.geometry("320x200")
         puntajes.resizable(width=False,height=False)
         puntajes.title("Galeria de Puntajes")
-
+        fuente=font.Font(weight="normal")
 
 
         marco1=ttk.Frame(puntajes,padding=(10,10,10,10),relief=RAISED)
@@ -172,11 +172,11 @@ class juego(tk.Tk):
 
 
         
-        labelFecha=ttk.Label(marco1,text="Fecha")
-        labelHora=ttk.Label(marco1,text="Hora")
-        labelJugador=ttk.Label(marco1,text="Jugador")
-        labelPuntaje=ttk.Label(marco1,text="Puntaje")
-        op={"ipadx":10,"ipady":10,"sticky":"nswe"}
+        labelFecha=ttk.Label(marco1,text="Fecha",font=fuente)
+        labelHora=ttk.Label(marco1,text="Hora",font=fuente)
+        labelJugador=ttk.Label(marco1,text="Jugador",font=fuente)
+        labelPuntaje=ttk.Label(marco1,text="Puntaje",font=fuente)
+        op={"ipadx":2,"ipady":2,"sticky":"nswe"}
         labelFecha.grid(column=1,row=0,**op)
         labelJugador.grid(column=0,row=0,**op)
         labelPuntaje.grid(column=3,row=0,**op)

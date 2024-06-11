@@ -11,8 +11,14 @@ class Jugador:
         self.__puntos=int(kwards['Puntaje'])
         today=date.date.today()
         hora=date.datetime.today()
-        self.__fecha=str(today.day)+'/'+str(today.month)+"/"+str(today.year)
-        self.__hora=str(hora.hour)+':'+str(hora.minute)+':'+str(hora.second)
+        if kwards["Fecha"] ==None:
+            self.__fecha=str(today.day)+'/'+str(today.month)+"/"+str(today.year)
+        else:
+            self.__fecha=kwards["Fecha"]
+        if kwards["Hora"]==None:
+            self.__hora=str(hora.hour)+':'+str(hora.minute)+':'+str(hora.second)
+        else:
+            self.__hora=kwards["Hora"]
 
     def getPuntos(self):
         return self.__puntos

@@ -5,8 +5,8 @@
             "__class__": "Jugador",
             "__atributos__": {
                 "Jugador": "Antonio",
-                "Fecha": "10/6/2024",
-                "Hora": "22:41:22",
+                "Fecha": "03/05/1999",
+                "Hora": "23:12:12",
                 "Puntaje": 1312
             }
         },
@@ -14,9 +14,18 @@
             "__class__": "Jugador",
             "__atributos__": {
                 "Jugador": "Juan",
-                "Fecha": "10/6/2024",
-                "Hora": "22:41:22",
+                "Fecha": "01/03/1821",
+                "Hora": "12:31:08",
                 "Puntaje": 1391
+            }
+        },
+        {
+            "__class__": "Jugador",
+            "__atributos__": {
+                "Jugador": "Ana",
+                "Fecha": "11/6/2024",
+                "Hora": "0:27:10",
+                "Puntaje": 28
             }
         }
     ]
