@@ -44,8 +44,10 @@ def main():
     
 
 if __name__ == '__main__':
-    #unmanejador=manejador()
-    #unmanejador.iniciar()
+
+
+
+    #Para inicializar el json se usa un archi csv, si hay problemas ejecute el siguiente codigo comentado. PD: seguramente se debera cambiar el pathing
 
     #un=objectencoder("/media/lia-t-04/4C25-3BC4/Practica/Unidad 4/pysimonpuntajes.json")
     #testarchivo(un)

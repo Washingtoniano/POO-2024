@@ -158,45 +158,52 @@ class juego(tk.Tk):
         return i
     
     def VerPuntos(self):
-        labelsPuntajes=self.__gestor.getJugadores()
-        labelsPuntajes.ordenar()
-        listas=labelsPuntajes.getLista()
+
         puntajes=Toplevel()
         puntajes.geometry("320x200")
+        puntajes.resizable(width=False,height=False)
+        puntajes.title("Galeria de Puntajes")
 
-        labelFecha=ttk.Label(self,text="Fecha")
-        labelHora=ttk.Label(self,text="Hora")
-        labelJugador=ttk.Label(self,text="Jugador")
-        labelPuntaje=ttk.Label(self,text="Puntaje")
-        op={"ipadx":5,"ipady":5,"sticky":"nswe"}
+
+
+        marco1=ttk.Frame(puntajes,padding=(10,10,10,10),relief=RAISED)
+        marco1.pack(side=TOP, fill=BOTH, expand=True)
+
+
+
+        
+        labelFecha=ttk.Label(marco1,text="Fecha")
+        labelHora=ttk.Label(marco1,text="Hora")
+        labelJugador=ttk.Label(marco1,text="Jugador")
+        labelPuntaje=ttk.Label(marco1,text="Puntaje")
+        op={"ipadx":10,"ipady":10,"sticky":"nswe"}
         labelFecha.grid(column=1,row=0,**op)
         labelJugador.grid(column=0,row=0,**op)
         labelPuntaje.grid(column=3,row=0,**op)
         labelHora.grid(column=2,row=0,**op)
 
+        labelsPuntajes=self.__gestor.getJugadores()
+        labelsPuntajes.ordenar()
+        listas=labelsPuntajes.getLista()
+        for i in range(len(listas)):
+            labelnombre=ttk.Label(marco1,text=listas[i].getNombre())
+            labelfecha=ttk.Label(marco1,text=listas[i].getFecha())
+            labelhora=ttk.Label(marco1,text=listas[i].getHora())
+            labelpuntos=ttk.Label(marco1,text=listas[i].getPuntos())
+            
+            
+            
+            labelnombre.grid(column=0,row=i+1,**op)
+            labelfecha.grid(column=1,row=i+1,**op)
+            labelhora.grid(column=2,row=i+1,**op)
+            labelpuntos.grid(column=3,row=i+1,**op)
+            
+            
+
+
 """""
-        marco1 = ttk.Frame(puntajes, padding =(10 , 10 , 10 , 10), relief =marco1.pack( side =TOP, fill =BOTH, expand= True))
-       
-
-
-
-
-
-        puntajes.resizable(width=False, height=False)
-        puntajes.title("Galeria de Puntajes")
-        jugador=ttk.Label()
-        marco1 = ttk.Frame(puntajes, padding=(10, 10, 10, 10),
-        relief=RAISED)
-        fuente=font.Font(weight="bold")
-        marco1.pack(side=TOP, fill=BOTH, expand=True)
         for i in range (len(listas)):
             texto=listas[i]
             print(texto)
             juga=ttk.Label(self,text=str(texto),font=fuente,padding=(10,10))
-
-            
-"""
-        
-        
-
-
+"""""

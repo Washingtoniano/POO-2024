@@ -2,13 +2,13 @@ import datetime as date
 class Jugador:
     __jugador:str
     __dificultad:str
-    __puntos:float
+    __puntos:int
     __fecha:str
     __hora:str
     def __init__(self,**kwards) -> None:
         self.__jugador=kwards['Jugador']
         self.__dificultad=None
-        self.__puntos=float(kwards['Puntaje'])
+        self.__puntos=int(kwards['Puntaje'])
         today=date.date.today()
         hora=date.datetime.today()
         self.__fecha=str(today.day)+'/'+str(today.month)+"/"+str(today.year)
