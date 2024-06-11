@@ -41,3 +41,5 @@ class Jugador:
         return d
     def __gt__(self,other):
         return self.__puntos>other.getPuntos()
+    
+    

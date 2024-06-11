@@ -18,12 +18,15 @@ class gestor():
     def getListad(self):
         return self.__lista
     
-    def comprobar(self,otro):
+    def comprobar(self,otro,ob):
         b=0
         if len(self.__lista)==len(otro):
             for i in range (len(self.__lista)):
                 if self.__lista[i]==otro[i]:
                     b=1
+                    ob.sumar()
+                else:
+                    b=0
         return b
  
     """""

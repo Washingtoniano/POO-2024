@@ -4,6 +4,7 @@ class IRepartidor(Interface):
         pass
     def entrega():
         pass
+#Despachante no es una clase
 class IDespachador(Interface):
     def Acceder(clave):
         pass

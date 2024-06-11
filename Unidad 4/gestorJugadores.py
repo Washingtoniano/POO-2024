@@ -7,6 +7,8 @@ class gestorJugadores():
         self.__lista=[]
     def agregar(self,dato):
         self.__lista.append(dato)
+    def getLista(self):
+        return self.__lista
 
     def tojson(self):
         d=dict(
@@ -16,5 +18,7 @@ class gestorJugadores():
         return d
     def cargar(self,d):
         self.__lista=d
+    def ordenar(self):
+        self.__lista.sort(reverse=True)
         
   

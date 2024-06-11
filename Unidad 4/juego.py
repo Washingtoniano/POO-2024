@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from gameover import gameover
-from tkinter import ttk
+from tkinter import ttk,font
 import time
 #Utilizar Geometria grid
 #pip install pygubu-designer
@@ -23,23 +23,31 @@ class juego(tk.Tk):
 
     def __init__(self,man):
     
-        self.__segundos=500
+        self.__segundos=1000
         super().__init__()
         self.__puntaje=IntVar()
         self.__puntos=0
 
-        
+        self.__gestor=man
         self.__lista=[]
 
-       
+        self.fuente=font.Font(weight="normal")
+        barramenu=Menu(self)
+        menuPuntos=Menu(barramenu,tearoff=0)
+        menuPuntos.add_command(label="Ver Puntajes",command=self.VerPuntos)
+        menuPuntos.add_command(label="Salir",command=self.destroy)
+        barramenu.add_cascade(label="Ver Puntajes",menu=menuPuntos)
+        self.config(menu=barramenu)
+
+
         self.label_a=tk.Canvas(self,bg="#009000",relief=RAISED)
         self.label_b=tk.Canvas(self,bg="#ffff00",relief=RAISED)
         self.label_c=tk.Canvas(self,bg='#ff0000',relief=RAISED)
         self.label_d=tk.Canvas(self,bg='#0000ff',relief=RAISED)
+        labelj=tk.Label(self,text=self.__gestor.getnombre())
 
-
-        label=tk.Label(self,text="Puntaje")
-        labelp=tk.Label(self,textvariable=self.__puntaje)
+        label=tk.Label(self,textvariable=self.__puntaje)
+        #labelp=tk.Label(self,textvariable=self.__puntaje)
         labelc=ttk.Label(self)
         
 
@@ -49,8 +57,9 @@ class juego(tk.Tk):
         opts={'ipadx':50,'ipady':50,'sticky':'nswe'}
         #Convertir los botones con self
     
-        label.grid(column=0,row=0,ipadx=10,ipady=10,sticky=NSEW)
-        labelp.grid(column=1,row=0,ipadx=10,ipady=10,sticky=NSEW)
+        label.grid(column=1,row=0,ipadx=5,ipady=5,sticky=NSEW)
+        #labelp.grid(column=2,row=0,ipadx=5,ipady=5,sticky=NSEW)
+        labelj.grid(column=0,row=0,ipadx=5,ipady=5,sticky=NSEW)
 
 
 
@@ -65,23 +74,22 @@ class juego(tk.Tk):
         self.label_d.grid(column=1,row=3,**opts)
         
         
-        self.__gestor=man
         
         
         botonC=tk.Button(self,text="Comenzar",command=partial(self.botones,opts))
 
         botonC.grid(column=0,columnspan=2,row=1,ipadx=10,ipady=10,sticky=NSEW)
         
-        self.mainloop()
+        #self.mainloop()
 
         
     def setlista(self):
         self.__lista=[]
     def botones(self,opts):        
-        self.boton_a=tk.Button(self,bg="#009000",relief=RAISED,command=partial(self.sumar,10,1))
-        self.boton_b=tk.Button(self,bg="#ffff00",relief=RAISED,command=partial(self.sumar,10,2))
-        self.boton_c=tk.Button(self,bg='#ff0000',relief=RAISED,command=partial(self.sumar,10,3))
-        self.boton_d=tk.Button(self,bg='#0000ff',relief=RAISED,command=partial(self.sumar,10,4))
+        self.boton_a=tk.Button(self,bg="#009000",relief=RAISED,command=partial(self.registrar,1))
+        self.boton_b=tk.Button(self,bg="#ffff00",relief=RAISED,command=partial(self.registrar,2))
+        self.boton_c=tk.Button(self,bg='#ff0000',relief=RAISED,command=partial(self.registrar,3))
+        self.boton_d=tk.Button(self,bg='#0000ff',relief=RAISED,command=partial(self.registrar,4))
         
         self.boton_a.grid(column=0,row=2,**opts)
         self.boton_b.grid(column=0,row=3,**opts)
@@ -93,16 +101,15 @@ class juego(tk.Tk):
 
         self.after(100,lambda:self.brillar())
 
-    def sumar(self,d,v):
+    def sumar(self):
 
-        self.__puntos+=d
+        self.__puntos+=1
         self.__gestor.setPuntos(self.__puntos)
         self.__puntaje.set(self.__puntos)
-        self.registrar(v)
 
     def registrar(self,v):
         self.__lista.append(v)
-
+        #self.sumar()
     def changeback(self,i):
         if i==1:
             self.boton_a.config(bg="#009000")
@@ -131,20 +138,64 @@ class juego(tk.Tk):
         self.__lista=[]
         self.__gestor.iniciar()
         listaA=self.__gestor.getLista().getListad()
-        band=False
+        self.__segundos=1500
         for el in listaA:
-            self.__segundos+=500
+            self.__segundos+=300
         i=0
-        while i<len(listaA):
-            #self.after(100,lambda:self.change(listaA[i]))
+        self.secuencia(0,listaA)
+    
+    def secuencia(self,i,listaA):
+        if i < (len(listaA)):
             self.change(listaA[i])
-            #print(listaA[i])
-            i+=1
-            #self.after(150,lambda:self.aumentar(i))
-        self.after(self.__segundos,lambda:self.__gestor.comprobar(self.__lista,self))
+            
+            self.after(200,lambda:self.secuencia(self.aumentar(i),listaA))
+        else:
+            self.after(self.__segundos,lambda:self.__gestor.comprobar(self.__lista,self))
+            #self.__gestor.comprobar(self.__lista,self)
+
     def aumentar(self,i):
         i+=1
         return i
+    
+    def VerPuntos(self):
+        labelsPuntajes=self.__gestor.getJugadores()
+        labelsPuntajes.ordenar()
+        listas=labelsPuntajes.getLista()
+        puntajes=Toplevel()
+        puntajes.geometry("320x200")
+
+        labelFecha=ttk.Label(self,text="Fecha")
+        labelHora=ttk.Label(self,text="Hora")
+        labelJugador=ttk.Label(self,text="Jugador")
+        labelPuntaje=ttk.Label(self,text="Puntaje")
+        op={"ipadx":5,"ipady":5,"sticky":"nswe"}
+        labelFecha.grid(column=1,row=0,**op)
+        labelJugador.grid(column=0,row=0,**op)
+        labelPuntaje.grid(column=3,row=0,**op)
+        labelHora.grid(column=2,row=0,**op)
+
+"""""
+        marco1 = ttk.Frame(puntajes, padding =(10 , 10 , 10 , 10), relief =marco1.pack( side =TOP, fill =BOTH, expand= True))
+       
+
+
+
+
+
+        puntajes.resizable(width=False, height=False)
+        puntajes.title("Galeria de Puntajes")
+        jugador=ttk.Label()
+        marco1 = ttk.Frame(puntajes, padding=(10, 10, 10, 10),
+        relief=RAISED)
+        fuente=font.Font(weight="bold")
+        marco1.pack(side=TOP, fill=BOTH, expand=True)
+        for i in range (len(listas)):
+            texto=listas[i]
+            print(texto)
+            juga=ttk.Label(self,text=str(texto),font=fuente,padding=(10,10))
+
+            
+"""
         
         
 

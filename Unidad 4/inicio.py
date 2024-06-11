@@ -3,6 +3,7 @@ from tkinter import *
 class inicio():
     __ventana:object
     __usuario:str
+
     def __init__(self) -> None:
     
         self.__ventana=Tk()
@@ -26,8 +27,9 @@ class inicio():
         self.ctext1.focus_set()
         self.__ventana.mainloop()
     def darNombre(self):
-        return self.__usuario
+        return self.__usuario.get()
     def aceptar(self):
+        #print(self.__usuario.get())
         self.__ventana.destroy()
 
 
