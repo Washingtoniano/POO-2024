@@ -37,9 +37,6 @@ def main():
 
     
 
-    #print("P")
-    
-    #print("a")
     
     
 

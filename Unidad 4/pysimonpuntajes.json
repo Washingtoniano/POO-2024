@@ -27,6 +27,34 @@
                 "Hora": "0:27:10",
                 "Puntaje": 28
             }
+        },
+        {
+            "__class__": "Jugador",
+            "__atributos__": {
+                "Jugador": "Manuel",
+                "Fecha": "12/6/2024",
+                "Hora": "8:52:31",
+                "Puntaje": 0
+            }
+        },
+        {
+            "__class__": "Jugador",
+            "__atributos__": {
+                "Jugador": "Manuel",
+                "Fecha": "12/6/2024",
+                "Hora": "8:52:51",
+                "Puntaje": 1
+            }
+        },
+        {
+            "__class__": "Jugador",
+            "__atributos__": {
+                "Jugador": "manuel",
+                "Fecha": "12/6/2024",
+                "Hora": "8:55:19",
+                "Puntaje": 3
+            }
         }
+
     ]
 }

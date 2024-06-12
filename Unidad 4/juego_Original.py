@@ -1,4 +1,3 @@
-#copia de juego utilizando sleep en lugar de after
 import tkinter as tk
 from tkinter import *
 from gameover import gameover
@@ -10,8 +9,6 @@ import time
 from Gestor import gestor
 from functools import partial
 from manejador import manejador
-
-
 
 #Modificar el tiempo e implementar la "animacion" de los canvas
 
@@ -99,9 +96,9 @@ class juego(tk.Tk):
         self.boton_d.grid(column=1,row=3,**opts)
         #self.boton_a.bind(self.registrar,"<Button-1>")
         
-        #self.boton_a.after(2000,lambda:self.brillar())
+        #self.boton_a.after(2000,self.change(),self.changeback())
 
-        self.brillar()
+        self.after(100,lambda:self.brillar())
 
     def sumar(self):
 
@@ -121,22 +118,16 @@ class juego(tk.Tk):
             self.boton_c.config(bg="#ff0000")
         else:
             self.boton_d.config(bg="#0000ff")
-        time.sleep(0.200)
     def change(self,i):
         if i==1:
             self.boton_a.config(bg="#000000")
-            self.label_a.config(bg="#000000")
         elif i==2:
             self.boton_b.config(bg="#000000")
-            self.label_b.config(bg="#000000")            
+            
         elif i==3:
             self.boton_c.config(bg="#000000")
-            self.label_c.config(bg="#000000")
         else:
-            self.label_d.config(bg="#000000")
             self.boton_d.config(bg="#000000")
-        #time.sleep(5)
-        #self.changeback(i)
         self.after(200,lambda:self.changeback(i))
 
 
@@ -149,44 +140,18 @@ class juego(tk.Tk):
         self.__segundos=3000
         for el in listaA:
             self.__segundos+=300
-            print(listaA)
         i=0
         self.secuencia(0,listaA)
-
-
-
-    def wait(self):
-        time.sleep(1)
-
-    #Funciona pero es raro
+    
     def secuencia(self,i,listaA):
         if i < (len(listaA)):
-
-            self.after(200,lambda:self.change(listaA[i]))
-
-            """
-            if (len(listaA)>1) and listaA[i]==listaA[i-1]:
-                self.after(200,lambda:self.change(listaA[i-1]))
-                self.change(listaA[i])
-
-            else:
-                self.change(listaA[i])
-            """    
-
-
+            self.after(200,lambda:self.change(listaA[i]))            
             #Utilizar sleep
-           
-            #self.changeback(listaA[i])
-            #self.secuencia(self.aumentar(i),listaA)
+
             self.after(800,lambda:self.secuencia(self.aumentar(i),listaA))
-
-            
         else:
-            #time.sleep(5)
-            #self.__gestor.comprobar(self.__lista,self)
-
             self.after(self.__segundos,lambda:self.__gestor.comprobar(self.__lista,self))
-
+            #self.__gestor.comprobar(self.__lista,self)
 
     def aumentar(self,i):
         i+=1
