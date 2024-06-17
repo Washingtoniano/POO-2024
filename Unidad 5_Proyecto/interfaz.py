@@ -1,9 +1,11 @@
 from zope.interface import Interface
+"""""
 class IRepartidor(Interface):
     def Acceder(clas):
         pass
     def entrega():
         pass
+"""""
 #Despachante no es una clase
 class IDespachador(Interface):
     def Acceder(clave):

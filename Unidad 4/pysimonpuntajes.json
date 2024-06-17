@@ -54,7 +54,15 @@
                 "Hora": "8:55:19",
                 "Puntaje": 3
             }
+        },
+        {
+            "__class__": "Jugador",
+            "__atributos__": {
+                "Jugador": "jejeje",
+                "Fecha": "14/6/2024",
+                "Hora": "0:52:53",
+                "Puntaje": 36
+            }
         }
-
     ]
 }

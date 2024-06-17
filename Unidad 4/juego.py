@@ -149,7 +149,7 @@ class juego(tk.Tk):
         self.__segundos=3000
         for el in listaA:
             self.__segundos+=300
-            print(listaA)
+            #print(listaA)
         i=0
         self.secuencia(0,listaA)
 
@@ -195,7 +195,7 @@ class juego(tk.Tk):
     def VerPuntos(self):
 
         puntajes=Toplevel()
-        puntajes.geometry("320x200")
+        puntajes.geometry("300x400")
         puntajes.resizable(width=False,height=False)
         puntajes.title("Galeria de Puntajes")
         fuente=font.Font(weight="normal")

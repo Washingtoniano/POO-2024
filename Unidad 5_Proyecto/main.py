@@ -1,28 +1,19 @@
-from flask import Flask
-from flask import render_template, request
-import datetime as date
+from flask import Flask,render_template, request
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 app=Flask(__name__)
+app.config.from_pyfile("config.py")
 #Los id se auto generan,(cuando se ingres un nuevo elemento su id sera el del anterior mas 1)
 #db browser for sqlite
-
-
-
-#@app.route('/',methods = ['POST', 'GET'])
-def inicio():
-    if request.method=='POST':
-        if request.form['usuario'] and request.form['password']:
-            datos=request.form
-            return render_template("menu.html")
-
-#@app.route('/menu',methods = ['POST', 'GET'])
-def menu():
-
-
-    print("Ingrese la opcion que desea\n")
-    op=(input(" 1-\n 2-\n 3\n 4\n 5\n 6\n 7\n"))
-    return render_template("index.html")
-@app.route('/')
+from models import sucursal,repartidor,transporte,paquete
+from models import db
+@app.route("/")
 def saludo():
-    return (render_template('inicio.html'))
+    return render_template("index.html")
+
+
+
 if __name__ =='__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
