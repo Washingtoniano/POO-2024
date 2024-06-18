@@ -4,31 +4,22 @@
 <body>
     <h1>Sucursales</h1>
     <hr/>
-    <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>numero</th>
-                    <th>provincia</th>
-                    <th>localidad</th>
-                    <th>direccion</th>
-                </tr>
-            </thead>
-            <tbody>
-                {%for sucursal in sucursales %}
-                <tr>
-                    <td>{{sucursal.id}}</td>
-                    <td>{{sucursal.numero}}</td>
-                    <td>{{sucursal.provincia}}</td>
-                    <td>{{sucursal.localidad}}</td>
-                    <td>{{sucursal.direccion}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <br></br>
-    </div>
+    <form action="{{ request.path }}"" method="POST" class="container">
+        {% if sucursales is not none :%}
+        <label for="sucursales">Sucursal</label><br>
+        <select  id="sucursales" name="sucursales" width="500px"> 
+            {%for sucursal in sucursales%}
+            <option value="{{sucursal.id}}">{{sucursal.numero}} {{sucursal.provincia}} {{sucursal.localidad}} {{sucursal.direccion}}</option>
+            {%endfor%}
+        </select>
+        <br><br>
+        <input class="button1" type="submit" value="Menu">
+        {% else %}
+        <a href="{{url_for('menu')}}">Menu</a>
+
+        {% endif %} 	   
+
+     
 
 </body>
 {%endblock%}

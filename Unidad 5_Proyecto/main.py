@@ -7,17 +7,27 @@ app.config.from_pyfile("config.py")
 #db browser for sqlite
 from models import db
 from models import Sucursal,Repartidor,Transporte,Paquete
-@app.route("/despachador")
-def despachador():
-    
-    return render_template("despachador.html",sucursales=Sucursal.query.all())
+@app.route("/repartidor")
+def repartidor():
+    return render_template("repartidor.html")
 
-@app.route("/menu")
+@app.route("/despachador",methods=['GET','POST'])
+def despachador():
+    if request.method=='POST':
+        if not request.form['sucursales']:
+            return render_template("despachador.html",sucursales=Sucursal.query.all(),sucursal_seleccionada=None)
+        else:
+            return render_template("despachador.html",sucursales=None,sucursal_seleccionada=Sucursal.query.get(request.form['sucursales']))
+    else:
+        return render_template("despachador.html",sucursales=Sucursal.query.all(),sucursal_seleccionada=None)
+
+@app.route("/menu",methods=['GET','POST'])
 def menu():
     return render_template("menudespachador.html")
 @app.route("/")
 def inicio():
     return render_template("inicio.html")
+
 @app.route("/registrar_llegada")
 def registrar_llegada():
     return render_template("registrar_llegada.html")
@@ -25,6 +35,7 @@ def registrar_llegada():
 @app.route("/registrar_salida")
 def registrar_salida():
     return render_template("registrar_salida.html")
+
 @app.route("/registrar_paquete")
 def registrar_paquete():
     return render_template("registrar_paquete.html")

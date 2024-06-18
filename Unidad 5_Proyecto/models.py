@@ -10,8 +10,8 @@ class Paquete(db.Model):
     DireccionD=db.Column(db.String(100),nullable=False)
     Entregado=db.Column(db.Boolean,nullable=False)
     observacion=db.Column(db.Text,nullable=False)
-    #idSucursal=db.relationship("sucursal",backref="paquete")
-    #idTransporte=db.relationship("transporte",backref="paquete")
+    idSucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
+    idTransporte=db.Column(db.Integer,db.ForeignKey('transporte.id'))
     idRepartidor=db.Column(db.Integer,db.ForeignKey('repartidor.id'))
 
     def getNumero(self):
@@ -28,8 +28,6 @@ class Paquete(db.Model):
         return self.__observacion
  
 
- 
-
 
 class Repartidor(db.Model):
     __tablename__="repartidor"
@@ -37,7 +35,7 @@ class Repartidor(db.Model):
     numero=db.Column(db.Integer,nullable=False)
     nombre=db.Column(db.String(60),nullable=False)
     dni=db.Column(db.String(8),nullable=False)
-    #iSucursal=db.relationship("sucursal",backref="repartidor")
+    iSucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
     paquete=db.relationship('Paquete',backref='repartidor')
 
     def getNumero(self):
@@ -48,7 +46,6 @@ class Repartidor(db.Model):
         return self.__dni
 
 
-
 class Sucursal(db.Model):
     __tablename__ ="sucursal"
     id=db.Column(db.Integer,primary_key=True)
@@ -56,10 +53,10 @@ class Sucursal(db.Model):
     provincia=db.Column(db.String(30),nullable=False)
     localidad=db.Column(db.String(30),nullable=False)
     direccion=db.Column(db.String(30),nullable=False)
-    #paquetes=db.relationship("paquete",backref="sucursal")
-    #repartidor=db.relationship("repartidor",backref="sucursal")
-    #transporte=db.relationship("transporte",backref="sucursal")
+    idpaquetes=db.relationship("Paquete",backref="sucursal")
+    idrepartidor=db.relationship("Repartidor",backref="sucursal")
 
+    idtransporte=db.relationship("Transporte",backref="sucursal")
 
     def getNumero(self):
         return self.__numero
@@ -72,7 +69,6 @@ class Sucursal(db.Model):
     def getid(self):
         return self.__id
  
-
    
 class Transporte(db.Model):
     __tablename__ ="transporte"
@@ -80,8 +76,10 @@ class Transporte(db.Model):
     numero=db.Column(db.Integer,nullable=False)
     fechaS=db.Column(db.DATETIME,nullable=False)
     fechaLL=db.Column(db.DATETIME,nullable=False)
-    #sucursal=db.relationship("sucursal",backref="transporte")
-    #paquete=db.relationship("paquete",backref="transporte")
+
+    idsucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
+
+    idpaquete=db.relationship("Paquete",backref="transporte")
 
 
 
