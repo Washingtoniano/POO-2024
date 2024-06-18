@@ -1,10 +1,57 @@
 body {
-    margin: 0; padding: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #464;}
-    header { background-color: #DFB887; height: 10%; width: 100%; opacity: .9; margin-bottom: 2%;}
-    h1 { font-family: serif; text-align: center; color: #377ba8; }
-    .container {padding-top: 2%; width: 50%; margin: 0 auto; background-color: #DFB887;}
-    .container label { font-weight: bold; margin-bottom: 2em; margin-left: 2em; color: #377ba8;}
-    .container input { margin-bottom: 1em; margin-left: 2em;}
-    .container button { margin-bottom: 1em; margin-left: 2em;}
-    .container textarea { min-height: 12em; resize: vertical; }
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Color de fondo */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 500px; /* Ancho del formulario */
+    margin: 0 auto; /* Centrar el formulario */
+    background-color: #ffffff; /* Color de fondo del formulario */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+h1 {
+    text-align: center;
+    color: #6a5acd; /* Violeta pastel para el título */
+}
+
+label {
+    color: #333; /* Color de texto para las etiquetas */
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px); /* Ancho del input */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 10px; /* Espaciado inferior */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 100%; /* Ancho completo */
+    background-color: #6a5acd; /* Violeta pastel para el botón */
+    color: #fff; /* Color de texto blanco */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 40px; /* Altura del botón */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-top: 10px; /* Espacio superior */
+}
+
+input[type="submit"]:hover {
+    background-color: #7b68ee; /* Cambio de color al pasar el cursor */
+}
+.myDiv {
+    margin-bottom: 2em; 
+      margin-right: 4em;
+    text-align: center;
+  }
+  

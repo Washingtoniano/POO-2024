@@ -1,18 +1,18 @@
 from __main__ import app
 from flask_sqlalchemy import SQLAlchemy
 db=SQLAlchemy(app)
-class paquete(db.Model):
+class Paquete(db.Model):
     __tablename__="paquete"
-    __id=db.Column(db.Integer,primary_key=True)
-    __numero=db.Column(db.Integer,primary_key=True)
-    __peso=db.Column(db.Integer,primary_key=True)
-    __NombreD=db.Column(db.String(60),primary_key=True)
-    __DireccionD=db.Column(db.String(100),primary_key=True)
-    __Entregado=db.Column(db.Boolean,primary_key=True)
-    __observacion=db.Column(db.Text,primary_key=True)
-    __idSucursal=db.relationship("sucursal",backref="paquete")
-    __idTransporte=db.relationship("transporte",backref="paquete")
-    __idRepartior=db.relationship("repartidor",backref="paquete")
+    id=db.Column(db.Integer,primary_key=True)
+    numero=db.Column(db.Integer,nullable=False)
+    peso=db.Column(db.Integer,nullable=False)
+    NombreD=db.Column(db.String(60),nullable=False)
+    DireccionD=db.Column(db.String(100),nullable=False)
+    Entregado=db.Column(db.Boolean,nullable=False)
+    observacion=db.Column(db.Text,nullable=False)
+    #idSucursal=db.relationship("sucursal",backref="paquete")
+    #idTransporte=db.relationship("transporte",backref="paquete")
+    idRepartidor=db.Column(db.Integer,db.ForeignKey('repartidor.id'))
 
     def getNumero(self):
         return self.__numero
@@ -26,21 +26,19 @@ class paquete(db.Model):
         return self.__Entregado
     def getObservacion(self):
         return self.__observacion
-    def getRepartidor(self):
-        return self.__Repartidor
-
+ 
 
  
 
 
-class repartidor(db.Model):
+class Repartidor(db.Model):
     __tablename__="repartidor"
-    __id=db.Column(db.Integer,primary_key=True)
-    __numero=db.Column(db.Integer,primary_key=True)
-    __nombre=db.Column(db.String(60),primary_key=True)
-    __dni=db.Column(db.String(8),primary_key=True)
-    __iSucursal=db.relationship("sucursal",backref="repartidor")
-    __paquete=db.relationship("paquete",backref="repartidor")
+    id=db.Column(db.Integer,primary_key=True)
+    numero=db.Column(db.Integer,nullable=False)
+    nombre=db.Column(db.String(60),nullable=False)
+    dni=db.Column(db.String(8),nullable=False)
+    #iSucursal=db.relationship("sucursal",backref="repartidor")
+    paquete=db.relationship('Paquete',backref='repartidor')
 
     def getNumero(self):
         return self.__numero
@@ -48,22 +46,19 @@ class repartidor(db.Model):
         return self.__nombre
     def getDNI(self):
         return self.__dni
-    def getPaquete(self):
-        return self.__paquete
-    def getSucursal(self):
-        return self.__sucursal
 
 
-class sucursal(db.Model):
+
+class Sucursal(db.Model):
     __tablename__ ="sucursal"
-    __id=db.Column(db.Integer,primary_key=True)
-    __numero=db.Column(db.Integer,primary_key=True)
-    __provincia=db.Column(db.String(30),primary_key=True)
-    __localidad=db.Column(db.String(30),primary_key=True)
-    __direccion=db.Column(db.String(30),primary_key=True)
-    __paquetes=db.relationship("paquete",backref="sucursal")
-    __repartidor=db.relationship("repartidor",backref="sucursal")
-    __transporte=db.relationship("transporte",backref="sucursal")
+    id=db.Column(db.Integer,primary_key=True)
+    numero=db.Column(db.Integer,nullable=False)
+    provincia=db.Column(db.String(30),nullable=False)
+    localidad=db.Column(db.String(30),nullable=False)
+    direccion=db.Column(db.String(30),nullable=False)
+    #paquetes=db.relationship("paquete",backref="sucursal")
+    #repartidor=db.relationship("repartidor",backref="sucursal")
+    #transporte=db.relationship("transporte",backref="sucursal")
 
 
     def getNumero(self):
@@ -74,22 +69,19 @@ class sucursal(db.Model):
         return self.__localidad
     def getDireccion(self):
         return self.__direccion
-    def getRep(self):
-        return self.__repartidor
-    def getPa(self):
-        return self.__paquetes
-    def getTrans(self):
-        return self.__transporte
+    def getid(self):
+        return self.__id
+ 
 
    
-class transporte(db.Model):
+class Transporte(db.Model):
     __tablename__ ="transporte"
-    __id=db.Column(db.Integer,primary_key=True)
-    __numero=db.Column(db.Integer,primary_key=True)
-    __fechaS=db.Column(db.DATETIME,primary_key=True)
-    __fechaLL=db.Column(db.DATETIME,primary_key=True)
-    __sucursal=db.relationship("sucursal",backref="transporte")
-    __paquete=db.relationship("paquete",backref="transporte")
+    id=db.Column(db.Integer,primary_key=True)
+    numero=db.Column(db.Integer,nullable=False)
+    fechaS=db.Column(db.DATETIME,nullable=False)
+    fechaLL=db.Column(db.DATETIME,nullable=False)
+    #sucursal=db.relationship("sucursal",backref="transporte")
+    #paquete=db.relationship("paquete",backref="transporte")
 
 
 
@@ -99,9 +91,6 @@ class transporte(db.Model):
         return self.__fechaLL
     def getFechaS(self):
         return self.__fechaS
-    def getPaquete(self):
-        return self.__paquete
-    def getSucursal(self):
-        return self.__sucursal
+ 
     
  
