@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request
+from flask import Flask,render_template, request,session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 app=Flask(__name__)
@@ -7,6 +7,11 @@ app.config.from_pyfile("config.py")
 #db browser for sqlite
 from models import db
 from models import Sucursal,Repartidor,Transporte,Paquete
+#sqlite3 Editor (Extension(yy0391))
+@app.route("/")
+def inicio():
+    return render_template("inicio.html")
+
 @app.route("/repartidor")
 def repartidor():
     return render_template("repartidor.html")
@@ -17,40 +22,54 @@ def despachador():
         if not request.form['sucursales']:
             return render_template("despachador.html",sucursales=Sucursal.query.all(),sucursal_seleccionada=None)
         else:
-            return render_template("despachador.html",sucursales=None,sucursal_seleccionada=Sucursal.query.get(request.form['sucursales']))
+            sucursal_seleccionada=Sucursal.query.get(request.form['sucursales'])
+            session["sucursal"]=sucursal_seleccionada.id
+           
+            return render_template("despachador.html",sucursales=None,sucursal_seleccionada=Sucursal.query.get(request.form['sucursales']))      
     else:
+
         return render_template("despachador.html",sucursales=Sucursal.query.all(),sucursal_seleccionada=None)
 
-@app.route("/menu",methods=['GET','POST'])
-def menu():
-    return render_template("menudespachador.html")
-@app.route("/")
-def inicio():
-    return render_template("inicio.html")
-
-@app.route("/registrar_llegada")
+@app.route("/registrar_llegada",methods=['POST','GET'])
 def registrar_llegada():
-    return render_template("registrar_llegada.html")
+#se pueden utilizar checkbox para enviar mas de un paquete o uno por uno.
+
+    if request.method=='POST':
+        if not request.form['paquetes']:
+            return render_template("registrar_llegada.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]),paquetes_seleccionados=None)
+        else:
+            paquetes_seleccionados=Paquete.query.get(request.form['paquetes'])
+            if paquetes_seleccionados==None:
+                return render_template("error.html",error="Hubo un error con los paquetes seleccionados")
+            else:
+                return render_template("registrar_llegada",paquetes=None,paquetes_seleccionados=Paquete.query.get('paquetes'))
+    else:
+        return render_template("registrar_llegada.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]),paquetes_seleccionados=None)
 
 @app.route("/registrar_salida")
+#solo cambiar el estado de entrega de verdadero a falso, y registrar la hora actual
 def registrar_salida():
     return render_template("registrar_salida.html")
 
 @app.route("/registrar_paquete",methods=['GET','POST'])
 def registrar_paquete():
-    if request.method=='POST':
-        if not request.form['nombre'] or not request.form['peso'] or not request.form['direccion']:
-            return render_template('error.html',error="Los datos ingresados no son correctos...")
-        else:
-            paquetes=Paquete.query.all()
-            for p in paquetes:
-                num=p.numeroenvio
-            nuevoPaquete=Paquete(nomdestinatario=request.form['nombre'],peso=request.form['peso'],dirdestinatario=request.form['direccion'],entregado=False,idrepartidor=None,idtransporte=None,idsucursal=None,numeroenvio=num+20)
-            print(nuevoPaquete)
-            db.session.add(nuevoPaquete)
-            db.session.commit()
-            return render_template("menudespachador.html")
-    return render_template("registrar_paquete.html")
+    try:
+        if request.method=='POST':
+            if not request.form['nombre'] or not request.form['peso'] or not request.form['direccion']:
+                return render_template('error.html',error="Los datos ingresados no son correctos...")
+            else:
+                paquetes=Paquete.query.all()
+                for p in paquetes:
+                    num=p.numeroenvio
+                nuevoPaquete=Paquete(nomdestinatario=request.form['nombre'],peso=request.form['peso'],dirdestinatario=request.form['direccion'],entregado=False,idrepartidor=None,idtransporte=None,idsucursal=session["sucursal"],numeroenvio=num+20,observaciones='')
+                print(nuevoPaquete)
+                db.session.add(nuevoPaquete)
+                db.session.commit()#Usar try en el commit para verificar exito o fracaso
+        
+                return render_template("menudespachador.html")
+        return render_template("registrar_paquete.html")
+    except:
+        return render_template("error.html",error="Hubo un error al cargar el paquete")
 
 
 

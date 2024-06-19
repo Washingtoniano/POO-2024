@@ -2,6 +2,20 @@
 {% block title %}Registrar llegada de un paquete{% endblock %}
 {% block content %}
 <body>
-    
+    <h1>Paquetes</h1>
+    <hr/>
+    <form action="{{ request.path }}"" method="POST" class="container">
+        {% if paquetes is not none :%}
+        <label for="paquetes">Sucursales</label><br>            
+        {%for paquete in paquetes%}
+            {%if paquete.entregado is not true and paquete.idrepartidor is none :%}
+            <input type="checkbox" id="Paquete"name="Paquete" value="Paquete">
+            <label for="Paquete">{{paquete.id}} {{paquete.numeroenvio}} {{paquete.peso}} {{paquete.nomdestinatario}} {{paquete.dirdestinatario}} {{paquete.entregado}} {{paquete.observaciones}}</label>
+            <label for=""></label>
+            {%endif%}            
+            {%endfor%}
+        {%endif%}
+    </form>
+
 </body>
 {%endblock%}

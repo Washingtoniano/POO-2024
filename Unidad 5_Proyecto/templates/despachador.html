@@ -12,10 +12,15 @@
             <option value="{{sucursal.id}}">{{sucursal.numero}} {{sucursal.provincia}} {{sucursal.localidad}} {{sucursal.direccion}}</option>
             {%endfor%}
         </select>
+
         <br><br>
         <input class="button1" type="submit" value="Menu">
         {% else %}
-        <a href="{{url_for('menu')}}">Menu</a>
+        <h1>Opciones</h1>
+        <td><a href="{{url_for('registrar_paquete')}}">Registrar un paquete</a></td>
+                
+        <td><a href="{{url_for('registrar_salida')}}">Registrar salida de transporte</a></td>
+        <td><a href="{{url_for('registrar_llegada')}}">Registrar la llegada de un transporte</a></td>
 
         {% endif %} 	   
 
