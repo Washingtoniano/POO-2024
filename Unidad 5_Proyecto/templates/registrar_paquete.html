@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "basetemplate.html" %}
+{% block title %}Registrar paquete{% endblock %}
+{% block content %}
+<h1>Registrar nuevo paquete</h1>
+<hr/>
+<form action="{{request.path}}"method='POST'class="container">
+    <label for="peso">Peso del paquete</label><br>
+    <input type="text" name="peso" placeholder="peso"/><br>
     
-</body>
-</html>
+    <label for="nombre">Destinatario</label><br>
+    <input type="text"name="nombre" placeholder="nombre"/><br>
+
+    <label for="direccion">direccion</label><br>
+    <input type="text"name="direccion" placeholder="direccion"/><br>
+    <br>
+    <input type="submit"value="Guardar"/>
+</form>
+{%endblock%}

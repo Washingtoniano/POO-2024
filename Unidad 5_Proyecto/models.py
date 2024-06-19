@@ -4,15 +4,15 @@ db=SQLAlchemy(app)
 class Paquete(db.Model):
     __tablename__="paquete"
     id=db.Column(db.Integer,primary_key=True)
-    numero=db.Column(db.Integer,nullable=False)
+    numeroenvio=db.Column(db.Integer,nullable=False)
     peso=db.Column(db.Integer,nullable=False)
-    NombreD=db.Column(db.String(60),nullable=False)
-    DireccionD=db.Column(db.String(100),nullable=False)
-    Entregado=db.Column(db.Boolean,nullable=False)
-    observacion=db.Column(db.Text,nullable=False)
-    idSucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
-    idTransporte=db.Column(db.Integer,db.ForeignKey('transporte.id'))
-    idRepartidor=db.Column(db.Integer,db.ForeignKey('repartidor.id'))
+    nomdestinatario=db.Column(db.String(60),nullable=False)
+    dirdestinatario=db.Column(db.String(100),nullable=False)
+    entregado=db.Column(db.Boolean,nullable=False)
+    observaciones=db.Column(db.Text,nullable=False)
+    idsucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
+    idtransporte=db.Column(db.Integer,db.ForeignKey('transporte.id'))
+    idrepartidor=db.Column(db.Integer,db.ForeignKey('repartidor.id'))
 
     def getNumero(self):
         return self.__numero

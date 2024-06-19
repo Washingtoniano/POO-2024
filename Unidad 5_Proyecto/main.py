@@ -36,8 +36,20 @@ def registrar_llegada():
 def registrar_salida():
     return render_template("registrar_salida.html")
 
-@app.route("/registrar_paquete")
+@app.route("/registrar_paquete",methods=['GET','POST'])
 def registrar_paquete():
+    if request.method=='POST':
+        if not request.form['nombre'] or not request.form['peso'] or not request.form['direccion']:
+            return render_template('error.html',error="Los datos ingresados no son correctos...")
+        else:
+            paquetes=Paquete.query.all()
+            for p in paquetes:
+                num=p.numeroenvio
+            nuevoPaquete=Paquete(nomdestinatario=request.form['nombre'],peso=request.form['peso'],dirdestinatario=request.form['direccion'],entregado=False,idrepartidor=None,idtransporte=None,idsucursal=None,numeroenvio=num+20)
+            print(nuevoPaquete)
+            db.session.add(nuevoPaquete)
+            db.session.commit()
+            return render_template("menudespachador.html")
     return render_template("registrar_paquete.html")
 
 
