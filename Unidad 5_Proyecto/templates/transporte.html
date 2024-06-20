@@ -1,0 +1,27 @@
+{% extends "basetemplate.html" %}
+{% block title %}Registrar llegada de un paquete{% endblock %}
+{% block content %}
+<body>
+    <h1>Paquetes</h1>
+    <hr/>
+    <form action="{{ request.path }}"" method="POST" class="container">
+        {%if transportes is not none%}
+        
+        <label for="transportes">Transportes</label><br>
+        <select  id="transportes" name="transportes" width="500px"> 
+            <label for="transporte">Transporte</label><br>
+            <select  id="transportes" name="transportes" width="500px"> 
+                        
+                {%for transporte in transportes%}
+                <option value="{{transporte.id}}">{{transporte.numero}} </option>
+                {%endfor%}
+            </select>
+
+        <br><br>
+        <input class="button1" type="submit" value="Finalizar">
+        {%endif%}
+
+    </form>
+
+</body>
+{%endblock%}
