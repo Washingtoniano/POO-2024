@@ -74,8 +74,9 @@ class Transporte(db.Model):
     __tablename__ ="transporte"
     id=db.Column(db.Integer,primary_key=True)
     numerotransporte=db.Column(db.Integer,nullable=False)
-    fechahorasalida=db.Column(db.DATETIME,nullable=False)
-    fechahorallegada=db.Column(db.DATETIME,nullable=False)
+    fechahorasalida= db.Column(db.DateTime)
+
+    fechahorallegada=db.Column(db.DateTime)
 
     idsucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
 

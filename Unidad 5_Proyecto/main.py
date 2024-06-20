@@ -1,6 +1,6 @@
 from flask import Flask,render_template, request,session
 from flask_sqlalchemy import SQLAlchemy
-import datetime as date
+from datetime import datetime 
 app=Flask(__name__)
 app.config.from_pyfile("config.py")
 #Los id se auto generan,(cuando se ingres un nuevo elemento su id sera el del anterior mas 1)
@@ -60,42 +60,53 @@ def registrar_llegada():
 
 
 """""
-@app.route("/registrar_llegada",methods=['POST','GET'])
-def registrar_llegada():
+@app.route("/registrar_salida",methods=['POST','GET'])
+def registrar_salida():
 #se pueden utilizar checkbox para enviar mas de un paquete o uno por uno.
 #No funciona: problemas con el if nor request.form["paquetes"] key error
     if request.method=='POST':
-        if  not request.form['paquetes'] and not request.form['sucursales'] and not request.form['transportes'] :
-            return render_template("registrar_llegada.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.idrepartidor==0),paquetes_seleccionados=None,transportes=Transporte.query.where(Transporte.idsucursal==session["sucursal"]),sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]),sucursal_elegida=None,transporte_elegido=None)
-
-
-        elif request.form['paquetes']:
-            return render_template('registrar_llegada.html',paquetes=None,paqute_seleccionado=Paquete.query.get(request.form["paquetes"]),transportes=Transporte.query.where(Transporte.idsucursal==session["sucursal"]),sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]),sucursal_elegida=None,transporte_elegido=None)
+        if  not request.form['paquetes'] and not request.form['sucursales'] :
+            return render_template("registrar_salida.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.idrepartidor==0),paquetes_seleccionados=None,sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]))
         else:
-            today=date.datetime.now()
-            hora=today.hour
-            fecha=today.day
-            p=Paquete.query.get(request.form["paquetes"])
-            t=Transporte.query.get(request.form["transportes"])
-            s=Sucursal.query.get(request.form["sucursales"])
-            p.idsucursal=s.id
-            p.idtransporte=t.id
-            t.fechahorasalida=str(fecha)+(str(hora))
-
-            p.query.update()
-            t.query.update()
-            db.session.refresh()
-
+        
+            for p in Transporte.query.all():
+                num=p.numerotransporte
+            paq=Paquete.query.get(request.form["paquetes"])
+            suc=Sucursal.query.get(request.form["sucursales"])
+            print(type(paq))
+            print(type(suc))
+            
+            untransporte=Transporte(numerotransporte=num+1,idsucursal=request.form["sucursales"],idpaquete=request.form["paquetes"],fechahorasalida=datetime.now())
+            db.session.add(untransporte)
+            db.session.commit()
+            return render_template("registar_salida.html",paquetes=None,paquetes_seleccionados=Paquete.query.get(request.form["paquetes"]),sucursales=None,sucursal_seleccionada=Sucursal.query.get(request.form["sucursales"]))
+    
 
     else:
-        return render_template("registrar_llegada.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.idrepartidor==0),paquetes_seleccionados=None,transportes=Transporte.query.where(Transporte.idsucursal==session["sucursal"]),sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]),sucursal_elegida=None,transporte_elegido=None)
+        return render_template("registrar_salida.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.idrepartidor==0),paquetes_seleccionados=None,sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]))
     
     
 
-@app.route("/registrar_salida")
+@app.route("/registrar_llegada",methods=["POST","GET"])
 #solo cambiar el estado de entrega de verdadero a falso, y registrar la hora actual
-def registrar_salida():
-    return render_template("registrar_salida.html")
+def registrar_llegada():
+    if request.method=='POST':
+        if not request.form['paquetes']:
+            return render_template("registrar_llegada.html",transportes= Transporte.query.where(Transporte.idsucursal==session["sucursal"] and Transporte.fechahorasalida==''),paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]))
+        else:
+
+                paquete=Paquete.query.get(request.form['paquetes'])
+                transporte=Transporte.query.get(request.form['transportes'])
+                paquete.entregado=True
+        
+                transporte.query.update(fechahorallegada=datetime.now())
+                paquete.query.update(entregado=True)
+                
+                db.session.refresh()
+                return render_template(paquetes=None,transporte=None,transporte_seleccionado=Transporte.query.get(request.form['transportes']),paquete_seleccionado=Paquete.query.get(request.form['paquetes']))
+
+    else:
+        return render_template("registrar_llegada.html",transportes= Transporte.query.where(Transporte.idsucursal==session["sucursal"]),paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]))
 
 @app.route("/registrar_paquete",methods=['GET','POST'])
 def registrar_paquete():

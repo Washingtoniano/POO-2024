@@ -1,51 +1,34 @@
 {% extends "basetemplate.html" %}
-{% block title %}Registrar llegada de un paquete{% endblock %}
+{% block title %}Registrar llegada de un transporte{% endblock %}
 {% block content %}
 <body>
     <h1>Paquetes</h1>
     <hr/>
-    <form action="{{ request.path }}"" method="POST" class="container">
-
-  
-        {% if paquetes is not none :%}
-            <label for="paquetes">Paquetes</label><br>  
+    <form action="{{ request.path }}" method="POST" class="container">
+        {%if paquetes is not none%}
+        <label for="paquetes">Paquetes</label><br>
             {%for paquete in paquetes%}
                 <br>
                 <input type="checkbox" id="paquetes"name="paquetes" value= "{{paquete.id}}">
                 <label for="paquetes">ID:{{paquete.id}} Numero:{{paquete.numeroenvio}} Peso:{{paquete.peso}} Destinatario:{{paquete.nomdestinatario}} Direccion:{{paquete.dirdestinatario}} Entregado:{{paquete.entregado}} Observaciones:{{paquete.observaciones}}</label>
-                        
+
                 {%endfor%}
-                <input class="button1" type="submit" value="Sucursales opcionales">
+                  <br><br>
+                    <label for="transportes">Transporte</label><br>
+                    <select  id="transportes" name="transportes" width="500px">
 
+                            {%for transporte in transportes%}
+                            <option value="{{transporte.id}}">{{transporte.numerotransporte}}{{transporte.fechahorasalida}} </option>
+                            {%endfor%}
+                        </select>
 
-        {%else%}
-            {% if sucursales is not none  and transportes is not none:%}
-            <label for="sucursales">Sucursal</label><br>
-            <select  id="sucursales" name="sucursales" width="500px"> 
-                        
-                {%for sucursal in sucursales%}
-                <option value="{{sucursal.id}}">{{sucursal.numero}} {{sucursal.provincia}} {{sucursal.localidad}} {{sucursal.direccion}}</option>
-                {%endfor%}
-            </select>
-
-            <br><br>
-            <label for="transportes">Transporte</label><br>
-            <select  id="transportes" name="transportes" width="500px"> 
-                            
-                    {%for transporte in transportes%}
-                    <option value="{{transporte.id}}">{{transporte.numerotransporte}} </option>
-                    {%endfor%}
-                </select>
-    
-            <br><br>
-            <input class="button1" type="submit" value="Finalizar">
-
-  
-        {%endif%}        
-        {%endif%}
-
+                    <br><br>
+                    <input class="button1" type="submit" value="Finalizar">
+           {%else%}
+    <h1>  la operacion finalizo con exito  </h1>
 
     </form>
 
+{%endif%}
 </body>
 {%endblock%}

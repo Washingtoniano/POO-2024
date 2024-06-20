@@ -1,7 +1,36 @@
 {% extends "basetemplate.html" %}
-{% block title %}Registrar salida de un transporte{% endblock %}
+{% block title %}Registrar llegada de un paquete{% endblock %}
 {% block content %}
 <body>
-    
+    <h1>Paquetes</h1>
+    <hr/>
+    <form action="{{ request.path }}" method="POST" class="container">
+
+  
+        {% if paquetes is not none and sucursales is not none:%}
+            <label for="paquetes">Paquetes</label><br>  
+            {%for paquete in paquetes%}
+                <br>
+                <input type="checkbox" id="paquetes"name="paquetes" value= "{{paquete.id}}">
+                <label for="paquetes">ID:{{paquete.id}} Numero:{{paquete.numeroenvio}} Peso:{{paquete.peso}} Destinatario:{{paquete.nomdestinatario}} Direccion:{{paquete.dirdestinatario}} Entregado:{{paquete.entregado}} Observaciones:{{paquete.observaciones}}</label>
+                        
+                {%endfor%}
+            <label for="sucursales">Sucursal</label><br>
+            <select  id="sucursales" name="sucursales" width="500px"> 
+                        
+                {%for sucursal in sucursales%}
+                <option value="{{sucursal.id}}">{{sucursal.numero}} {{sucursal.provincia}} {{sucursal.localidad}} {{sucursal.direccion}}</option>
+                {%endfor%}
+            <br><br>
+            <input class="button1" type="submit" value="Finalizar">
+
+        {%else%}
+        <h1>  la operacion finalizo con exito  </h1>
+
+  
+        {%endif%}        
+
+    </form>
+
 </body>
 {%endblock%}
