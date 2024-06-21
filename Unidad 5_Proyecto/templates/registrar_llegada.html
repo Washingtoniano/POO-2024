@@ -5,15 +5,8 @@
     <h1>Paquetes</h1>
     <hr/>
     <form action="{{ request.path }}" method="POST" class="container">
-        {%if paquetes is not none%}
-        <label for="paquetes">Paquetes</label><br>
-            {%for paquete in paquetes%}
-                <br>
-                <input type="checkbox" id="paquetes"name="paquetes" value= "{{paquete.id}}">
-                <label for="paquetes">ID:{{paquete.id}} Numero:{{paquete.numeroenvio}} Peso:{{paquete.peso}} Destinatario:{{paquete.nomdestinatario}} Direccion:{{paquete.dirdestinatario}} Entregado:{{paquete.entregado}} Observaciones:{{paquete.observaciones}}</label>
-
-                {%endfor%}
-                  <br><br>
+        {%if transportes is not none%}
+       
                     <label for="transportes">Transporte</label><br>
                     <select  id="transportes" name="transportes" width="500px">
 

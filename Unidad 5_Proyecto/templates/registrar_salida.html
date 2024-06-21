@@ -11,9 +11,11 @@
             <label for="paquetes">Paquetes</label><br>  
             {%for paquete in paquetes%}
                 <br>
-                <input type="checkbox" id="paquetes"name="paquetes" value= "{{paquete.id}}">
+                <div>
+                <input type="checkbox" multiple id="paquetes"name="paquetes" value= "{{paquete.id}}">
                 <label for="paquetes">ID:{{paquete.id}} Numero:{{paquete.numeroenvio}} Peso:{{paquete.peso}} Destinatario:{{paquete.nomdestinatario}} Direccion:{{paquete.dirdestinatario}} Entregado:{{paquete.entregado}} Observaciones:{{paquete.observaciones}}</label>
-                        
+                </div>     
+                
                 {%endfor%}
             <label for="sucursales">Sucursal</label><br>
             <select  id="sucursales" name="sucursales" width="500px"> 

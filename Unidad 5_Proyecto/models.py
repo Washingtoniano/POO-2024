@@ -80,7 +80,7 @@ class Transporte(db.Model):
 
     idsucursal=db.Column(db.Integer,db.ForeignKey('sucursal.id'))
 
-    #idpaquete=db.relationship("Paquete",backref="transporte")
+    idpaquete=db.relationship("Paquete",backref="transporte")
 
 
 
