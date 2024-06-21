@@ -26,7 +26,7 @@ def despachador():
             sucursal_seleccionada=Sucursal.query.get(request.form['sucursales'])
             session["sucursal"]=sucursal_seleccionada.id
            
-            return render_template("despachador.html",sucursales=None,sucursal_seleccionada=Sucursal.query.get(request.form['sucursales']))      
+            return render_template("menudespachador.html")
     else:
 
         return render_template("despachador.html",sucursales=Sucursal.query.all(),sucursal_seleccionada=None)
@@ -69,7 +69,7 @@ def registrar_salida():
         if  not request.form['paquetes'] and not request.form['sucursales'] :
             return render_template("registrar_salida.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.idrepartidor==0),paquetes_seleccionados=None,sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]))
         else:
-                
+            try:
             
                 for p in Transporte.query.all():
                     num=p.numerotransporte
@@ -85,6 +85,8 @@ def registrar_salida():
                 db.session.commit()
                                 
                 return render_template("exito.html",exito="Se cargo un paquete")
+            except:
+                return render_template("error.hmtl",error="No se pudo registrar la salida")
          
     
 
@@ -98,9 +100,9 @@ def registrar_salida():
 def registrar_llegada():
     if request.method=='POST':
         if not request.form['paquetes']:
-            return render_template("registrar_llegada.html",transportes= Transporte.query.where(Transporte.idsucursal==session["sucursal"] and Transporte.fechahorasalida==''),paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]))
+            return render_template("registrar_llegada.html",transportes= Transporte.query.where(Transporte.idsucursal==session["sucursal"] and Transporte.fechahorasalida==''),paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.entregado==False ))
         else:
-
+            try:
                 paquete=Paquete.query.get(request.form['paquetes'])
                 transporte=Transporte.query.get(request.form['transportes'])
                 paquete.entregado=True
@@ -108,6 +110,8 @@ def registrar_llegada():
                 
                 db.session.commit()
                 return render_template("exito.html",exito="Se registro su llegada")
+            except:
+                return render_template ("error.html",error="No se pudo registrar la llegada")
 
     else:
         return render_template("registrar_llegada.html",transportes= Transporte.query.where(Transporte.idsucursal==session["sucursal"]),paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]))
