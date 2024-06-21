@@ -1,5 +1,6 @@
 from flask import Flask,render_template, request,session
 from flask_sqlalchemy import SQLAlchemy
+
 from datetime import datetime 
 app=Flask(__name__)
 app.config.from_pyfile("config.py")
@@ -68,18 +69,23 @@ def registrar_salida():
         if  not request.form['paquetes'] and not request.form['sucursales'] :
             return render_template("registrar_salida.html",paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"] and Paquete.idrepartidor==0),paquetes_seleccionados=None,sucursales=Sucursal.query.where(Sucursal.id!=session["sucursal"]))
         else:
-        
-            for p in Transporte.query.all():
-                num=p.numerotransporte
-            paq=Paquete.query.get(request.form["paquetes"])
-            suc=Sucursal.query.get(request.form["sucursales"])
-            print(type(paq))
-            print(type(suc))
+                
             
-            untransporte=Transporte(numerotransporte=num+1,idsucursal=request.form["sucursales"],idpaquete=request.form["paquetes"],fechahorasalida=datetime.now())
-            db.session.add(untransporte)
-            db.session.commit()
-            return render_template("registar_salida.html",paquetes=None,paquetes_seleccionados=Paquete.query.get(request.form["paquetes"]),sucursales=None,sucursal_seleccionada=Sucursal.query.get(request.form["sucursales"]))
+                for p in Transporte.query.all():
+                    num=p.numerotransporte
+                paq=Paquete.query.get(request.form["paquetes"])
+                suc=Sucursal.query.get(request.form["sucursales"])
+                print(type(paq))
+                print(type(suc))
+                
+                untransporte=Transporte(numerotransporte=num+1,idsucursal=suc.id,fechahorasalida=datetime.now())
+                db.session.add(untransporte)
+                paq.idtransporte=untransporte.id
+                paq.idsucursal=suc.id
+                db.session.commit()
+                                
+                return render_template("exito.html",exito="Se cargo un paquete")
+         
     
 
     else:
@@ -98,12 +104,10 @@ def registrar_llegada():
                 paquete=Paquete.query.get(request.form['paquetes'])
                 transporte=Transporte.query.get(request.form['transportes'])
                 paquete.entregado=True
-        
-                transporte.query.update(fechahorallegada=datetime.now())
-                paquete.query.update(entregado=True)
+                transporte.fechahorallegada=datetime.now()
                 
-                db.session.refresh()
-                return render_template(paquetes=None,transporte=None,transporte_seleccionado=Transporte.query.get(request.form['transportes']),paquete_seleccionado=Paquete.query.get(request.form['paquetes']))
+                db.session.commit()
+                return render_template("exito.html",exito="Se registro su llegada")
 
     else:
         return render_template("registrar_llegada.html",transportes= Transporte.query.where(Transporte.idsucursal==session["sucursal"]),paquetes=Paquete.query.where(Paquete.idsucursal==session["sucursal"]))

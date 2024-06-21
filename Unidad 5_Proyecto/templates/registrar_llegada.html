@@ -18,7 +18,7 @@
                     <select  id="transportes" name="transportes" width="500px">
 
                             {%for transporte in transportes%}
-                            <option value="{{transporte.id}}">{{transporte.numerotransporte}}{{transporte.fechahorasalida}} </option>
+                            <option value="{{transporte.id}}">Numero:{{transporte.numerotransporte}} Fecha:{{transporte.fechahorasalida}} </option>
                             {%endfor%}
                         </select>
 
