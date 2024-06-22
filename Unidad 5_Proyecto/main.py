@@ -56,7 +56,6 @@ def registrar_salida():
                     for p in paq:
                         unpaquete=Paquete.query.get(p)
                         unpaquete.idtransporte=untransporte.id
-                        unpaquete.idsucursal=suc.id
                         idpac.append(unpaquete)
                     untransporte.idpaquete=idpac
         
@@ -84,6 +83,9 @@ def registrar_llegada():
             else:
                     transporte=Transporte.query.get(request.form['transportes'])
                     transporte.fechahorallegada=datetime.now()
+                    li=transporte.idpaquete
+                    for p in li:
+                         p.idsucursal=session["sucursal"]
                     
                     db.session.commit()
                     return render_template("exito.html",exito="Se registro su llegada")
