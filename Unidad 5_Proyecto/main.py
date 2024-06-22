@@ -42,7 +42,7 @@ def registrar_salida():
     try: 
         if request.method=='POST':
             if  not request.form['paquetes'] and not request.form['sucursales'] :
-                return render_template("registrar_salida.html",paquetes=Paquete.query.filter(Paquete.idsucursal==session["sucursal"], Paquete.idrepartidor==0 , Paquete.entregado==False),paquetes_seleccionados=None,sucursales=Sucursal.query.filter(Sucursal.id!=session["sucursal"]))
+                return render_template("registrar_salida.html",paquetes=Paquete.query.filter(Paquete.idsucursal==session["sucursal"],Paquete.idrepartidor==None, Paquete.entregado==False,Paquete.idtransporte==None),paquetes_seleccionados=None,sucursales=Sucursal.query.filter(Sucursal.id!=session["sucursal"]))
             else:
                     for t in Transporte.query.all():
                         num=t.numerotransporte
@@ -65,7 +65,7 @@ def registrar_salida():
                
             
         else:
-            return render_template("registrar_salida.html",paquetes=Paquete.query.filter(Paquete.idsucursal==session["sucursal"], Paquete.idrepartidor==0),paquetes_seleccionados=None,sucursales=Sucursal.query.filter(Sucursal.id!=session["sucursal"]))
+                return render_template("registrar_salida.html",paquetes=Paquete.query.filter(Paquete.idsucursal==session["sucursal"],Paquete.idrepartidor==None, Paquete.entregado==False,Paquete.idtransporte==None),paquetes_seleccionados=None,sucursales=Sucursal.query.filter(Sucursal.id!=session["sucursal"]))
     except:
             if request.form['sucursales']:
                         return render_template("error.html",error="No hay paquetes")
@@ -86,7 +86,7 @@ def registrar_llegada():
                     li=transporte.idpaquete
                     for p in li:
                          p.idsucursal=session["sucursal"]
-                         p.idtransporte=0
+                         p.idtransporte=None
                     
                     db.session.commit()
                     return render_template("exito.html",exito="Se registro su llegada")
@@ -110,7 +110,7 @@ def registrar_paquete():
                 paquetes=Paquete.query.all()
                 for p in paquetes:
                     num=p.numeroenvio
-                nuevoPaquete=Paquete(nomdestinatario=request.form['nombre'],peso=request.form['peso'],dirdestinatario=request.form['direccion'],entregado=False,idrepartidor=0,idtransporte=0,idsucursal=session["sucursal"],numeroenvio=num+20,observaciones='')
+                nuevoPaquete=Paquete(nomdestinatario=request.form['nombre'],peso=request.form['peso'],dirdestinatario=request.form['direccion'],entregado=False,idrepartidor=None,idtransporte=None,idsucursal=session["sucursal"],numeroenvio=num+20,observaciones='')
                 print(nuevoPaquete)
                 db.session.add(nuevoPaquete)
                 db.session.commit()#Usar try en el commit para verificar exito o fracaso
