@@ -86,6 +86,7 @@ def registrar_llegada():
                     li=transporte.idpaquete
                     for p in li:
                          p.idsucursal=session["sucursal"]
+                         p.idtransporte=0
                     
                     db.session.commit()
                     return render_template("exito.html",exito="Se registro su llegada")

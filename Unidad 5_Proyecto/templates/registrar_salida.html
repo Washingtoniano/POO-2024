@@ -17,14 +17,14 @@
                 </div>     
                 
                 {%endfor%}
-            <label for="sucursales">Sucursal</label><br>
+            <label for="sucursales">Sucursales</label><br>
             <select  id="sucursales" name="sucursales" width="500px"> 
                         
                 {%for sucursal in sucursales%}
                 <option value="{{sucursal.id}}">{{sucursal.numero}} {{sucursal.provincia}} {{sucursal.localidad}} {{sucursal.direccion}}</option>
                 {%endfor%}
             <br><br>
-            <input class="button1" type="submit" value="Finalizar">
+            <input class="button1" type="submit" value="Registrar Transporte">
 
         {%else%}
         <h1>  la operacion finalizo con exito  </h1>
