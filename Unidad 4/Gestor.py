@@ -20,13 +20,15 @@ class gestor():
     
     def comprobar(self,otro,ob):
         b=0
+        i=0
         if len(self.__lista)==len(otro):
-            for i in range (len(self.__lista)):
-                if self.__lista[i]==otro[i]:
+            while i < len(self.__lista) and self.__lista[i]==otro[i]:
                     b=1
                     ob.sumar()
-                else:
-                    b=0
+                    i+=1
+            if i!=len(self.__lista):
+                b=0
+
         return b
  
     """""
