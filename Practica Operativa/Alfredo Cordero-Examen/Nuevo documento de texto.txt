@@ -1,0 +1,18 @@
+Alfredo
+
+Inciso a) correcto.
+
+Inciso b) correcto.
+
+En el inciso c) se debía mostrar el importe a cobrar por cada uno de los pacientes, y el total de la clínica. Luego observé que cuando se ingresa la opción 6, se pueden visualizar los importes a cobrar. 
+
+Inciso d) correcto.
+
+Inciso e) correcto.
+Teoría: 9.17
+
+Práctica: 10
+
+Nota Final: 10
+
+Prof. Malena
